@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/my_goods.css" type="text/css" />
+<title class="pubTitle"></title>
+</head>
+<body>
+<content>
+	<div class="detail">
+		<div class="title"><a href="javascript:history.go(-1)"><img class="back" src="img/other/back.png"></a><span class="pubTitle"></span>详情</div>
+		<dl class="data" id="list">
+		</dl>
+	<div class="detail">
+</content>
+<script src="js/base.js"></script>
+<script>
+(function(){
+	var _tp = Base.tools.getQueryString('tp'),
+		_ajaxUrl = '',
+		_bind = function(obj){
+			obj.find('span.ok').click(function(){
+				alert('确认交易');
+			})
+			obj.find('span.del').click(function(){
+				var o = $(this),
+					did = o.parent().attr('did'),
+					dt = o.parent().parent().parent().parent(),
+					arg = {}
+				;
+				arg[_tp+'_id'] = did;
+				if(confirm('删除？')){
+					$.ajax({
+						url : '/user/delete/'+_tp,
+						data : arg,
+						dataType : 'json',
+						success : function(back){
+							if(back.info=='删除车源成功' || back.info=='删除货源成功'){
+								dt.remove();
+							}
+							else alert(back.info);
+						},
+						error : function(XMLHttpRequest, textStatus, errorThrown){
+							alert(str(XMLHttpRequest));
+							alert(str(textStatus));
+							alert(str(errorThrown));
+						}
+					})
+				};
+			})
+		};
+	if(_tp=='goods'){
+		$('.pubTitle').text('我的货源');
+		_ajaxUrl = '/user/mygoods';
+	}else if(_tp=='car'){
+		$('.pubTitle').text('我的车源');
+		_ajaxUrl = '/user/mycar';
+	}
+	window.MVC = {
+		querys : {
+			is : 0,
+			page : 1,
+			end : 0,
+			ajaxUrl : _ajaxUrl,
+			cache : []
+		},
+		dom : {
+			list : $('#list'),
+			load : '<div class="load">努力加载中...</div>',
+			tmp_goods : '\
+				<dt>\
+					<div class="fromto">\
+						<p><img src="img/other/in.png" /> <span class="starting" id="starting">#starting</span></p>\
+						<p><img src="img/other/out.png" /> <span class="destination" id="destination">#destination</span></p>\
+						<div class="remark" id="remark">#remark</div>\
+						<p id="time"><img src="img/pub/time.png" /> 发布日期 #dtime_chn</p>\
+						<div class="admin">\
+							<img src="img/my/ok.png" />\
+							<div class="rit" did="#id">\
+								<span class="ok hide">确认交易完成</span><span class="del">删除</span>\
+							</div>\
+						</div>\
+					</div>\
+				</dt>\
+			'
+		},
+		rdata : function(i,d,j){
+			var numList = j.remark.match(/[0-9]+/ig),
+				phone = j.phone;
+			if(numList){
+				$.each(numList,function(k,n){
+					if(n.length>5) {
+						phone = n;
+					}
+				})
+			}
+			return d.replace('#id',j[_tp+'_id']).replace('#starting',j.starting).replace('#destination',j.destination).replace('#dtime_chn',j.dtime_chn).replace('#remark',j.remark);
+		},
+		getHtml : function(data,i){
+			var obj = this,
+				htm = '',
+				tmp = obj.dom.tmp_goods
+			;
+			if(i) {
+				obj.dom.list.html(function(){for(var i=0;i<data.length;i++) htm += obj.rdata(i,tmp,data[i]);return htm});
+				_bind(obj.dom.list.find('dt'));
+			}
+			else {
+				for(var i=0;i<data.length;i++){
+					obj.dom.list.append(obj.rdata(i,tmp,data[i]));
+					_bind(obj.dom.list.find('dt:last'));
+				}
+			}
+		},
+		getList : function(i){
+			var obj = this,arg = {};
+			obj.dom.list.append(obj.dom.load);
+			obj.querys.is = 1;
+			arg.page = obj.querys.page;
+			//arg.user_id = obj.querys.id;
+			$.ajax({
+				url: obj.querys.ajaxUrl,
+				data: arg,
+				dataType: 'json',
+				success : function(lst) {
+					//alert(str(lst));
+					if(lst.length>0){
+						obj.querys.cache = lst;
+						obj.getHtml(lst,i);
+						obj.querys.is = 0;
+					}
+					else obj.querys.end = 1;
+					obj.dom.list.find('.load').remove();
+				},
+				error : function(jqXHR,textStatus) {
+					alert(' request failed'+textStatus);
+				}
+			});
+		},
+		query : function(){
+			var obj = this;
+			obj.getList(1);
+		},
+		init : function(){
+			var obj = this;
+			obj.query();
+			Base.turn.get(obj);
+		}
+	}
+})();
+MVC.init();
+</script>
+</body>
+</html>

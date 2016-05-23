@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>我的</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/my.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="detailn">
+		<input type="text" id="data" placeholder="请输入您的车牌号码"/>
+		<div class="ok" id="ok">确定</div>
+	</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+$('#ok').click(function(){
+	var args = json(Base.tools.getQueryString('args')),
+		url = args.url,
+		val= $('#data').val()
+	;
+	if(val){
+		args.lpnum = val;
+		delete args.url;
+		location.href = url + '?args=' + str(args);
+	}
+	else{
+		alert('请输入车牌号码');
+	}
+})
+</script>
+</body>
+</html>

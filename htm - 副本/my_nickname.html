@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>我的</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/my.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="detailn">
+		<input type="text" placeholder="请输入您的昵称"/>
+		<div class="ok" id="ok">确定</div>
+	</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+var getSize = function(){document.getElementById('html').style.fontSize = document.body.clientWidth*100/320+'px'}();
+$('#ok').click(function(){
+	location.href = 'my.html';
+})
+</script>
+</body>
+</html>

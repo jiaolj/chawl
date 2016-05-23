@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/where.css" type="text/css" />
+</head>
+<body>
+<content>
+<section class="three">
+	<dl id="jump">
+		<dt><a d="0">不限</a></dt>
+		<dt><a d="五金">五金</a></dt>
+		<dt><a d="五金">电料</a></dt>
+		<dt><a d="五金">配件</a></dt>
+		<dt><a d="五金">建材</a></dt>
+		<dt><a d="五金">非金属材料</a></dt>
+		<dt><a d="五金">化工杂品</a></dt>
+	</dl>
+</section>
+</content>
+<script src="js/base.js"></script>
+<script>
+$('#jump>dt>a').click(function(){
+	location.href = Base.tools.getQueryString('url') + '?times=' + $(this).attr('d');
+})
+</script>
+</body>
+</html>

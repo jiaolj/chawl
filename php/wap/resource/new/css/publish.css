@@ -1,0 +1,48 @@
+body {
+  background: #ffffff;
+}
+content .detail {
+  font-size: 0.12rem;
+}
+content .detail .up {
+  border-bottom: 45px solid #f1f1f1;
+  padding: 0.1rem;
+}
+content .detail .up .say textarea {
+  border: none;
+  width: 100%;
+  outline: none;
+  border-bottom: 1px solid #eeeeee;
+  text-indent: 1em;
+  height: 0.45rem;
+  line-height: 0.2rem;
+  font-size: 0.18rem;
+}
+content .detail .up .say textarea::-webkit-input-placeholder {
+  color: #888888;
+}
+content .detail .up .pic {
+  text-align: center;
+  color: #888888;
+  background: #eeeeee;
+  width: 0.9rem;
+  height: 0.9rem;
+  cursor: pointer;
+  padding: 0.15rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+content .detail .up .pic .add {
+  font-size: 0.23rem;
+  margin-top: 0.2rem;
+}
+content .detail .pub {
+  margin: 0.45rem 0.1rem;
+  text-align: center;
+  font-size: 0.15rem;
+  border-radius: 0.05rem;
+  background: #cd2121;
+  line-height: 0.4rem;
+  color: #ffffff;
+  cursor: pointer;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>发布</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pubtype.css" type="text/css" />
+</head>
+<body>
+<content>
+<div class="detail">
+	<div class="up"><img src="img/pub/pub.png" /></div>
+	<div class="down">
+		<a class="flt"><img src="img/pub/goods.png" /> <span>发布货源</span></a>
+		<a class="frt"><img src="img/pub/car.png" /> <span>发布车源</span></a>
+		<br class="cb"/>
+	</div>
+</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+var url = Base.tools.getQueryString('url'),
+	goods = {fromCity:['','',''],url:'',burl:url,page:'fromto',times:'可装货时间',ctype:'所需车辆',long:'',gtp:'货品名称',weight:'货量',volume:'体积','leavewords':'留言备注',tp:'1',citys:{'1':'从哪里出发','2':'到哪里去','3':'','4':'','5':'','6':''}};
+	car = {fromCity:['','',''],url:'',burl:url,page:'fromto',times:'可装货时间',ctype:'车长车型',long:'',lpnum:'车牌号码','leavewords':'留言备注',aftercity:'',tp:'1',citys:{'1':'从哪里出发','2':'到哪里去','3':'','4':'','5':'','6':''}};
+$('.detail .down>a').eq(0).attr('href','pub_goods.html?ref='+new Date().getTime()+'&args='+str(goods));
+$('.detail .down>a').eq(1).attr('href','pub_car.html?ref='+new Date().getTime()+'&args='+str(car));
+</script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+html {
+  height: 100%;
+  font-size: 100px;
+}
+body,
+dl,
+p,
+table {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #000000;
+  cursor: pointer;
+}
+.cb {
+  clear: both;
+}
+.csr {
+  cursor: pointer;
+}
+.flt {
+  float: left;
+}
+.frt {
+  float: right;
+}
+input {
+  outline: none;
+}
+.br {
+  border-radius: 50%;
+}
+.hide {
+  display: none;
+}
+body {
+  font-size: 0.14rem;
+  background: #f2f2f2;
+}
+img {
+  vertical-align: middle;
+  border: none;
+}
+input,
+textarea {
+  font-size: 0.14rem;
+}
+.load {
+  line-height: 0.18rem;
+  text-align: center;
+  font-size: 0.14rem;
+}
+header {
+  background: #1d77c7;
+  color: #ffffff;
+  line-height: 0.38rem;
+  height: 0.38rem;
+  text-align: center;
+}
+header .plt {
+  position: absolute;
+  left: 0.1rem;
+}
+header .plt img.area {
+  height: 0.15rem;
+  margin-right: 0.04rem;
+  position: relative;
+  top: -0.02rem;
+}
+header img.logo {
+  height: 100%;
+  position: relative;
+  top: -0.02rem;
+}
+.topImg img {
+  width: 100%;
+}
+dl.topMenu {
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+}
+dl.topMenu dt {
+  width: 50%;
+  float: left;
+  text-align: center;
+  position: relative;
+  margin-bottom: 0.15rem;
+}
+dl.topMenu dt img {
+  margin-top: 0.08rem;
+  margin-bottom: 0.08rem;
+  height: 0.38rem;
+  position: relative;
+  left: -0.02rem;
+}
+dl.topMenu dt.line:before {
+  content: '';
+  position: absolute;
+  right: 0%;
+  top: 0.14rem;
+  height: 0.5rem;
+  width: 0.01rem;
+  background: #eeeeee;
+}
+dl.menus {
+  margin-top: 0.16rem;
+  background: #ffffff;
+  line-height: 0.39rem;
+  border-top: 1px solid #dddddd;
+  color: #666666;
+}
+dl.menus dt {
+  width: 33%;
+  float: left;
+  text-align: center;
+  position: relative;
+}
+dl.menus dt.line:before {
+  content: '';
+  position: absolute;
+  right: 0%;
+  top: 0.13rem;
+  height: 0.14rem;
+  width: 0.01rem;
+  background: #eeeeee;
+}
+dl.where {
+  background: #ffffff;
+  line-height: 0.34rem;
+  height: 0.34rem;
+  border-top: 1px solid #dddddd;
+  color: #666666;
+}
+dl.where dt {
+  width: 33%;
+  float: left;
+  text-align: center;
+}
+dl.where dt img {
+  height: 0.16rem;
+}
+dl.data {
+  height: 0.98rem;
+  border-bottom: 1px solid #eeeeee;
+}
+dl.data .img {
+  width: 1.26rem;
+  position: relative;
+  float: left;
+}
+dl.data .img img.logo {
+  width: 1.1rem;
+  margin: 0.09rem;
+}
+dl.data .img img.vip {
+  width: 0.4rem;
+  position: absolute;
+  left: 0;
+  top: 0%;
+}
+dl.data .img .vip {
+  width: 0.4rem;
+  position: absolute;
+  left: 0;
+  top: 0%;
+}
+dl.data .text {
+  width: 1.94rem;
+  float: left;
+}
+dl.data .text .tit {
+  font-weight: 900;
+  font-size: 0.14rem;
+  z-index: 0.5em;
+  color: #333333;
+  line-height: 0.2rem;
+  height: 0.4rem;
+  overflow: hidden;
+  margin-top: 0.04rem;
+}
+dl.data .text .phone {
+  line-height: 0.2rem;
+  font-size: 0.12rem;
+  position: relative;
+}
+dl.data .text .phone span {
+  color: #df4b24;
+  font-weight: 900;
+}
+dl.data .text .phone span.star {
+  position: absolute;
+  right: 0.06rem;
+}
+dl.data .text .phone span.star img {
+  width: 0.12rem;
+  margin-right: 0.03rem;
+}
+dl.data .text .phone span.viewNum {
+  color: #df4b24;
+  font-weight: 600;
+}
+dl.data .text .phone span.view {
+  color: #777777;
+  font-size: 0.11rem;
+  position: relative;
+  top: -0.01rem;
+  font-weight: 100;
+}
+dl.data .text .area {
+  color: #656565;
+  line-height: 0.23rem;
+  height: 0.23rem;
+  overflow: hidden;
+  font-size: 0.13rem;
+}
+footer {
+  position: fixed;
+  width: 100%;
+  line-height: 0.255rem;
+  bottom: 0;
+  text-align: center;
+  background: #ffffff;
+  height: 0.51rem;
+}
+footer .line {
+  position: relative;
+  height: 0.055rem;
+}
+footer .line img {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+}
+footer dl {
+  font-size: 0.1rem;
+}
+footer dl dt {
+  float: left;
+  width: 20%;
+  position: relative;
+  cursor: pointer;
+}
+footer dl dt div {
+  height: 0.255rem;
+}
+footer dl dt div img {
+  margin-top: 0.04rem;
+}
+footer dl dt div.txt {
+  line-height: 0.21rem;
+  color: #999999;
+}
+footer dl dt.send:before {
+  content: '';
+  position: absolute;
+  left: 0.1rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #ffffff;
+  top: -0.045rem;
+}
+footer dl dt.send img {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+footer dl dt span {
+  clear: left;
+}
+footer dl dt .icon {
+  height: 0.22rem;
+  position: relative;
+  top: 0.02rem;
+}
+footer dl dt .cut {
+  position: absolute;
+  height: 0.32rem;
+  top: 0.065rem;
+}
+footer dl dt .cut.l {
+  left: 0;
+}
+footer dl dt .cut.r {
+  right: 0%;
+}
+footer dl dt img.open {
+  display: none;
+}
+footer dl dt img.close {
+  display: inline;
+}
+footer dl dt.active img.open {
+  display: inline;
+}
+footer dl dt.active img.close {
+  display: none;
+}

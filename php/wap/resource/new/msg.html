@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/msg.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="detail">
+		<div class="tit">
+			<img src="img/my/msg_1.png"/>您有<span id="num">0</span>条消息未读
+		</div>
+		<dl class="data" id="data">
+		</div>
+	</div>
+</content>
+<script src="js/base2.js"></script>
+<script src="web-im/sdk/strophe.js"></script>
+<script src="web-im/sdk/easemob.im-1.0.7.js"></script>
+<script src="web-im/easemob.im.config.js"></script>
+<script>
+var conn = new Easemob.im.Connection(),
+	num = 0,
+	msgAll = json(Base.tools.getQueryString('args')) || {},
+	getTime = function(){
+        var date = new Date();
+        var time = date.getHours() + ":" + date.getMinutes();
+		return time;
+	},
+	_dom = '\
+		<a href="mdetail.html?id=#id"><dt>\
+			<div class="flt logo"><img src="#headimgurl"/>#num</div>\
+			<div class="flt text">\
+				<p>#nickname <span class="frt">#getTime</span></p>\
+				<p><span>#dd</span></p>\
+			</div>\
+			<br class="cb" />\
+		</dt></a>\
+	',
+	getUserInfo = function(user_id,suc){
+		$.ajax({
+			url: '/chat/userinfo',
+			data: {user_id:user_id},
+			dataType: 'json',
+			success : function(dd) {
+				suc && suc(dd);
+			},
+			error : function(xhr, type) {
+				alert(' request failed'+xhr);
+			}
+		})
+	},
+	getList = function(msgAll){
+		var tp = '\
+					<a href="mdetail.html?data=#data&id=#id"><dt>\
+						<div class="flt logo"><img src="#headimgurl"/><div>#num</div></div>\
+						<div class="flt text">\
+							<p>#nickname <span class="frt">#getTime</span></p>\
+							<p><span>#dd</span></p>\
+						</div>\
+						<br class="cb" />\
+					</dt></a>\
+			',
+			htm = ''
+		;
+		for(var msg in msgAll) htm += tp.replace('#headimgurl',msgAll[msg].headimgurl).replace('#num',msgAll[msg].data.length).replace('#nickname',msgAll[msg].nickname).replace('#dd',msgAll[msg].data[0]).replace('#id',msg).replace('#data',msgAll[msg].data.join(',,')).replace('#getTime',getTime());
+		//alert(htm);
+		$('#data').html(htm);
+	}
+;
+//getList(msgAll);
+window.onbeforeunload = function(event) {conn.close()};
+conn.init({
+	https : Easemob.im.config.https,
+	url: Easemob.im.config.xmppURL,
+	//当连接成功时的回调方法
+	onOpened : function() {
+		conn.setPresence();
+	},
+	//收到文本消息时的回调方法
+	onTextMessage : function(msg) {
+		num ++;
+		$('#num').text(num);
+		if(!msgAll[msg.from]) msgAll[msg.from] = {nickname:'',headimgurl:'',data:[]};
+		msgAll[msg.from].data.push(msg.data);
+		getUserInfo(msg.from,function(dd){
+			msgAll[msg.from].headimgurl = dd.headimgurl;
+			msgAll[msg.from].nickname = dd.nickname;
+			getList(msgAll);
+		})
+	},
+	//异常时的回调方法
+	onError : function(msg) {
+		log(str(msg));
+	}
+});
+getUser(function(){
+	conn.open({
+		user : _userInfo.user_id,
+		pwd : '14e1b600b1fd579f47433b88e8d85291',
+		appKey : Easemob.im.config.appkey
+	});
+	$.ajax({
+		url: '/user/chat/history',
+		data: {to_user:_userInfo.user_id},
+		dataType: 'json',
+		success : function(dd) {
+			//alert(str(dd));
+			var htm = '';
+			$.each(dd,function(k,j){
+				htm += _dom.replace('#headimgurl',j.user_info.headimgurl).replace('#num','').replace('#nickname',j.user_info.nickname).replace('#dd',j.msg).replace('#id',j.from_user).replace('#getTime',Base.tools.int_to_str(j.ctime));;
+			})
+			$('#data').html(htm);
+		},
+		error : function(xhr, type) {
+			log(' request failed'+xhr);
+		}
+	})
+});
+</script>
+</body>
+</html>

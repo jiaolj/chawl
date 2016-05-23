@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>可装货时间</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/where.css" type="text/css" />
+</head>
+<body>
+<content>
+<section class="three">
+	<dl id="jump"></dl>
+</section>
+</content>
+<script src="js/base.js"></script>
+<script>
+$('#jump').html(function(){
+	var date = Date.parse(new Date())/1000,
+		htm = '',
+		lst  = [],
+		_getWeek = function(n,u){
+			var u = u || '星期',jn = ['日','一','二','三','四','五','六'];
+			return u+jn[n];
+		},
+		_int_to_str = function(d){
+			var dt = new Date(parseInt(d) * 1000),
+				back = dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate();
+				back2 = back+' ' + _getWeek(dt.getDay());
+			;
+			return [back,back2];
+		}
+	;
+	//htm += '<a><dt d="不限">不限</dt></a>';
+	for(var i=0;i<60;i++){
+		lst = _int_to_str(date);
+		htm += '<a><dt d="' + lst[0] + '">' + lst[1] + '</dt></a>';
+		date += 3600*24;
+	}
+	return htm;
+}).find('dt').click(function(){
+	var args = json(Base.tools.getQueryString('args')),
+		url = args.url
+	;
+	args.times = $(this).attr('d');
+	delete args.url;
+	location.href = url + '?args=' + str(args);
+})
+</script>
+</body>
+</html>

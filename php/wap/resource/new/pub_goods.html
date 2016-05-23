@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>发布货源</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pub_goods.css" type="text/css" />
+</head>
+<body>
+<content>
+<div class="detail">
+	<div class="box one">
+		<div class="flt one">
+			<a class="choice" k="from" v="1"><div class="up"><img src="img/pub/from.png" /> <span id="from">...</span></div></a>
+			<a class="choice" k="to" v="2"><div class="down"><img src="img/pub/to.png" /> <span id="to">...</span></div></a>
+		</div>
+		<div class="flt two"><a href="pub_history.html?t=1">历史<br />记录</a></div>
+		<br class="cb"/>
+	</div>
+	<a class="choice" k="times"><div class="box">
+		<img src="img/pub/time.png" /> <span id="times">...</span>
+	</div></a>
+	<a class="choice" k="gtp"><div class="box flt">
+		<img src="img/pub/volume.png" /> <span id="gtp">...</span>
+	</div></a>
+	<a class="choice" k="gdetail"><div class="box frt">
+		<img src="img/pub/goodstype.png" /> <span id="gdetail"></span>
+	</div></a>
+	<br class="cb"/>
+	<a class="choice" k="ctype"><div class="box flt">
+		<img src="img/pub/cartype.png" /> <span id="ctype">...</span>
+	</div></a>
+	<a class="choice" k="leavewords"><div class="box frt aftercity">
+		<img src="img/pub/words.png" /> <span id="leavewords">...</span>
+	</div></a>
+	<br class="cb"/>
+	<div class="box iscall">
+		<span class="text">是否接受对方电话咨询</span> <span class="iscall"><span class="active" is_tel="1">是</span><span is_tel="0">否</span></span>
+	</div>
+	<div class="box phone">
+		<span class="text">联系方式</span> <input id="phone" placeholder="请输入手机号码"/>
+	</div>
+	<a class="box button" id="pubOk">
+		发布
+	</a>
+</div>
+<div class="choiceCity">
+	<div class="city-title"><a i="0"></a><a i="1"></a><a i="2"></a></div>
+	<div class="city-menu">
+		<a class="active" i="0">省份</a><a i="1">城市</a><a i="2">区县</a>
+	</div>
+	<dl class="city-data active" i="0"></dl>
+	<dl class="city-data" i="1"></dl>
+	<dl class="city-data" i="2"></dl>
+	<div class="city-ok"><a>确定</a><a>取消</a></div>
+</div>
+</content>
+<script async="async" src="js/cityData.js"></script>
+<script src="js/base.js"></script>
+<script>
+var MVC = (function(){
+	var _obj = {},
+		_config = {
+			args : json(Base.tools.getQueryString('args')) || {fromCity:['','',''],url:'',burl:'',page:'fromto',times:'可装货时间',ctype:'所需车辆',long:'',gtp:'货品名称',weight:'货量',volume:'体积','leavewords':'留言备注',tp:'1',citys:{'1':'从哪里出发','2':'到哪里去','3':'','4':'','5':'','6':''}},
+			getDateAll : function(){
+					var d = new Date();
+					return d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+			}
+		}
+	;
+	return {
+		init : function(){
+			_obj = this;
+			var argjson = JSON.parse(JSON.stringify(_config.args)),
+				citys = _config.args.citys,
+				from = citys['1'],
+				to = citys['2'],
+				times = _config.args.times,
+				long = _config.args.long,
+				ctype = _config.args.ctype,
+				gtp = _config.args.gtp,
+				weight = _config.args.weight,
+				volume = _config.args.volume,
+				leavewords = _config.args.leavewords
+			;
+			$('#from').text(from);
+			$('#to').text(to);
+			$('#times').text(times);
+			$('#ctype').text(long + ' ' + ctype);
+			$('#gdetail').text(weight+volume);
+			$('#leavewords').text(leavewords.substring(0,6));
+			$('#gtp').text(gtp);
+			$('.choice').click(function(){
+				argjson.url = function(){var l = location.href.split('/').pop(),r = l.split('?')[0];return r}();
+				var k = $(this).attr('k'),
+					v = $(this).attr('v')
+				;
+				if(k=='from' || k=='to'){
+					argjson.tp = v;
+					argjson.fromCity = argjson.citys[argjson.tp].split(' ');
+					if(argjson.fromCity.length==1) argjson.fromCity = ['','',''];
+					$('.city-title a').each(function(k,i){
+						var txt = argjson.fromCity[k],
+							ni = k+1,
+							o = $('.choiceCity .city-data[i="'+k+'"] a[title="'+txt+'"]');
+						$(i).text(txt);
+						o.addClass('active');
+						if(ni<=2){
+							var sons = ChineseDistricts[o.attr('code')];
+							$('.choiceCity .city-data[i="'+ni+'"]').html(function(){
+								var htm = '<dt><p class="citys">';
+								for(var t in sons) htm += '<a title="'+sons[t]+'" code="'+t+'">'+sons[t]+'</a>';
+								htm += '</p></dt>';
+								return htm;
+							})
+						}
+					})
+					$('.choiceCity').show().css({top:'100%'}).animate({top:'0.25rem'});
+				}else if(k=='times'){
+					location.href = 'times.html?args='+str(argjson);
+				}else if(k=='ctype'){
+					location.href = 'long.html?args='+str(argjson);
+				}else if(k=='gdetail'){
+					location.href = 'gdetail.html?args='+str(argjson);
+				}else if(k=='gtp'){
+					location.href = 'gtp.html?args='+str(argjson);
+				}else if(k=='leavewords'){
+					location.href = 'leavewords.html?args='+str(argjson);
+				}
+			})
+			$('#pubOk').click(function(){
+				var sub = {
+						type : argjson.gtp,
+						weight : parseInt(argjson.weight) || 0.1,
+						starting : argjson.citys['1'],
+						destination : argjson.citys['2'],
+						model : argjson.ctype.replace('所需车辆','不限'),
+						length : argjson.long || '不限',
+						phone : $('#phone').val(),
+						volume : parseInt(argjson.volume) || 0.1,
+						is_tel : $('span.iscall>span.active').attr('is_tel'),
+						remark : argjson.leavewords
+					}
+				;
+				//if(argjson.times!='可装货时间'){}
+				sub.dtime_chn = argjson.times;
+				if(sub.dtime_chn!='可装货时间') sub.dtime = Base.tools.str_to_int(argjson.times);
+				//alert(str(sub));
+				if(sub.starting=='从哪里出发'){
+					alert('请选择出发地');
+					return;
+				}
+				if(sub.destination=='到哪里去'){
+					alert('请选择目的地');
+					return;
+				}
+				//alert(str(sub));
+				$.ajax({
+					url: '/goods/publish',
+					data : sub,
+					dataType: 'json',
+					success : function(dd) {
+						if(dd.info=='发布货源成功') {
+							alert(dd.info);
+						}
+						else alert(dd.info);
+						location.href = argjson.burl;
+					},
+					error : function(jqXHR,textStatus) {
+						alert(' request failed'+textStatus);
+					}
+				});
+			})
+			$('span.iscall>span').click(function(){
+				$(this).parent().find('.active').removeClass('active');
+				$(this).addClass('active');
+			})
+			$('.choiceCity .city-menu a').click(function(){
+				var o = $(this),
+					i = o.attr('i');
+				o.parent().find('.active').removeClass('active');
+				o.addClass('active');
+				$('.choiceCity .city-data.active').removeClass('active');
+				$('.choiceCity .city-data[i="'+i+'"]').addClass('active');
+				
+			})
+			$('.choiceCity .city-ok a').click(function(){
+				var o = $(this),
+					txt = o.text();
+				if(txt=='确定'){
+					argjson.citys[argjson.tp] = argjson.fromCity.join(' ');
+					location.href = '?args='+str(argjson);
+				}else if(txt=='取消') {
+					
+				}
+				$('.choiceCity').animate({top:'100%'},function(){
+					$(this).hide().css({top:'0.25rem'});
+				})
+			})
+			$('.choiceCity .city-data').click(function(e){
+				var tar = e.target,
+					o = $(tar),
+					i = parseInt($('.choiceCity .city-menu a.active').attr('i')),
+					ni = i+1,
+					isr = 0
+				;
+				//log(argjson.fromCity);
+				if(tar.nodeName.toLowerCase()==='a'){
+					var txt = o.text();
+					if(txt==argjson.fromCity[i]) {
+						argjson.fromCity[i] = '';
+						o.removeClass('active');
+						isr = 1;
+					}else{
+						argjson.fromCity[i] = txt
+						o.parent().find('.active').removeClass('active');
+						o.addClass('active');
+					}
+					if(ni<=2) {
+						argjson.fromCity[ni] = '';
+						$('.choiceCity .city-data[i="'+ni+'"]').empty();
+					}
+					if(ni==1) {
+						argjson.fromCity[ni+1] = '';
+						$('.choiceCity .city-data[i="'+(ni+1)+'"]').empty();
+					}
+					$('.city-title a').each(function(k,i){
+						$(i).text(argjson.fromCity[k]);
+					})
+					if(isr==1) return;
+					if(ni<=2){
+						var sons = ChineseDistricts[o.attr('code')];
+						$('.choiceCity .city-menu a.active').removeClass('active');
+						$('.choiceCity .city-menu a[i="'+ni+'"]').addClass('active');
+						$('.choiceCity .city-data.active').removeClass('active');
+						$('.choiceCity .city-data[i="'+ni+'"]').addClass('active');
+						$('.choiceCity .city-data[i="'+ni+'"]').html(function(){
+							var htm = '<dt><p class="citys">';
+							for(var t in sons) htm += '<a title="'+sons[t]+'" code="'+t+'">'+sons[t].replace('自治区','').replace('自治州','').replace('区','').replace('市','')+'</a>';
+							htm += '</p></dt>';
+							return htm;
+						})
+					}
+				}
+			})
+		}
+	}
+})();
+$(function(){
+	getUser(function(dd){
+		$('#phone').val(dd.phone);
+		MVC.init();
+	})
+	window.onload = function(){
+		$('.choiceCity .city-data[i="0"]').html(function(){
+			var dom = '<dt><p class="number"><span>#number</span></p><p class="citys">#citys</p></dt>',
+				htm = '',
+				citys = '';
+			for(var c in ChineseDistricts[86]){
+				citys = '';
+				htm += dom.replace('#number',c);
+				for(var k in ChineseDistricts[86][c]){
+					var t = ChineseDistricts[86][c][k];
+					citys += '<a title="'+t.address+'" code="'+t.code+'">'+t.address.replace('自治区','').replace('自治州','').replace('区','').replace('市','')+'</a>';
+				}
+				htm = htm.replace('#citys',citys);
+			}
+			return htm;
+		})
+	};
+})
+</script>
+</body>
+</html>

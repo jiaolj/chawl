@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>发布</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pubtype.css" type="text/css" />
+</head>
+<body>
+<content>
+<div class="detail">
+	<div class="up"><img src="img/pub/main/top.png" /></div>
+	<dl class="down" id="pubs">
+		<dt t="goods" class="line"><div class="img"><img src="img/pub/main/goods.png" /></div> <div class="text">发布货源</div></dt>
+		<dt t="car"><div class="img"><img src="img/pub/main/car.png" /></div> <div class="text">发布车源</div></dt>
+		<dt t="card" class="line"><div class="img"><img src="img/pub/main/card.png" /></div> <div class="text">发布名片</div></dt>
+		<dt t="trans"><div class="img"><img src="img/pub/main/trans.png" /></div> <div class="text">发货运圈</div></dt>
+		<br class="cb"/>
+	</dl>
+</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+var url = Base.tools.getQueryString('url'),
+	card = {burl:url},
+	goods = {fromCity:['','',''],url:'',burl:url,page:'fromto',times:'可装货时间',ctype:'所需车辆',long:'',gtp:'货品名称',weight:'货量',volume:'体积','leavewords':'留言备注',tp:'1',citys:{'1':'从哪里出发','2':'到哪里去','3':'','4':'','5':'','6':''}};
+	car = {fromCity:['','',''],url:'',burl:url,page:'fromto',times:'可装货时间',ctype:'车长车型',long:'',lpnum:'车牌号码','leavewords':'留言备注',aftercity:'',tp:'1',citys:{'1':'从哪里出发','2':'到哪里去','3':'','4':'','5':'','6':''}};
+$('#pubs>dt').click(function(){
+	var t = $(this).attr('t');
+	switch(t){
+		case 'goods':
+			//location.href = 'pub_goods.html?ref='+new Date().getTime()+'&args='+str(goods);
+			location.href = 'pub_goods2.html?tp=goods&backurl='+url+'&ref='+new Date().getTime();
+			break;
+		case 'car':
+			//location.href = 'pub_car2.html?ref='+new Date().getTime()+'&args='+str(car);
+			location.href = 'pub_goods2.html?tp=car&backurl='+url+'&ref='+new Date().getTime();
+			break;
+		case 'trans':
+			location.href = '/view/sspost';
+			break;
+		case 'card':
+			location.href = 'pub_card.html?ref='+new Date().getTime()+'&args='+str(card);
+			break;
+	}
+})
+</script>
+</body>
+</html>

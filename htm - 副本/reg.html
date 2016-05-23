@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>社区</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/reg.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="detail">
+		<div class="heads"></div>
+		<div class="texts">
+			<div class="one">
+				<div class="box1"><input type="text" placeholder="填写手机号码" id="phnumb" class="txt" /></div>
+				<div id="send" class="box2">发送验证码</div>
+			</div>
+			<div class="two">
+				<input type="text" placeholder="验证码"  id="cknumb" />
+			</div>
+		</div>
+		<div class="ok" id="check">完成</div>
+	</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+location.href = 'pubtype.html';
+/*$('#send').click(function(){
+	var tel = $('#phnumb').val();
+	if(tel.length<11) alert('手机号长度太短。');
+	$('#send').val('已发送验证码');
+	$.ajax({
+		url : '/user/telmsg',
+		data : {tel:tel},
+		dataType : 'json',
+		success : function(dd) {
+			log(dd);
+		},
+		error:function(jqXHR,textStatus) {
+			log(' request failed'+textStatus);
+		}
+	})
+})
+$('#check').click(function(){
+	location.href = 'pubtype.html';
+	var captcha = $('#cknumb').val();
+	$.ajax({
+		url : '/user/checkmsg',
+		data : {captcha:captcha},
+		dataType : 'json',
+		success : function(dd) {
+			$('#check').text(str(dd));
+			if(dd.info=='验证成功') location.href = 'pubtype.html';
+		},
+		error:function(jqXHR,textStatus) {
+			log(' request failed'+textStatus);
+		}
+	})
+})
+*/
+</script>
+</body>
+</html>

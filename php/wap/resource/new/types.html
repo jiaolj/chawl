@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/where.css" type="text/css" />
+</head>
+<body>
+<content>
+<section class="three">
+	<dl id="jump">
+		<dt><a d="0">不限</a></dt>
+		<dt><a d="普通车辆">普通车辆</a></dt>
+		<dt><a d="平板车">平板车</a></dt>
+		<dt><a d="高栏车">高栏车</a></dt>
+		<dt><a d="关封车">关封车</a></dt>
+		<dt><a d="减震车">减震车</a></dt>
+		<dt><a d="平板车">平板车</a></dt>
+		<dt><a d="油罐车">油罐车</a></dt>
+		<dt><a d="保温车">保温车</a></dt>
+		<dt><a d="特种车">特种车</a></dt>
+	</dl>
+</section>
+</content>
+<script src="js/base.js"></script>
+<script>
+$('#jump>dt>a').click(function(){
+	var args = json(Base.tools.getQueryString('args')),
+		url = args.url
+	;
+	args.types = $(this).attr('d');
+	delete args.url;
+	location.href = url + '?args=' + str(args);
+})
+</script>
+</body>
+</html>

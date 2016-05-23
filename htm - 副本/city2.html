@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/where.css" type="text/css" />
+</head>
+<body>
+<section class="one">
+	<dl id="jump"></dl>
+</section>
+<script src="js/base.js"></script>
+<script>
+var CityList = {
+	'全国':[],
+	'北京':[],
+	'天津':[],
+	'上海':[],
+	'重庆':[],
+	'河北':['保定','沧州','石家庄','邢台','廊坊'],
+	'山东':['济南','临沂','青岛','日照','淄博','东营','泰安','烟台'],
+	'辽宁':['大连','沈阳'],
+	'黑龙江':['哈尔滨','齐齐哈尔'],
+	'吉林':['长春','通化'],
+	'甘肃':['兰州'],
+	'青海':['西宁'],
+	'河南':['郑州'],
+	'江苏':['南京','无锡','苏州','南通','扬州','连云港','盐城','镇江','常州','淮安','泰州'],
+	'湖北':['武汉'],
+	'湖南':['长沙'],
+	'江西':['南昌'],
+	'浙江':['杭州','义乌','慈溪','温州','嘉兴','丽水','永康','宁波','金华'],
+	'广东':['广州','佛山','潮州','汕头'],
+	'云南':['昆明'],
+	'福建':['南平','三明'],
+	'海南':['海口'],
+	'山西':[],
+	'四川':['成都'],
+	'陕西':['西安'],
+	'贵州':['贵阳'],
+	'安徽':['马鞍山','合肥'],
+	'台湾':[],
+	'广西':['柳州'],
+	'内蒙古':['包头','通辽'],
+	'西藏':[],
+	'新疆':['哈密'],
+	'宁夏':[],
+	'澳门':[],
+	'香港':[]
+},
+htm = '';
+for(var ct in CityList) htm += '<a><dt d="'+ct+'">'+ct+'</dt></a>';
+htm += '<br class="cb"/>';
+$('#jump').html(htm);
+
+$('#jump').click(function(e){
+	var tar = e.target,
+		ths = $(tar),
+		htm2 = '',
+		args = json(Base.tools.getQueryString('args')),
+		url = args.url,
+		citys = args.citys[args.tp]
+	;
+	if(tar.nodeName.toLowerCase() === 'dt'){
+		var city = ths.attr('d'),
+			cs = CityList[city];
+		if(!cs){
+			city = ths.attr('p')+' '+city;
+		}
+		else if(cs.length>0){
+			for(var css in cs) htm2 += '<a><dt p="'+city+'" d="'+cs[css]+'">'+cs[css]+'</dt></a>';
+			htm2 += '<br class="cb"/>';
+			$('#jump').html(htm2);
+			return;
+		}
+	}
+	if(args.page=='custom'){
+		if(citys.indexOf(city)==-1) citys.push(city);
+	}else{
+		citys = city;
+	}
+	args.citys[args.tp] = citys;
+	delete args.url;
+	location.href = url + '?args=' + str(args);
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>选择车型</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/where.css" type="text/css" />
+</head>
+<body>
+<content>
+<section class="three">
+	<dl id="jump"></dl>
+</section>
+</content>
+<script src="js/base.js"></script>
+<script>
+$('#jump').html(function(){
+	var dd = [
+		{k:'不限',v:'不限'},
+		{k:'普通车辆',v:'普通车辆'},
+		{k:'平板车',v:'平板车'},
+		{k:'高栏车',v:'高栏车'},
+		{k:'关封车',v:'关封车'},
+		{k:'减震车',v:'减震车'},
+		{k:'平板车',v:'平板车'},
+		{k:'油罐车',v:'油罐车'},
+		{k:'保温车',v:'保温车'},
+		{k:'特种车',v:'特种车'},
+	],htm = '';
+	for(var d in dd) htm += '<a><dt d="'+dd[d].v+'">'+dd[d].k+'</dt></a>';
+	return htm;
+}).find('dt').click(function(){
+	var args = json(Base.tools.getQueryString('args')),
+		url = args.url
+	;
+	args.ctype = $(this).attr('d');
+	delete args.url;
+	location.href = url + '?args=' + str(args);
+})
+</script>
+</body>
+</html>

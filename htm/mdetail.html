@@ -1,0 +1,15 @@
+<html id="html">
+<head lang="en">
+    <meta charset="utf-8">
+</head>
+<body>
+<script src="js/base2.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+var _id = Base.tools.getQueryString('id');
+_getUserDetail(_id,function(back){
+	location.href = 'talk.html?id='+_id+'&nickname='+back.nickname+'&headimgurl='+back.headimgurl;
+})
+</script>
+</body>
+</html>

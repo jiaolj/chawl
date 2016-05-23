@@ -1,0 +1,106 @@
+html {
+  font-size: 100px;
+}
+body {
+  background: #ffffff;
+}
+img {
+  vertical-align: middle;
+}
+span.red {
+  color: #cd2525;
+}
+.detail {
+  font-size: 0.13rem;
+  color: #666666;
+}
+.detail a {
+  color: #666666;
+}
+.detail .top {
+  display: none;
+}
+.detail .top img {
+  width: 100%;
+}
+.detail .member-tit {
+  line-height: 0.39rem;
+  font-size: 0.14rem;
+  color: #000000;
+  text-indent: 0.09rem;
+  border-bottom: 1px solid #dddddd;
+}
+.detail .member-data {
+  padding: 0.09rem;
+  font-size: 0.11rem;
+  background: #f6f6f6;
+}
+.detail .member-data dl dt {
+  line-height: 0.16rem;
+}
+.detail .member-data dl dt.tit {
+  margin-bottom: 0.02rem;
+}
+.detail .member-data .member-open {
+  margin-top: 0.07rem;
+  cursor: pointer;
+}
+.detail .where {
+  padding: 0.09rem;
+}
+.detail .where dl dt.name {
+  line-height: 0.39rem;
+}
+.detail .where dl dt.name span.small {
+  font-size: 0.11rem;
+}
+.detail .where dl dt.value input {
+  border: none;
+  background: #f6f6f6;
+  line-height: 0.39rem;
+  width: 2.95rem;
+}
+.detail .where dl dt.category {
+  background: #f6f6f6;
+  padding: 0.09rem;
+}
+.detail .where dl dt.category a {
+  display: inline-block;
+  width: 0.755rem;
+  font-size: 0.12rem;
+}
+.detail .where dl dt.category a b {
+  display: inline-block;
+  width: 0.115rem;
+  height: 0.115rem;
+  border-radius: 50%;
+  background: #ffffff;
+  margin-right: 0.05rem;
+  position: relative;
+  top: 0.02rem;
+  border: 0.005rem solid #dddddd;
+}
+.detail .where dl dt.category a.active b:before {
+  content: '';
+  width: 0.075rem;
+  height: 0.075rem;
+  border-radius: 50%;
+  background: #df4b23;
+  position: absolute;
+  top: 0.02rem;
+  left: 0.02rem;
+}
+.detail .submit {
+  background: #df4b25;
+  color: #ffffff;
+  font-size: 0.17rem;
+  margin: 0.42rem 0.09rem 0.09rem 0.09rem;
+  line-height: 0.49rem;
+  text-align: center;
+  border-radius: 0.04rem;
+  cursor: pointer;
+}
+.detail .foot-tserver {
+  margin-top: 0.25rem;
+  margin-bottom: 0.38rem;
+}

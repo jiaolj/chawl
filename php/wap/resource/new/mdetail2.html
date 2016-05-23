@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/mdetail.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="detail">
+		<dl class="data" id="data">
+			<!--
+			<dt class="time">昨天 09:13</dt>
+			<dt class="from talk"><img src="img/blog/test1.png" /><div class="text">我在杭州，你呢。<b></b></div><br class="cb"/></dt>
+			<dt class="to talk"><img src="img/blog/test1.png" /><div class="text">我在杭州呢。<b></b></div><br class="cb"/></dt>
+			-->
+		</dl>
+		<div class="send">
+			<input type="text" id="msg" placeholder="请输入您要发送的信息" class="txt" /><input type="button" id="send" value="发送" class="ok" />
+		</div>
+	</div>
+</content>
+<script src="js/base2.js"></script>
+<script src="web-im/sdk/strophe.js"></script>
+<script src="web-im/sdk/easemob.im-1.0.7.js"></script>
+<script src="web-im/easemob.im.config.js"></script>
+<script>
+var conn = new Easemob.im.Connection(),
+	id = Base.tools.getQueryString('id')
+;
+$('.send').hide();
+window.onbeforeunload = function(event) {conn.close()}
+conn.init({
+	https : Easemob.im.config.https,
+	url: Easemob.im.config.xmppURL,
+	//当连接成功时的回调方法
+	onOpened : function() {
+		conn.setPresence();
+		$('.send').show();
+	},
+	//收到文本消息时的回调方法
+	onTextMessage : function(msg) {
+		$('#data').append('<dt class="from talk"><img src="img/blog/test1.png" /><div class="text">' + msg.data + '<b></b></div><br class="cb"/></dt>');
+	},
+	//异常时的回调方法
+	onError : function(msg) {
+		alert(str(msg));
+	}
+});
+
+conn.open({
+	user : '10233',
+	pwd : '14e1b600b1fd579f47433b88e8d85291',
+	appKey : Easemob.im.config.appkey
+});
+
+$('#send').click(function(){
+	var msg = $('#msg').val();
+	if(!msg){
+		return;
+	}
+	conn.sendTextMessage({
+		to : '10239',
+		msg : msg
+	})
+	$('#msg').val('');
+	$('#data').append('<dt class="to talk"><img src="img/blog/test1.png" /><div class="text">' + msg + '<b></b></div><br class="cb"/></dt>');
+})
+//getUser(function(dd){
+//	log(dd,Easemob);
+//});
+
+</script>
+</body>
+</html>

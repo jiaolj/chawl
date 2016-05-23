@@ -1,0 +1,172 @@
+body {
+  background: #f6f6f6;
+}
+.detail {
+  font-size: 0.14rem;
+}
+.detail .head {
+  line-height: 0.4rem;
+  text-align: center;
+  position: relative;
+  color: #df4b24;
+  background: #ffffff;
+}
+.detail .head .mid {
+  font-size: 0.19rem;
+}
+.detail .head .text {
+  position: absolute;
+  right: 0.15rem;
+}
+.detail .menu {
+  background: #f6f6f6;
+  padding: 0.25rem 0.09rem;
+}
+.detail .menu .box {
+  line-height: 0.4rem;
+  border: 0.01rem solid #df4b24;
+  border-radius: 0.04rem;
+  text-align: center;
+}
+.detail .menu .box a {
+  color: #df4b24;
+  display: inline-block;
+  height: 100%;
+  width: 50%;
+}
+.detail .menu .box a.active {
+  background: #df4b24;
+  color: #ffffff;
+}
+.detail .data {
+  color: #666666;
+  background: #ffffff;
+}
+.detail .data dl {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  line-height: 0.4rem;
+  display: none;
+}
+.detail .data dl.active {
+  display: block;
+}
+.detail .data dl dt {
+  position: relative;
+}
+.detail .data dl dt div {
+  margin-left: 0.11rem;
+  border-bottom: 1px solid #dddddd;
+  height: 0.4rem;
+}
+.detail .data dl dt div span.text {
+  display: block;
+  height: 100%;
+}
+.detail .data dl dt div span.text span,
+.detail .data dl dt div span.text b {
+  display: inline-block;
+  max-width: 1.13rem;
+  height: 100%;
+  overflow: hidden;
+  font-weight: 100;
+}
+.detail .data dl dt:nth-last-child(1) div {
+  border: none;
+}
+.detail .data dl dt .switch {
+  position: absolute;
+  right: 0.1rem;
+  top: 0.07rem;
+  border-radius: 0.12rem;
+  display: inline-block;
+  width: 0.49rem;
+  height: 0.25rem;
+  cursor: pointer;
+}
+.detail .data dl dt .switch:before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 0.23rem;
+  height: 0.23rem;
+  border-radius: 50%;
+  top: 0.01rem;
+  background: #ffffff;
+}
+.detail .data dl dt .switch[s="1"] {
+  background: #df4b24;
+}
+.detail .data dl dt .switch[s="1"]:before {
+  left: 0.01rem;
+}
+.detail .data dl dt .switch[s="0"] {
+  background: #e0e0e0;
+}
+.detail .data dl dt .switch[s="0"]:before {
+  right: 0.01rem;
+}
+.detail .data dl dt.active:before {
+  content: '';
+  position: absolute;
+  border-left: 0.04rem solid #cccccc;
+  border-top: 0.03rem solid transparent;
+  border-bottom: 0.03rem solid transparent;
+  top: 0.16rem;
+  display: inline-block;
+  left: 0.05rem;
+}
+.detail .custom {
+  text-align: center;
+}
+.detail .custom img {
+  width: 1.6rem;
+  margin-top: 0.85rem;
+  cursor: pointer;
+}
+.detail .addLines .menus {
+  font-size: 0.16rem;
+  text-align: center;
+  line-height: 0.38rem;
+  position: relative;
+  background: #ffffff;
+}
+.detail .addLines .menus a {
+  font-size: 0.14rem;
+  color: #df4b24;
+}
+.detail .addLines .menus a.cancel {
+  color: #999999;
+  left: 0.1rem;
+  position: absolute;
+}
+.detail .addLines .menus a.save {
+  right: 0.1rem;
+  position: absolute;
+}
+.detail .addLines .locations {
+  background: #ffffff;
+  margin-top: 0.06rem;
+}
+.detail .addLines .locations p {
+  line-height: 0.35rem;
+  padding: 0 0.1rem;
+}
+.detail .addLines .locations p.starting {
+  border-bottom: 1px solid #dddddd;
+}
+.detail .addLines .texts {
+  padding: 0.1rem;
+  font-size: 0.12rem;
+  color: #999999;
+  line-height: 0.19rem;
+}
+.detail .addLines .ok {
+  background: #df4b24;
+  color: #ffffff;
+  line-height: 0.4rem;
+  text-align: center;
+  border-radius: 0.04rem;
+  margin: 0.1rem;
+  cursor: pointer;
+}

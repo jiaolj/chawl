@@ -1,0 +1,65 @@
+#
+# .htaccess
+#
+# 为了正常启用URL Rewrite，请将apache配置文件中“LoadModule rewrite_module modules/mod_rewrite.so”
+# 前的注释去掉，并将apache的DocumentRoot开启AllowOverride
+# 
+# 如下所示为apache下httpd.conf的代码片段：
+# <Directory "YourDocumentRoot">
+#   Options Indexes FollowSymLinks ExecCGI Includes
+#   AllowOverride All
+#   Order allow,deny
+#   Allow from all
+# </Directory>
+#
+
+# 是否开启URL Rewrite.
+RewriteEngine On
+
+# 根目录名称 [注意：前后都有"/"]
+# 请将下面的“/thinksns/”替换成您的根目录名称。如：
+# 如果您的站点地址为：http://abc.com，那么请将“/thinksns/”替换为"/"
+# 如果您的站点地址为：http://abc.com/d/e/f，那么请将“/thinksns/”替换为"/d/e/f/"
+
+RewriteCond $1 !^(.*cacti/.*)
+RewriteCond $1 !^(.*server-status*)
+RewriteCond $1 !^(.*beelnn_store/.*)
+RewriteCond $1 !^(.*test/.*)
+RewriteCond $1 !^(.*\.php.*)
+RewriteCond $1 !^(.*\.js)
+RewriteCond $1 !^(.*\.htc)
+RewriteCond $1 !^(.*\.txt)
+RewriteCond $1 !^(.*\.css)
+RewriteCond $1 !^(.*\.jpg)
+RewriteCond $1 !^(.*\.csv)
+RewriteCond $1 !^(.*\.JPG)
+RewriteCond $1 !^(.*\.jpeg)
+RewriteCond $1 !^(.*\.gif)
+RewriteCond $1 !^(.*\.png)
+RewriteCond $1 !^(.*\.ico)
+RewriteCond $1 !^(.*\.xml)
+RewriteCond $1 !^(.*\.html)
+RewriteCond $1 !^(.*\.htm)
+RewriteCond $1 !^(.*\.zip)
+RewriteCond $1 !^(.*\.rar)
+RewriteCond $1 !^(.*\.bmp)
+RewriteCond $1 !^(.*\.swf.*)
+RewriteCond $1 !^(.*\.apk)
+RewriteCond $1 !^(.*\.cur)
+RewriteCond $1 !^(.*\.plist.*)
+# 音频文件
+RewriteCond $1 !^(.*\.amr)
+
+
+RewriteRule ^(.*)$  /index.php/$1 
+#RewriteRule ^(.*)$ /wuliu/index.php/$1 [QSA,PT,L]
+#RewriteRule ^(.*)$ /wap/index.php/$1
+
+
+
+#RewriteBase /
+#RewriteCond %{HTTP_HOST} ^wap\.chawuliu\.com$
+#RewriteRule !/ /wap.php/portal/Index/index/
+
+
+

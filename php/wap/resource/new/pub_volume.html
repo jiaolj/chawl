@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pub_goodstype.css" type="text/css" />
+</head>
+<body>
+<content>
+<div class="detail">
+	<div class="tit">重货</div>
+	<div class="data"><input placeholder="请输入重量" type="text"/> <span>吨</span></div>
+	<div class="tit">泡货</div>
+	<div class="data bottom"><input placeholder="请输入体积" type="text"/> <span>方</span></div>
+	<div class="ok" id="pubOk">发布</div>
+</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+var getSize = function(){$('html').css('font-size',document.body.clientWidth*100/320+'px')}();
+
+$('#wordsOk').click(function(){
+	location.href = 'pub_goods.html';
+})
+</script>
+</body>
+</html>

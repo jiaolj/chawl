@@ -1,0 +1,183 @@
+body {
+  background: #ffffff;
+}
+.head img {
+  width: 100%;
+}
+content {
+  font-size: 0.12rem;
+}
+section {
+  padding: 0.07rem;
+  position: relative;
+  background: #ffffff;
+  text-align: center;
+}
+section b {
+  color: #df4b24;
+  font-weight: 300;
+  position: relative;
+  top: 0.01rem;
+}
+section .logo {
+  width: 0.535rem;
+  position: relative;
+  top: 0.06rem;
+}
+section .search {
+  position: relative;
+}
+section .search .icon {
+  position: absolute;
+  width: 0.15rem;
+  left: 0.12rem;
+  top: 0rem;
+  cursor: pointer;
+}
+section .search input {
+  border-radius: 0.25rem;
+  background: #f4f4f4;
+  width: 1.67rem;
+  font-size: 0.095rem;
+  line-height: 0.23rem;
+  text-indent: 0.33rem;
+  color: #989898;
+  border: 1px solid #eeeeee;
+}
+section .location {
+  position: relative;
+  right: 0.05rem;
+  top: 0.06rem;
+  font-size: 0.11rem;
+}
+section .location img {
+  position: relative;
+  width: 0.15rem;
+}
+nav table.menu {
+  font-size: 0.14rem;
+  width: 100%;
+  text-align: center;
+  color: #666666;
+  border-bottom: 1px solid #eeeeee;
+  background: #ffffff;
+  display: none;
+}
+nav table.menu td {
+  cursor: pointer;
+}
+nav table.menu td span {
+  width: 1.06rem;
+  display: inline-block;
+  line-height: 0.39rem;
+  height: 0.39rem;
+  overflow: hidden;
+}
+nav table.menu td.active span {
+  border-bottom: 2px solid #cd2525;
+}
+nav table.menu img {
+  width: 0.26rem;
+}
+dl.list {
+  font-size: 0.14rem;
+  padding-bottom: 0.55rem;
+}
+dl.list .moreText {
+  line-height: 0.28rem;
+  text-align: center;
+  position: relative;
+  color: #666666;
+  border-bottom: 1px solid #e5e5e5;
+}
+dl.list .moreText:before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 0.15rem;
+  width: 0.65rem;
+  height: 0.005rem;
+  background: #dddddd;
+}
+dl.list .moreText:after {
+  content: '';
+  position: absolute;
+  right: 0.2rem;
+  top: 0.15rem;
+  width: 0.65rem;
+  height: 0.005rem;
+  background: #dddddd;
+}
+dl.list dt {
+  height: 0.98rem;
+  border-bottom: 1px solid #eeeeee;
+}
+dl.list dt .logo1 {
+  width: 1.2rem;
+  position: relative;
+  margin-right: 0.06rem;
+}
+dl.list dt .logo1 img.logo {
+  width: 1.1rem;
+  margin: 0.09rem;
+}
+dl.list dt .logo1 img.vip {
+  width: 0.4rem;
+  position: absolute;
+  left: 0;
+  top: 0%;
+}
+dl.list dt .logo1 .vip {
+  width: 0.4rem;
+  position: absolute;
+  left: 0;
+  top: 0%;
+}
+dl.list dt .text1 {
+  width: 1.85rem;
+}
+dl.list dt .text1 .tit {
+  font-weight: 900;
+  font-size: 0.14rem;
+  z-index: 0.5em;
+  color: #333333;
+  line-height: 0.2rem;
+  height: 0.4rem;
+  overflow: hidden;
+  margin-top: 0.04rem;
+}
+dl.list dt .text1 .phone {
+  line-height: 0.2rem;
+  font-size: 0.12rem;
+  position: relative;
+}
+dl.list dt .text1 .phone span {
+  color: #df4b24;
+  font-weight: 900;
+}
+dl.list dt .text1 .phone span.star {
+  position: absolute;
+  right: 0.06rem;
+}
+dl.list dt .text1 .phone span.star img {
+  width: 0.12rem;
+  margin-right: 0.03rem;
+}
+dl.list dt .text1 .phone span.viewNum {
+  color: #df4b24;
+  font-weight: 600;
+}
+dl.list dt .text1 .phone span.view {
+  color: #777777;
+  font-size: 0.11rem;
+  position: relative;
+  top: -0.01rem;
+  font-weight: 100;
+}
+dl.list dt .text1 .area {
+  color: #656565;
+  line-height: 0.23rem;
+  height: 0.23rem;
+  overflow: hidden;
+  font-size: 0.13rem;
+}

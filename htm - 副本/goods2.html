@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/goods.css" type="text/css" />
+<title>货源信息</title>
+</head>
+<body>
+<content>
+	<div class="detail">
+		<div class="boxs">
+			<div class="title">货源详情</div>
+			<div class="fromto">
+				<span class="left starting" id="starting">...</span>
+				<img src="img/other/fromto.png" />
+				<span class="right destination" id="destination">...</span>
+			</div>
+			<table cellpadding="0" cellspacing="0">
+				<tr><td>货品名称</td><td id="type">...</td></tr>
+				<tr><td>装货时间</td><td id="dtime_chn">...</td></tr>
+				<tr><td>重量体积</td><td><span id="weight">.</span>吨 <span id="volume">.</span>方</td></tr>
+				<tr class="last"><td>所需车辆</td><td><span id="length">.</span> <span id="model">.</span></td></tr>
+			</table>
+		</div>
+		<div class="leave"><span>货主留言</span><span id="remark">...</span></div>
+		<div class="boxs last">
+			<div class="title">货主名片</div>
+			<div class="cust">
+				<img class="logo headimgurl" id="headimgurl" /> <span id="nickname"></span> <img class="cvip" src="img/detail/cvip.png" />
+			</div>
+			<a id="detail"><div class="cdetail hide">
+				<img class="logo headimgurl" src="" />
+				<div class="right">
+					<div class="tit"><span class="starting">...</span> 至 <span class="destination">...</span></div>
+					<div class="phone"><b class="phonecall"></b> <span>2462<span>人浏览</span></span></div>
+					<div class="area phonecall"></div>
+				</div>
+			</div></a>
+		</div>
+		<div class="foot-tserver">
+			<p>Copyright © 2016 查物流 浙ICP备14004390号</p>
+			<p>全国统一客服热线 <a style="color:#0066CC" href="tel:400-800-7756">400-800-7756</a>
+		</div>
+		<div class="consult">
+			<a id="talk">在线咨询</a><a id="phone">电话咨询</a>
+		</div>
+	</div>
+</content>
+<script src="js/base2.js"></script>
+<script>
+var getData = (function(){
+	var args = json(Base.tools.getQueryString('args'));
+	if(args){
+		$('.consult').show();
+		$('.starting').text(args.starting);
+		$('.destination').text(args.destination);
+		$('#type').text(args.type);
+		$('#dtime_chn').text(args.dtime_chn);
+		$('#weight').text(parseFloat(args.weight||0).toFixed(0));
+		$('#volume').text(parseFloat(args.volume||0).toFixed(0));
+		$('#length').text(args.length.replace('不限','未知'));
+		$('#model').text(args.model.replace('不限','未知').replace('所需车辆','未知'));
+		$('#remark').text(args.remark);
+		
+		$('#detail').attr('href','detail.html?id='+args.user_id);
+		$('.headimgurl').attr('src',args.user_info[0].headimgurl);
+		$('#nickname').text(args.user_info[0].nickname);
+		$('#talk').attr('href','mdetail.html?id='+args.user_id+'&ref='+new Date().getTime());
+		$('#phone').attr('href','tel:'+args.user_info[0].phone);
+		$('.phonecall').text(args.user_info[0].phone);
+	}
+})();
+</script>
+</body>
+</html>

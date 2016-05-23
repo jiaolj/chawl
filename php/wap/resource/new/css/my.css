@@ -1,0 +1,74 @@
+.head {
+  height: 1.87rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.13rem;
+  font-weight: 900;
+  position: relative;
+}
+.head img.bg {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0%;
+  left: 0;
+  z-index: -1;
+}
+.head span img {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  margin-top: 0.33rem;
+}
+.head a {
+  display: block;
+  margin-top: 0.17rem;
+  color: #ffffff;
+}
+.line {
+  background: #f1f1f1;
+}
+.detail {
+  font-size: 0.12rem;
+  text-align: center;
+}
+.detail dl.data {
+  padding-bottom: 0.6rem;
+}
+.detail dl.data dt {
+  width: 1.055rem;
+  height: 1.1rem;
+  float: left;
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  background: #ffffff;
+}
+.detail dl.data dt img {
+  width: 0.4rem;
+  margin-top: 0.2rem;
+}
+.detail dl.data dt div {
+  line-height: 0.3rem;
+}
+.detailn {
+  font-size: 0.14rem;
+}
+.detailn input {
+  margin-top: 0.2rem;
+  width: 100%;
+  border: none;
+  height: 0.4rem;
+  text-indent: 1em;
+}
+.detailn input::-webkit-input-placeholder {
+  color: #555555;
+}
+.detailn .ok {
+  font-size: 0.18rem;
+  margin: 3.15rem 0.1rem 0rem 0.1rem;
+  text-align: center;
+  background: #cd2525;
+  color: #ffffff;
+  line-height: 0.5rem;
+  border-radius: 0.05rem;
+}

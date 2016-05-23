@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>我的定制路线</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/my_custom.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="detail">
+		<div class="head">
+			<span class="mid">定制</span> <span class="text">说明</span>
+		</div>
+		<div class="menu">
+			<div class="box">
+				<a i="goods">货源</a><a i="car">车源</a>
+			</div>
+		</div>
+		<div class="data">
+			<dl i="goods">
+				<!--<dt i="1"><div><span class="text">&nbsp;——&nbsp;</span><span class="switch" s="0"></span></div></dt>-->
+			</dl>
+			<dl i="car">
+			</dl>
+		</div>
+		<div class="custom">
+			<img id="addCustom" src="img/my/custom.png"/>
+		</div>
+	</div>
+</content>
+<script src="js/base2.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+var open = [1,0],
+	_tp = Base.tools.getQueryString('tp') || 'goods',
+	_cache = {},
+	_getData = function(obj,dd){
+		//alert(str(dd));
+		obj.html(function(){
+			var htm = '';
+			$.each(dd,function(k,j){
+				_cache[j.id] = [j.starting,j.destination];
+				htm += '<dt i="1"><div did="'+j.id+'"><span class="text"><span i="starting">'+j.starting+'</span><b>——</b><span i="destination">'+j.destination+'</span></span><span class="switch" s="'+(parseInt(j.state)-1)+'"></span></div></dt>';
+			})
+			return htm;
+		}).find('span.text').click(function(){
+			var o = $(this),
+				did = o.parent().attr('did'),
+				state = parseInt(o.parent().find('.switch').attr('s'))+1,
+				loc = _cache[did]
+			;
+			location.href='add_lines.html?tp='+_tp+'&is='+did+'&state='+state+'&starting='+loc[0]+'&destination='+loc[1];
+		});
+		obj.find('.switch').click(function(){
+			var o = $(this),
+				did = o.parent().attr('did'),
+				state = open[parseInt(o.attr('s'))]+1,
+				loc = _cache[did],
+				arg = {
+					state: state,
+					route_id: did,
+					starting: loc[0],
+					destination: loc[1]
+				}
+			;
+			o.attr('s',state-1);
+			//alert(str(arg));
+			$.ajax({
+				url: '/user/updateRoute/'+_tp,
+				data : arg,
+				dataType: 'json',
+				success : function(dd) {
+					alert(str(dd));
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown){
+					//alert('修改成功');
+				}
+			})
+		})
+	},
+	_getJump2 = function(o){
+		var prt = o.parent(),
+			prrrt = prt.parent().parent()
+		;
+		args.citys.starting = prt.find('span[i="starting"]').text();
+		args.citys.destination = prt.find('span[i="destination"]').text();
+		args.cid = prt.attr('did');
+		args.tp = o.attr('i');
+		args.state = prrrt.find('.switch').attr('s');
+		location.href = 'city.html?args=' + str(args);
+	}
+;
+$.ajax({
+	url: '/user/route/car',
+	dataType: 'json',
+	success : function(dd) {
+		if(dd.info=='未登录'){
+			alert(dd.info);
+		}else{
+			_getData($('.data dl[i="car"]'),dd);
+		}
+	}
+})
+$.ajax({
+	url: '/user/route/goods',
+	dataType: 'json',
+	success : function(dd) {
+		if(dd.info=='未登录'){
+			alert(dd.info);
+		}else{
+			_getData($('.data dl[i="goods"]'),dd);
+		}
+	}
+})
+
+$('.menu .box>a').click(function(){
+	var o = $(this),
+		i = o.attr('i');
+	_tp = i;
+	o.parent().find('.active').removeClass('active');
+	$('.data dl.active').removeClass('active');
+	o.addClass('active');
+	$('.data dl[i="'+i+'"]').addClass('active');
+})
+$('#addCustom').click(function(){
+	location.href='add_lines.html?tp='+$('.data dl.active').attr('i');
+})
+$('.data dl[i="'+_tp+'"]').addClass('active');
+$('.menu .box>a[i="'+_tp+'"]').addClass('active');
+</script>
+</body>
+</html>

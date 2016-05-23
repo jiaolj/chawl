@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>社区</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/reg.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="detail">
+		<div class="heads"></div>
+		<div class="texts" style="border-bottom:none">
+			<div class="one">
+				<input type="text" placeholder="填写密码" id="pwd1" class="txt" />
+			</div>
+			<div class="two">
+				<input type="text" placeholder="确认密码"  id="pwd2" />
+			</div>
+		</div>
+		<div class="ok" id="ok">确认</div>
+	</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+$('#ok').click(function(){
+	var pwd1 = $('#pwd1').val(),
+		pwd2 = $('#pwd2').val();
+	$.ajax({
+		url : '/user/updateRoute',
+		data : {pwd1:pwd1,pwd2:pwd2},
+		dataType : 'json',
+		success : function(dd) {
+			log(dd);
+			$('#ok').text(str(dd));
+		},
+		error:function(jqXHR,textStatus) {
+			log(' request failed'+textStatus);
+		}
+	})
+})
+</script>
+</body>
+</html>

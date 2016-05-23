@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>选择类型</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/where.css" type="text/css" />
+</head>
+<body style="background:#F8F8F8">
+<section class="one one3">
+	<dl id="jump"></dl>
+</section>
+<script src="js/base.js"></script>
+<script>
+$('#jump').html(function(){
+	var dd = [
+		'专业调车',
+		'国内货运',
+		'国际物流',
+		'快递公司',
+		'物流园区',
+		'特种运输',
+		'物流设备',
+		'物流服务',
+		'其他服务',
+	],htm = '';
+	for(var d of dd) htm += '<a><dt d="'+d+'">'+d+'</dt></a>';
+	return htm;
+}).find('dt').click(function(){
+	var val = $(this).attr('d'),
+		args = json(Base.tools.getQueryString('args')),
+		url = args.url
+	;
+	args.goodstype = val;
+	delete args.url;
+	location.href = url + '?args=' + str(args);
+});
+</script>
+</body>
+</html>

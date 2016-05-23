@@ -1,0 +1,45 @@
+@import 'pub.less';
+@red:#df4b24;
+body {
+	.bg(#fff);
+}
+section {
+	.fsr(28rem);
+	&.one {
+		dl {
+			.tct;
+		}
+		dl dt {
+			.w(25%);.flt;.lhr(110rem);.hr(110rem);.ofh;.bsz;.bg(#fff);
+			border:solid #ddd;
+			border-width: 0 1px 1px 0;
+		}
+		&.one3 dl dt  {
+			.w(33%);
+		}
+	}
+	&.two {
+		.bg(#fff);.tct;.psa;.b;.w;
+		.tit {
+			.lhr(140rem);.fsr(44rem);.fw;
+		}
+		input {
+			.w(90%);.hr(80rem);.mgbr(50rem);.brr(10rem);
+			&.input {
+				.bg(#F8F8F8);.bdn;.tct;
+			}
+		}
+		p.ok {
+			.bg(@red);.c(#fff);.lhr(80rem);.fsr(32rem);.mg-r(20rem);.brr(8rem);
+		}
+	}
+	&.three {
+		.h;.tct;
+		dl {
+			.mg-r(20rem,20rem);.h;
+			dt {
+				.bg(#f5f5f5);.lhr(80rem);.brr(10rem);.mgbr(20rem);
+			}
+		}
+	}
+}

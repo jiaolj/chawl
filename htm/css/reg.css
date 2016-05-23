@@ -1,0 +1,60 @@
+body {
+  background: #ffffff;
+}
+.detail {
+  padding-bottom: 0.1rem;
+}
+.detail .heads {
+  height: 0.2rem;
+  background: #fafafa;
+}
+.detail .texts {
+  height: 0.94rem;
+  border-bottom: 1px solid #dddddd;
+}
+.detail .texts > div {
+  height: 0.47rem;
+  overflow: hidden;
+  width: 3.03rem;
+  margin-left: 0.17rem;
+  position: relative;
+}
+.detail .texts > div.one {
+  border-bottom: 1px solid #eeeeee;
+}
+.detail .texts > div.one .box1 {
+  height: 0.44rem;
+}
+.detail .texts > div.one .box1 input {
+  border: none;
+  width: 2.19rem;
+  height: 100%;
+}
+.detail .texts > div.one .box2 {
+  background: #df4b24;
+  color: #ffffff;
+  width: 0.84rem;
+  line-height: 0.47rem;
+  text-align: center;
+  height: 0.48rem;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+}
+.detail .texts > div.two {
+  height: 0.44rem;
+}
+.detail .texts > div.two input {
+  border: none;
+  width: 2.19rem;
+  height: 100%;
+}
+.detail .ok {
+  background: #df4b24;
+  color: #ffffff;
+  text-align: center;
+  line-height: 0.43rem;
+  font-size: 0.14rem;
+  margin: 2.68rem 0.1rem 0.1rem 0.1rem;
+  border-radius: 0.05rem;
+}

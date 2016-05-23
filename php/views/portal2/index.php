@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta name="description" content="查物流-让天下货主与物流实现更高效的链接！"/>
+<title>这个真牛，百万物流人可以免费配货调车、在线交流！</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/index.css" type="text/css" />
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+<body>
+<content>
+	<div class="top">
+		<a class="flt">
+			<img src="img/index/area.png" class="area" /> <span class="cityname" id="cityname">获取中..</span>
+		</a> 
+		<img src="img/index/logo.png" class="logo" />
+		<a id="to-msg" class="frt"><img class="msg" src="img/index/msg.png" /><b id="num"></b></a>
+		<br class="cb"/>
+	</div>
+	<div class="head"><img src="img/index/bg1.png" /></div>
+	<section>
+		<nav>
+			<a href='list.html?args={"title":"精品专线","sort":130}'>
+				<div class="img"><img src="img/index/1.png" /></div>
+				<span>精品专线</span>
+			</a>
+			<a href='list.html?args={"title":"落地配","sort":564}'>
+				<div class="img"><img src="img/index/2.png" /></div>
+				<span>落地配</span>
+			</a>
+			<a href='list.html?args={"title":"本地货车","sort":929}'>
+				<div class="img"><img src="img/index/3.png" /></div>
+				<span>本地货车</span>
+			</a>
+			<a href='list.html?args={"title":"综合物流","sort":926}'>
+				<div class="img"><img src="img/index/4.png" /></div>
+				<span>综合物流</span>
+			</a>
+			<a href='find.html?args={"title":"货源信息","findType":2,"ctype":"车型","long":"车长","tp":"","citys":{"1":"出发地","2":"目的地"}}'>
+				<div class="img"><img src="img/index/5.png" /></div>
+				<span>货源信息</span>
+			</a><a href='find.html?args={"title":"车源信息","findType":1,"ctype":"车型","long":"车长","tp":"","citys":{"1":"出发地","2":"目的地"}}'>
+				<div class="img"><img src="img/index/6.png" /></div>
+				<span>车源信息</span>
+			</a>
+			<a href="blog.html">
+				<div class="img"><img src="img/index/7.png" /></div>
+				<span>货运圈</span>
+			</a>
+			<a href="http://mp.weixin.qq.com/s?__biz=MjM5OTM3OTQ2MQ==&mid=505850920&idx=1&sn=14d12a381d3fb015b1df0679f25cddf2#rd">
+				<div class="img"><img src="img/index/8.png" /></div>
+				<span>帮助中心</span>
+			</a>
+			<br class="cb" />
+		</nav>
+	</section>
+	<div class="title"></div>
+	<table cellpadding="0" cellspacing="0" class="menu" id="change">
+		<tr><td d="0"><span>最新专线</span></td><td d="1"><span>最新货源</span></td><td d="2"><span>最新车源</span></td></tr>
+	</table>
+	<table cellpadding="0" cellspacing="0" class="menu">
+		<tr><td><span class="choice" k="from" v="1" id="from">全国</span></td><td><span class="choice" k="change"><img src="img/other/tools.png" /></span></td><td><span class="choice" k="to" v="2" id="to">全国</span></td></tr>
+	</table>
+	<dl class="list" id="list">
+	</dl>
+	<div class="consult" i="-1">
+		<a d="1"><img src="img/detail/bottom/consulting.png" /> 在线议价</a>
+		<a d="2"> <img src="img/detail/bottom/phone.png" />电话议价</a>
+		<br class="cb"/>
+	</div>
+	<footer>
+		<div class="line"><img src="img/bottom/line.png" /></div>
+		<dl>
+			<a href="index.html"><dt class="index"><img class="cut r" src="img/bottom/cutline.png" /> <div><img class="icon_new" src="img/bottom/index_on.png" /></div><div class="txt">首页</div></dt></a>
+			<a href="find.html"><dt class="find"><img class="cut r" src="img/bottom/cutline.png" /> <div><img class="icon" src="img/bottom/find_off.png" /></div><div class="txt">货源车源</div></dt></a>
+			<a class="click" htm="pubtype.html"><dt class="send"><img src="img/bottom/send.png" /></dt></a>
+			<a href="blog.html"><dt class="my"><img class="cut l" src="img/bottom/cutline.png" /> <div><img class="icon_new" src="img/bottom/comt_off.png" /></div><div class="txt">货运圈</div></dt></a>
+			<a class="click" htm="my.html"><dt class="comt"><img class="cut l" src="img/bottom/cutline.png" /> <div><img class="icon" src="img/bottom/my_off.png" /></div><div class="txt">我的</div></dt></a>
+			<br class="cb" />
+		</dl>
+	</footer>
+</content>
+<script src="js/cityData.js"></script>
+<script src="js/base2.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/getLocation.js"></script>
+<script src="web-im/sdk/strophe.js"></script>
+<script src="web-im/sdk/easemob.im-1.0.7.js"></script>
+<script src="web-im/easemob.im.config.js"></script>
+<script src="js/index.js"></script>
+<script>
+var initWX = function(){
+	$.ajax({
+		url: '/wechat/sign',
+		data: {
+			url: encodeURIComponent(location.href.split('#')[0])
+		},
+		success: function(data){
+			var ticket = JSON.parse(data);
+
+			wx && wx.config({
+				debug: false,
+				appId: ticket.appId,
+				timestamp: ticket.timestamp,
+				nonceStr: ticket.nonceStr,
+				signature: ticket.signature,
+				jsApiList: ["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo"]
+			});
+			wx.ready(function () {
+				   weixin(wxData.title,wxData.link,wxData.imgUrl,wxData.desc);
+				});
+				var wxData = {
+					'imgUrl': 'http://wap.chawuliu.com/resource/new/img/index/share.png',
+					'link' : '',
+					'desc' : '查物流-让天下货主与物流实现更高效的链接！',
+					'title' : '这个真牛，百万物流人可以免费配货调车、在线交流！'
+				};
+				var weixin = function (title,link,imgurl,desc){
+					wx.ready(function () {
+						wx.onMenuShareTimeline({
+							title: title,
+							link: link,
+							imgUrl: imgurl
+						});
+						wx.onMenuShareAppMessage({
+							title: title,
+							desc: desc,
+							link: link,
+							imgUrl: imgurl
+						});
+						wx.onMenuShareQQ({
+							title: title,
+							desc: desc,
+							link: link,
+							imgUrl: imgurl
+						});
+						wx.onMenuShareWeibo({
+							title: title,
+							desc: desc,
+							link: link,
+							imgUrl: imgurl
+						});
+						obj.sound();
+					});
+				};
+		}
+	})
+};
+initWX();
+</script>
+</body>
+</html>

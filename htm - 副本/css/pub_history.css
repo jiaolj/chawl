@@ -1,0 +1,33 @@
+html {
+  font-size: 100px;
+}
+img {
+  vertical-align: middle;
+}
+a {
+  display: block;
+}
+.detail {
+  font-size: 0.12rem;
+  text-align: center;
+}
+.detail dl dt {
+  background: #ffffff;
+  margin-bottom: 0.09rem;
+}
+.detail dl dt .tit {
+  line-height: 0.32rem;
+  border-bottom: 1px solid #eeeeee;
+  padding: 0 0.14rem;
+  color: #777777;
+}
+.detail dl dt .tit .date img {
+  width: 0.15rem;
+}
+.detail dl dt .data {
+  line-height: 0.63rem;
+  padding: 0 0.14rem;
+}
+.detail dl dt .data img {
+  height: 0.15rem;
+}

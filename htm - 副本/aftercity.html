@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pub_words.css" type="text/css" />
+</head>
+<body>
+<content>
+<div class="detail">
+	<div class="tit">目前可添加4个途径城市</div>
+	<dl id="choice"></dl>
+	<div class="ok" id="wordsOk">确定</div>
+</div>
+</content>
+<script src="js/base2.js"></script>
+<script>
+(function(){
+	window.MVP = {
+		config : {
+			args : json(Base.tools.getQueryString('args'))
+		},
+		init : function(){
+			var obj = this;
+			$('#choice').html(function(){
+				var htm = '',
+					getSize = function(){document.getElementById('html').style.fontSize = document.body.clientWidth*100/320+'px'}(),
+					citys = obj.config.args.citys
+				;
+				for(var ct in citys){
+					if(ct>2){
+						if(citys[ct].length>1) htm += '<dt d="'+ct+'" class="active">' + citys[ct] + '</dt>';
+						else htm += '<dt d="'+ct+'">添加城市</dt>';
+					}
+				}
+				return htm;
+			}).find('>dt').click(function(){
+				obj.config.args.tp = $(this).attr('d');
+				obj.config.args.url = function(){var l = location.href.split('/').pop(),r = l.split('?')[0];return r}();
+				location.href = 'city.html?args=' + str(obj.config.args);
+			})
+			$('#wordsOk').click(function(){
+				location.href = 'pub_car.html?args=' + str(obj.config.args);
+			})
+		}
+	}
+})();
+MVP.init();
+</script>
+</body>
+</html>

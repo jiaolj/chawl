@@ -1,0 +1,28 @@
+html {
+  font-size: 100px;
+}
+body {
+  background: #ffffff;
+}
+img {
+  vertical-align: middle;
+}
+.detail {
+  padding: 0.3rem;
+  text-align: center;
+  font-size: 0.16rem;
+}
+.detail .up {
+  margin-top: 0.2rem;
+  margin-bottom: 1.09rem;
+}
+.detail .up img {
+  height: 1.045rem;
+}
+.detail .down img {
+  width: 1.16rem;
+}
+.detail .down span {
+  display: block;
+  margin-top: 0.08rem;
+}

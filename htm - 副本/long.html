@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>选择车长</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/where.css" type="text/css" />
+</head>
+<body style="background:#F8F8F8">
+<section class="one">
+	<dl id="jump"></dl>
+</section>
+<section class="two">
+	<p class="tit">其他车长</p>
+	<p><input class="input" type="text" id="long" placeholder="请输入其他长度"/></p>
+	<p class="ok" id="ok">确认</p>
+</section>
+<script src="js/base.js"></script>
+<script>
+$('#jump').html(function(){
+	var dd = [
+		{k:'零担专线',v:'不限'},
+		{k:'不限',v:'不限'},
+		{k:'2米以内',v:'2米'},
+		{k:'3.2米',v:'3.2米'},
+		{k:'4.2米',v:'4.2米'},
+		{k:'5米',v:'5米'},
+		{k:'5.2米',v:'5.2米'},
+		{k:'6.2米',v:'6.2米'},
+		{k:'7.2米',v:'7.2米'},
+		{k:'8.8米',v:'8.8米'},
+		{k:'9.6米',v:'9.6米'},
+		{k:'12.5米',v:'12.5米'},
+		{k:'14.5米',v:'14.5米'},
+		{k:'15米',v:'15米'},
+		{k:'17米',v:'17米'},
+	],htm = '';
+	for(var d in dd) htm += '<a><dt d="'+dd[d].v+'">'+dd[d].k+'</dt></a>';
+	return htm;
+}).find('dt').click(function(){
+	var d = $(this).attr('d');
+	$('#long').val(d);
+});
+$('#ok').click(function(){
+	var args = json(Base.tools.getQueryString('args')),
+		back = args.back,
+		url = args.url,
+		ltx = $('#long').val() || '0'
+	;
+	args.long = ltx;
+	if(back==1){
+		delete args.url;
+		delete args.back;
+		location.href = url + '?args=' + str(args);
+	}else location.href = 'ctype.html?args='+str(args);
+});
+</script>
+</body>
+</html>

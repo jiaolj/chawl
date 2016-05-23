@@ -1,0 +1,265 @@
+body {
+  background: #ffffff;
+}
+.head {
+  width: 3.2rem;
+  height: 1.165rem;
+  position: relative;
+}
+.head img {
+  width: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0;
+}
+section {
+  background: #ffffff;
+  font-size: 0.11rem;
+}
+section > nav {
+  margin-top: 0.15rem;
+}
+section > nav > a {
+  display: block;
+  text-align: center;
+  width: 25%;
+  margin-top: 0.15rem;
+  float: left;
+}
+section > nav > a .img {
+  width: 0.4rem;
+  height: 0.4rem;
+  background: #df4b24;
+  border-radius: 50%;
+  margin-left: 0.19rem;
+}
+section > nav > a .img img {
+  margin-top: 0.07rem;
+  width: 0.26rem;
+}
+section > nav > a span {
+  display: block;
+  color: #000000;
+  font-size: 0.1rem;
+  line-height: 0.3rem;
+}
+.title {
+  background: #f0f0f0;
+  height: 0.09rem;
+}
+table.menu {
+  font-size: 0.14rem;
+  width: 100%;
+  text-align: center;
+  color: #666666;
+  border-bottom: 1px solid #eeeeee;
+}
+table.menu td {
+  cursor: pointer;
+}
+table.menu td span {
+  width: 1.06rem;
+  display: inline-block;
+  line-height: 0.4rem;
+  height: 0.4rem;
+  overflow: hidden;
+}
+table.menu td span.choice {
+  color: #df4b24;
+  font-weight: 900;
+}
+table.menu td span.choice b {
+  display: inline-block;
+  position: relative;
+  width: 0.06rem;
+  height: 0.06rem;
+  border-bottom: 1px solid #df4b24;
+  border-left: 1px solid #df4b24;
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  /* IE 9 */
+  -moz-transform: rotate(-45deg);
+  /* Firefox */
+  -webkit-transform: rotate(-45deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-45deg);
+  /* Opera */
+  left: 0.045rem;
+  top: -0.04rem;
+}
+table.menu td.active span {
+  border-bottom: 2px solid #cd2525;
+}
+table.menu img {
+  width: 0.26rem;
+}
+dl.list {
+  font-size: 0.14rem;
+  padding-bottom: 0.55rem;
+}
+dl.list .moreText {
+  line-height: 0.28rem;
+  text-align: center;
+  position: relative;
+  color: #666666;
+  border-bottom: 1px solid #e5e5e5;
+}
+dl.list .moreText:before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 0.15rem;
+  width: 0.65rem;
+  height: 0.005rem;
+  background: #dddddd;
+}
+dl.list .moreText:after {
+  content: '';
+  position: absolute;
+  right: 0.2rem;
+  top: 0.15rem;
+  width: 0.65rem;
+  height: 0.005rem;
+  background: #dddddd;
+}
+dl.list dt {
+  height: 0.98rem;
+  border-bottom: 1px solid #eeeeee;
+}
+dl.list dt .logo1 {
+  width: 1.26rem;
+  position: relative;
+}
+dl.list dt .logo1 img.logo {
+  width: 1.1rem;
+  margin: 0.09rem;
+}
+dl.list dt .logo1 img.vip {
+  width: 0.4rem;
+  position: absolute;
+  left: 0;
+  top: 0%;
+}
+dl.list dt .logo1 .vip {
+  width: 0.4rem;
+  position: absolute;
+  left: 0;
+  top: 0%;
+}
+dl.list dt .text1 {
+  width: 1.94rem;
+}
+dl.list dt .text1 .tit {
+  font-weight: 900;
+  font-size: 0.14rem;
+  z-index: 0.5em;
+  color: #333333;
+  line-height: 0.2rem;
+  height: 0.4rem;
+  overflow: hidden;
+  margin-top: 0.04rem;
+}
+dl.list dt .text1 .phone {
+  line-height: 0.2rem;
+  font-size: 0.12rem;
+  position: relative;
+}
+dl.list dt .text1 .phone span {
+  color: #df4b24;
+  font-weight: 900;
+}
+dl.list dt .text1 .phone span.star {
+  position: absolute;
+  right: 0.06rem;
+}
+dl.list dt .text1 .phone span.star img {
+  width: 0.12rem;
+  margin-right: 0.03rem;
+}
+dl.list dt .text1 .phone span.viewNum {
+  color: #df4b24;
+  font-weight: 600;
+}
+dl.list dt .text1 .phone span.view {
+  color: #777777;
+  font-size: 0.11rem;
+  position: relative;
+  top: -0.01rem;
+  font-weight: 100;
+}
+dl.list dt .text1 .area {
+  color: #656565;
+  line-height: 0.23rem;
+  height: 0.23rem;
+  overflow: hidden;
+  font-size: 0.13rem;
+}
+dl.list dt .logo {
+  width: 0.61rem;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  margin-top: 0.05rem;
+}
+dl.list dt .logo img {
+  width: 100%;
+}
+dl.list dt .logo img.headimg {
+  width: 0.61rem;
+  height: 0.61rem;
+  border-radius: 50%;
+}
+dl.list dt .logo span {
+  cursor: pointer;
+}
+dl.list dt .text {
+  width: 2.21rem;
+}
+dl.list dt .text p {
+  line-height: 0.19rem;
+  font-size: 0.1rem;
+  color: #888888;
+  height: 0.19rem;
+}
+dl.list dt .text p span {
+  cursor: pointer;
+}
+dl.list dt .text p.tit {
+  line-height: 0.17rem;
+  font-size: 0.13rem;
+  font-weight: 900;
+  color: #000000;
+  letter-spacing: 0.005rem;
+}
+dl.list dt .text p.tit img {
+  width: 0.12rem;
+  position: relative;
+  top: -0.02rem;
+}
+dl.list dt .text p.starting {
+  margin-top: 0.07rem;
+}
+dl.list dt .text p.destination {
+  margin-top: 0.02rem;
+  margin-bottom: 0.02rem;
+}
+dl.list dt .text p.remark {
+  width: 1.95rem;
+  height: 0.38rem;
+  overflow: hidden;
+  font-size: 0.14rem;
+}
+dl.list dt .text p img {
+  width: 0.15rem;
+}
+dl.list dt .contact {
+  width: 0.64rem;
+  text-align: center;
+  font-size: 0.09rem;
+  line-height: 0.25rem;
+  position: absolute;
+  right: 0%;
+}
+dl.list dt .contact img {
+  width: 0.36rem;
+  cursor: pointer;
+}

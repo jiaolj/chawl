@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/goods.css" type="text/css" />
+<title>我的车源</title>
+</head>
+<body>
+<content>
+	<div class="detail" id="list">
+	</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+(function(){
+	window.MVC = {
+		querys : {
+			//id : Base.tools.getQueryString('id'),
+			is : 0,
+			page : 1,
+			end : 0,
+			ajaxUrl : '/user/mycar',
+			cache : []
+		},
+		dom : {
+			list : $('#list'),
+			load : '<div class="load">拼命加载中...</div>',
+			tmp_goods : '\
+				<div class="box">\
+					<div class="title">车源详情</div>\
+					<div class="fromto">\
+						<span class="left starting">#starting</span>\
+						<img src="img/other/fromto.png" />\
+						<span class="right destination">#destination</span>\
+					</div>\
+					<table cellpadding="0" cellspacing="0">\
+						<tr><td>途径城市</td><td>#city</td></tr>\
+						<tr><td>装车时间</td><td>#ctime</td></tr>\
+						<tr><td>车牌号码</td><td>#car_no</td></tr>\
+						<tr class="last"><td>车长车型</td><td><span>#length</span> <span>#model</span></td></tr>\
+					</table>\
+				</div>\
+				<div class="leave"><span>车主留言</span><span>#remark</span></div>\
+			'
+		},
+		rdata : function(i,d,j){
+			return d.replace('#starting',j.starting).replace('#destination',j.destination).replace('#city',j.city.split(',').join(' ')).replace('#ctime',Base.tools.int_to_str(j.ctime)).replace('#car_no',j.car_no).replace('#length',j.length).replace('#model',j.model).replace('#remark',j.remark);
+		},
+		getHtml : function(data,i){
+			var obj = this,
+				htm = '',
+				tmp = obj.dom.tmp_goods
+			;
+			if(i) obj.dom.list.html(function(){for(var i=0;i<data.length;i++) htm += obj.rdata(i,tmp,data[i]);return htm});
+			else for(var i=0;i<data.length;i++) obj.dom.list.append(obj.rdata(i,tmp,data[i]));
+		},
+		getList : function(i){
+			var obj = this,arg = {};
+			obj.dom.list.append(obj.dom.load);
+			obj.querys.is = 1;
+			arg.page = obj.querys.page;
+			//arg.user_id = obj.querys.id;
+			$.ajax({
+				url: obj.querys.ajaxUrl,
+				data: arg,
+				dataType: 'json',
+				success : function(lst) {
+					//alert(str(lst));
+					if(lst.length>0){
+						obj.querys.cache = lst;
+						obj.getHtml(lst,i);
+						obj.querys.is = 0;
+					}
+					else obj.querys.end = 1;
+					obj.dom.list.find('.load').remove();
+				},
+				error : function(jqXHR,textStatus) {
+					alert(' request failed'+textStatus);
+				}
+			});
+		},
+		query : function(){
+			var obj = this;
+			obj.getList(1);
+		},
+		init : function(){
+			var obj = this;
+			obj.query();
+			Base.turn.get(obj);
+		}
+	}
+})();
+MVC.init();
+</script>
+</body>
+</html>

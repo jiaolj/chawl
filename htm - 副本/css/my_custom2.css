@@ -1,0 +1,58 @@
+body {
+  background: #ffffff;
+}
+.detail {
+  font-size: 0.16rem;
+}
+.detail .line {
+  height: 0.2rem;
+  background: #f1f1f1;
+}
+.detail .data div {
+  border-bottom: 1px solid #eeeeee;
+  margin-left: 0.1rem;
+  position: relative;
+}
+.detail .data div.tit {
+  line-height: 0.38rem;
+  font-weight: 900;
+}
+.detail .data div.tit span {
+  font-size: 0.11rem;
+  color: #cd2525;
+  font-weight: 500;
+}
+.detail .data div.dd {
+  line-height: 0.45rem;
+}
+.detail .data div.dd b {
+  position: relative;
+}
+.detail .data div.dd img.one {
+  width: 0.7rem;
+}
+.detail .data div.dd img.add {
+  width: 0.12rem;
+  position: absolute;
+  right: 0rem;
+  top: 0.05rem;
+  padding: 0.1rem;
+}
+.detail .data div.dd img.del {
+  width: 0.1rem;
+  position: absolute;
+  right: -0.15rem;
+  top: -0.15rem;
+  padding: 0.1rem;
+}
+.detail .data div.dd span {
+  margin-right: 0.07rem;
+}
+.detail .ok {
+  margin: 0.43rem 0.1rem;
+  line-height: 0.5rem;
+  text-align: center;
+  background: #cd2525;
+  border-radius: 0.05rem;
+  color: #ffffff;
+}

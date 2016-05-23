@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pub_goodstype.css" type="text/css" />
+</head>
+<body>
+<content>
+<div class="detail">
+	<div class="tit">重货</div>
+	<div class="data"><input placeholder="请输入重量" id="v1" type="text"/> <span>吨</span></div>
+	<div class="tit">泡货</div>
+	<div class="data bottom"><input placeholder="请输入体积" id="v2" type="text"/> <span>方</span></div>
+	<div class="ok" id="pubOk">确定</div>
+</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+var getSize = function(){$('html').css('font-size',document.body.clientWidth*100/320+'px')}();
+
+$('#pubOk').click(function(){
+	var args = json(Base.tools.getQueryString('args')),
+		url = args.url
+	;
+	args.weight = ($('#v1').val() || '0')+'吨';
+	args.volume = ($('#v2').val() || '0')+'方';
+	delete args.url;
+	location.href = url + '?args=' + str(args);
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+html {
+  font-size: 100px;
+}
+body {
+  background: #ffffff;
+}
+img {
+  vertical-align: middle;
+}
+a {
+  display: block;
+}
+span.red {
+  color: #cd2525;
+}
+.detail {
+  font-size: 0.14rem;
+  text-align: center;
+  padding: 0.1rem;
+  color: #666666;
+}
+.detail a {
+  color: #666666;
+}
+.detail .box {
+  border: 1px solid #d1d1d1;
+  border-radius: 0.05rem;
+  margin-top: 0.2rem;
+  line-height: 0.5rem;
+  height: 0.5rem;
+  overflow: hidden;
+  background: #f5f5f5;
+  position: relative;
+}
+.detail .box img {
+  position: absolute;
+  left: 0.13rem;
+  top: 0.16rem;
+  height: 0.19rem;
+}
+.detail .box.one {
+  color: #444444;
+  height: 1rem;
+}
+.detail .box.one .one {
+  width: 2.36rem;
+}
+.detail .box.one .one .up {
+  border-bottom: 1px solid #d1d1d1;
+  position: relative;
+  height: 0.5rem;
+  overflow: hidden;
+  text-align: left;
+}
+.detail .box.one .one .up span {
+  display: inline-block;
+  margin-left: 0.35rem;
+  width: 2.03rem;
+}
+.detail .box.one .one .down {
+  position: relative;
+  height: 0.5rem;
+  overflow: hidden;
+  text-align: left;
+}
+.detail .box.one .one .down span {
+  display: inline-block;
+  margin-left: 0.35rem;
+  width: 2.03rem;
+}
+.detail .box.one .two {
+  height: 1rem;
+  width: 0.61rem;
+  border-left: 1px solid #d1d1d1;
+  display: table;
+}
+.detail .box.one .two a {
+  line-height: 0.2rem;
+  margin-top: 0.28rem;
+  color: #cd2525;
+}
+.detail .box.flt,
+.detail .box.frt {
+  width: 1.45rem;
+}
+.detail .box.aftercity {
+  text-indent: 3em;
+  text-align: left;
+}
+.detail .box.iscall {
+  text-align: left;
+  display: none;
+}
+.detail .box.iscall span.text {
+  margin-left: 0.3rem;
+}
+.detail .box.iscall span.iscall {
+  position: absolute;
+  right: 0.2rem;
+}
+.detail .box.iscall span.iscall span {
+  width: 0.28rem;
+  display: inline-block;
+  line-height: 0.23rem;
+  height: 0.23rem;
+  text-align: center;
+  border: 1px solid #dddddd;
+  cursor: pointer;
+}
+.detail .box.iscall span.iscall span.active {
+  background: #0caa0c;
+  color: #ffffff;
+  border: none;
+}
+.detail .box.phone {
+  text-align: left;
+}
+.detail .box.phone span.text {
+  padding: 0 0.21rem;
+}
+.detail .box.phone input {
+  width: 1.4rem;
+  border: none;
+  background: #f5f5f5;
+  font-size: 0.14rem;
+}
+.detail .box.button {
+  background: #cd2525;
+  color: #ffffff;
+  margin-top: 0.4rem;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pub_words.css" type="text/css" />
+</head>
+<body>
+<content>
+<div class="detail">
+	<div class="tit">你想给车主捎去什么话呢？</div>
+	<dl id="choice">
+		<dt>便宜点呗，哈哈</dt>
+		<dt>货比较急，能快点装货吗？</dt>
+		<dt class="active">想要直达车，中途停的就算了</dt>
+		<dt><input type="text" placeholder="其他（请输入要捎去的话）" /></dt>
+	</dl>
+	<div class="ok" id="wordsOk">确定</div>
+</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+var getSize = function(){$('html').css('font-size',document.body.clientWidth*100/320+'px')}();
+$('#choice>dt').click(function(){
+	var obj =$(this),
+		i = obj.index('#choice>dt');
+	obj.parent().find('.active').removeClass('active');
+	if(i<3){
+		obj.addClass('active');
+	}
+	else{
+	
+	}
+})
+$('#wordsOk').click(function(){
+	location.href = 'pub_goods.html';
+})
+</script>
+</body>
+</html>

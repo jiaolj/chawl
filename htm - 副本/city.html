@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/where.css" type="text/css" />
+</head>
+<body>
+<section class="one">
+	<dl id="jump"></dl>
+</section>
+<script src="js/cityData.js"></script>
+<script src="js/base2.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+var level = 0,
+	cityList = ['',''],
+	cityCode = ['',''],
+	_get = function(){
+		var htm = '';
+		$('#jump').html(function(){
+			htm += '<a><dt code="0">全国</dt></a>';
+			for(var c in ChineseDistricts[86]){
+				for(var k in ChineseDistricts[86][c]){
+					var t = ChineseDistricts[86][c][k];
+					htm += '<a><dt code="'+t.code+'">'+_simpCity(t.address)+'</dt></a>';
+				}
+			}
+			htm += '<a><dt code="0">返回</dt></a><br class="cb"/>';
+			return htm;
+		});
+	},
+	args = json(Base.tools.getQueryString('args')),
+	url = args.url,
+	citys = args.citys[args.tp],
+	_suc = function(){
+		var city = cityList.join(' ').trim();
+		delete args.url;
+		if(args.page=='card'){
+			citys = city.split(' ').pop();
+		}else{
+			citys = city;
+		}
+		args.citys[args.tp] = citys;
+		location.href = url + '?args=' + str(args);
+	}
+;
+window.onload = function(){
+	_get();
+};
+$('#jump').click(function(e){
+	var tar = e.target,
+		o = $(tar)
+	;
+	if(tar.nodeName.toLowerCase() === 'dt'){
+		var city = o.text(),
+			code = o.attr('code')
+		;
+		if(city=='返回') {
+			level-=1;
+			if(level==-1){
+				delete args.url;
+				location.href = url + '?args=' + str(args);
+			}
+			else if(level==0) {
+				_get();
+				return;
+			}
+			else code = cityCode[level-1];
+		}
+		else if(city=='全国') {
+			args.citys[args.tp] = '全国';
+			delete args.url;
+			location.href = url + '?args=' + str(args);
+		}
+		else {
+			cityCode[level] = code;
+			cityList[level] = city;
+			level+=1;
+		}
+		log(cityCode,cityList);
+		if(level==2) {
+			_suc();
+		}else if(level==1){
+			var sons = ChineseDistricts[code];
+			$('#jump').html(function(){
+				var htm = '<a><dt code="'+code+'">'+_simpCity(city)+'</dt></a>';
+				for(var t in sons){
+					htm += '<a><dt code="'+t+'">'+_simpCity(sons[t])+'</dt></a>';
+				}
+				htm += '<a><dt code="0">返回</dt></a><br class="cb"/>';
+				return htm;
+			})
+		}
+	}
+});
+</script>
+</body>
+</html>

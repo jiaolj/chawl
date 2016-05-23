@@ -1,0 +1,104 @@
+@import 'pub.less';
+
+content {
+	.cover-page {
+		.psf;.w;.h;.bg(#7F7F7F);.zi(9);.dsn;
+	}
+	.leavebox {
+		.psf;.lr(18rem);.tr(102rem);.wr(598rem);.fsr(24rem);.bg(#fff);.zi(10);.brr(8rem);.dsn;.c(#333);
+		.tit {
+			.hr(70rem);.lhr(78rem);.tir(12rem);.fsr(26rem);
+		}
+		textarea {
+			.bg(#eee);.wr(594rem);.hr(210rem);.lhr(46rem);.ti;.bdn;
+		}
+		.admin {
+			a {
+				.dsib;.w(50%);.tct;.lhr(78rem);.bsz;.c(#333);
+				&.cancel {
+					.bdr(#eee);
+				}
+				&.submit {
+					.c(#17A833);
+				}
+			}
+		}
+	}
+	.send2 {
+		.psf;.r;.t;.hr(100rem);
+		img {
+			.h;.psa;.t;.r;
+		}
+	}
+	dl.list {
+		.fsr(28rem);.mgbr(96rem);
+		dt {
+			.pd-r(20rem);.bg(#fff);.mgbr(42rem);
+			.photo {
+				.wr(86rem);.mgrr(20rem);.psr;
+				img {
+					&.logo{
+						.br;.sqar(86rem);
+					}
+					&.vip{
+						.sqar(32rem);.psa;.b;.r;
+					}
+				}
+			}
+			.tit {
+				.wr(494rem);.fw;.fsr(32rem);.lhr(46rem);
+				p.time {
+					.fsr(24rem);.c(#ccc);.lhr(38rem);
+				}
+			}
+			.text {
+				.brr(20rem);.bg(#F4F4F4);.pd-r(20rem);.mgtr(20rem);
+				.title {
+					.c(#888);.lhr(36rem);
+				}
+				.img {
+					.mgtr(20rem);.mgbr(10rem);
+					>span {
+						.dsb;.flt;.wr(178rem);.hr(174rem);.ofh;.mgbr(10rem);
+						&:nth-child(n + 2){
+							.mglr(10rem);
+						}
+						img {
+							//.w;.h;
+						}
+					}
+				}
+			}
+			.see {
+				.mgtr(20rem);.pdbr(16rem);.bdb(#eee);.lhr(30rem);
+				>img {
+					.sqar(44rem);.mgrr(16rem);.br;
+				}
+				.frt {
+					.c(#999);
+					img {
+						.hr(30rem);.psr;.lr(-6rem);
+					}
+					span {
+						.fsr(22rem);.psr;.tr(6rem);
+					}
+				}
+			}
+			.action {
+				.pdtr(20rem);.lhr(60rem);
+				>img,a>img {
+					.wr(28rem);.mgrr(10rem);
+				}
+				>span,a>span {
+					.c(#999);.fsr(20rem);.mgrr(20rem);.psr;.tr(4rem);
+				}
+				.frt {
+					.wr(166rem);
+					img{
+						.w;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>发布货源</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pub_card.css" type="text/css" />
+</head>
+<body>
+<content>
+<div class="detail">
+	<div class="top">
+		<img src="img/pub/card/top.png" />
+	</div>
+	<div class="member-tit">
+		会员权益
+	</div>
+	<div class="member-data">
+		<dl>
+			<dt class="tit">会员权益如下</dt>
+			<dt>1.会员享有快速发布信息，单项搜索会员享有快速发布信息，单项搜索</dt>
+			<dt>2.会员享有快速发布信息，单项搜索会员享有快速发布信息，单项搜索</dt>
+			<dt>3.会员享有快速发布信息，单项搜索会员享有快速发布信息，单项搜索</dt>
+			<dt>4.会员享有快速发布信息，单项搜索会员享有快速发布信息，单项搜索</dt>
+			<span class="hide">
+			<dt>5.会员享有快速发布信息，单项搜索会员享有快速发布信息，单项搜索</dt>
+			<dt>6.会员享有快速发布信息，单项搜索会员享有快速发布信息，单项搜索</dt>
+			</span>
+		</dl>
+		<div class="member-open"><span class="red">展开</span></div>
+	</div>
+	<div class="where">
+		<dl>
+			<dt class="name">姓名<span class="red">（*必填）</span></dt>
+			<dt class="value"><input id="name" type="text" /></dt>
+			<dt class="name">电话<span class="red">（*必填）</span></dt>
+			<dt class="value"><input id="tel" type="text" /></dt>
+			<dt class="name">微信<span class="red">（*必填）</span></dt>
+			<dt class="value"><input id="wx" type="text" /></dt>
+			<dt class="name">地区<span class="red">（*必填）</span></dt>
+			<dt class="value"><input id="distinct" type="text" /></dt>
+			<dt class="name">类别<span class="red">（*必填）</span></dt>
+			<dt class="value category" id="category">
+				<a class="active"><b></b>精品专线</a>
+				<a><b></b>落地配</a>
+				<a><b></b>本地货车</a>
+				<a><b></b>专业调车</a>
+				<a><b></b>国内货运</a>
+				<a><b></b>国际物流</a>
+				<a><b></b>物流园区</a>
+				<a><b></b>快递设备</a>
+				<a><b></b>其他物流</a>
+			</dt>
+			<dt class="name">推荐人<span class="red small">（填推荐人姓名、微信号、手机号，没有为空）</span></dt>
+			<dt class="value"><input id="referal" type="text" /></dt>
+		</dl>
+	</div>
+	<div class="submit" id="submit">
+		提交
+	</div>
+	<div class="foot-tserver">
+		<p>Copyright © 2016 查物流 浙ICP备14004390号</p>
+		<p>全国统一客服热线</p>
+	</div>
+</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+var argjson = JSON.parse(Base.tools.getQueryString('args'));
+getUser(function(dd){
+	$('#tel').val(dd.phone);
+});
+$('#category>a').click(function(){
+	var o = $(this);
+	o.parent().find('.active').removeClass('active');
+	o.addClass('active');
+})
+$('.member-open').click(function(){
+	$('.member-data .hide').show();
+	$(this).hide();
+})
+$('#submit').click(function(){
+	var name = $('#name').val(),
+		tel = $('#tel').val(),
+		wx = $('#wx').val(),
+		distinct = $('#distinct').val(),
+		category = $('#category>a.active').text(),
+		referal = $('#referal').val()
+	;
+	
+	var sub = {
+		name : name,
+		tel : tel,
+		weixin : wx,
+		distinct : distinct,
+		category : category,
+		referal : referal
+	};
+	alert(str(sub));
+	$.ajax({
+		url: '/user/bcard/publish',
+		data : sub,
+		dataType: 'json',
+		success : function(dd) {
+			log(str(dd));
+			if(dd.info=='发布名片成功') {
+				alert(dd.info);
+				location.href = argjson.burl;
+			}
+			else alert(dd.info);
+		},
+		error : function(jqXHR,textStatus) {
+			alert(' request failed'+textStatus);
+		}
+	});
+	
+})
+</script>
+</body>
+</html>
