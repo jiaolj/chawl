@@ -1,5 +1,8 @@
 getLocation.init(function(){
 	(function(){
+		var _argArea = 1,
+			_kwd = '',
+			_key;
 		window.MVC = {
 			querys : {
 				args : function(){
@@ -9,6 +12,7 @@ getLocation.init(function(){
 					if(!a.long) a.long = '车长';
 					if(!a.ctype) a.ctype = '';
 					if(!a.citys) a.citys = {'1':$('#cityname').text().replace('市',''),'2':'全国'};
+					_key = 'kwd'+a.sort;
 					return a;
 				}(),
 				is : 0,
@@ -43,25 +47,27 @@ getLocation.init(function(){
 				else d = d.replace('#logo','http://www.chawuliu.com/uploads/page/default9d665cfbf7bbd3834f7accbeaeea423b.jpg');
 				return d;
 			},
-			getHtml : function(data,i){
+			getHtml : function(data){
 				var obj = this,htm = '',tmp = obj.dom.tmp;
-				if(i) obj.dom.list.html(function(){for(var i=0;i<data.length;i++) htm += obj.rdata(tmp,data[i]);return htm});
-				else for(var i=0;i<data.length;i++) obj.dom.list.append(obj.rdata(tmp,data[i]));
+				for(var i=0;i<data.length;i++) obj.dom.list.append(obj.rdata(tmp,data[i]));
 			},
-			getList : function(i,argArea){
+			getList : function(ag){
 				var obj = this,
+					ag = ag || {},
 					argStr = '',
 					arg = {},
 					args = JSON.parse(JSON.stringify(obj.querys.args))
 				;
+				if(ag.clear==1) obj.dom.list.empty();
 				obj.dom.list.append(obj.dom.load);
 				obj.querys.is = 1;
 				arg.page = obj.querys.page;
 				arg.sort = args.sort;
-				if(argArea!=3){
+				if(_argArea!=3){
 					if(args.citys['1']!='出发地') arg.starting = args.citys['1'];
 					if(args.citys['2']!='目的地') arg.destination = args.citys['2'];
 				}
+				if(_kwd.length>0) arg.kwd = _kwd;
 				log(arg);
 				$.ajax({
 					url : '/page/index',
@@ -71,14 +77,21 @@ getLocation.init(function(){
 						log(dd);
 						var lst = dd.page_list;
 						if(lst.length>0){
-							obj.getHtml(lst,i);
+							obj.getHtml(lst);
 							obj.querys.is = 0;
 						}
 						else {
-							obj.querys.end = 1;
-							obj.querys.page = 1;
-							obj.dom.list.append('<div class="moreText">以下为平台推荐的名片</div>');
-							obj.getList(null,3);
+							if(lst.length>0 && lst.length<=5){
+								obj.getHtml(lst);
+							}
+							if(_argArea==3){
+								obj.querys.end = 1;
+							}else{
+								obj.querys.page = 1;
+								obj.dom.list.append('<div class="moreText">以下为平台推荐的名片</div>');
+								_argArea = 3;
+								obj.getList();
+							}
 						}
 						obj.dom.list.find('.load').remove();
 					},
@@ -87,16 +100,49 @@ getLocation.init(function(){
 					}
 				});
 			},
-			query : function(){
+			query : function(arg){
 				var obj = this;
-				obj.getList(1);
+				obj.getList(arg);
+			},
+			getHis : function(){
+				var obj = this;
+				$('dl.his').html(function(){
+					var htm = '',
+						data = $.cookie(_key).split(',');
+					data.reverse();
+					$.each(data,function(k,j){
+						if(j.length>0 && k<10) htm += '<dt><img src="img/time.png"/> '+unescape(j)+'</dt>';
+					})
+					return htm;
+				}).find('dt').click(function(){
+					var name = $(this).text().trim();
+					obj.getHisFuc(name);
+				})
+			},
+			getHisFuc : function(name){
+				var obj = this,
+					kwdHis = $.cookie(_key).split(',');
+				if(kwdHis.indexOf(name)==-1) {
+					kwdHis.push(escape(name));
+					$.cookie(_key,kwdHis.join(','));
+				}
+				obj.getHis();
+				$('#searchBox').toggleClass('hide');
+				if(name) _kwd = name;
+				else {
+					_kwd = '';
+					name = '搜索';
+				}
+				$('.search-choice span').text(name);
+				obj.querys.end = 0;
+				obj.query({clear:1});
 			},
 			init : function(){
 				var obj = this,
 					args = JSON.parse(JSON.stringify(obj.querys.args))
 				;
-				$('.from').text(obj.querys.args.citys['1']);
-				$('.to').text(obj.querys.args.citys['2']);
+				$('.from').html(obj.querys.args.citys['1']+' <b></b>');
+				$('.to').html(obj.querys.args.citys['2']+' <b></b>');
 				obj.querys.args.citys['1'] = obj.querys.args.citys['1'].replace('全国','出发地');
 				obj.querys.args.citys['2'] = obj.querys.args.citys['2'].replace('全国','目的地');
 				if(args.title=='精品专线'){
@@ -138,6 +184,25 @@ getLocation.init(function(){
 						//location.href = 'long.html?args='+str(args);
 					}
 				});
+				//历史搜索
+				if(!$.cookie(_key)) {
+					$.cookie(_key,'');
+				}
+				obj.getHis();
+				$('.search-choice').click(function(){
+					$('#searchBox').toggleClass('hide');
+				})
+				$('a.back').click(function(){
+					$('#searchBox').toggleClass('hide');
+				})
+				$('#searchBox .words>a').click(function(){
+					var name = $(this).text().trim();
+					obj.getHisFuc(name);
+				})
+				$('#searchBox a.ok').click(function(){
+					var name = $('#searchBox .search input').val().trim();
+					obj.getHisFuc(name);
+				})
 			}
 		}
 	})();
@@ -147,5 +212,12 @@ getLocation.init(function(){
 			if(_userInfo) location.href = $(this).attr('htm');
 			else _followFunc();
 		})
+		if(_userInfo) {
+			_getUserDetail(_userInfo.user_id,function(back){
+				//log(back);
+				$('#headimgurl').html('<img src="'+back.headimgurl+'"/>');
+				//$('#nickname').text(back.nickname);
+			})
+		}
 	})
 })

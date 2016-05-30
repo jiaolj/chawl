@@ -50,6 +50,9 @@ input {
 .w50 {
   width: 50%;
 }
+input {
+  border: none;
+}
 body {
   position: relative;
   background: #f0f0f0;
@@ -57,6 +60,206 @@ body {
 }
 content {
   display: block;
+}
+content .top {
+  line-height: 0.37rem;
+  background: #df4b24;
+  text-align: center;
+  position: relative;
+}
+content .top a {
+  color: #ffffff;
+}
+content .top a.pleft {
+  position: absolute;
+  left: 0.09rem;
+  top: 0%;
+}
+content .top a.pleft .cityname {
+  position: relative;
+  top: 0.01rem;
+}
+content .top a.pleft img.back {
+  height: 0.35rem;
+}
+content .top a.pleft span img {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 0.035rem;
+}
+content .top a.pright {
+  position: absolute;
+  right: 0.09rem;
+  top: 0%;
+}
+content .top a.pright b {
+  display: inline-block;
+  font-weight: 100;
+  position: absolute;
+  right: 0%;
+  top: 0.05rem;
+  background: #df4b24;
+  width: 0.105rem;
+  height: 0.105rem;
+  border-radius: 50%;
+  line-height: 0.105rem;
+  font-size: 0.09rem;
+  display: none;
+}
+content .top img.area {
+  width: 0.12rem;
+}
+content .top img.logo {
+  height: 0.35rem;
+}
+content .top img.msg {
+  width: 0.21rem;
+}
+content .search-choice {
+  text-align: center;
+  cursor: pointer;
+  background: #e9e9e9;
+  line-height: 0.3rem;
+  padding: 0.045rem 0.06rem;
+}
+content .search-choice .boxs {
+  background: #ffffff;
+  border-radius: 0.06rem;
+}
+content .search-choice .boxs img {
+  height: 0.13rem;
+  position: relative;
+  top: -0.01rem;
+}
+content .allBox {
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  color: #333333;
+  line-height: 0.26rem;
+  z-index: 9;
+  background: #f3f3f4;
+  height: 100%;
+}
+content .allBox .search {
+  background: #ffffff;
+  padding-top: 0.045rem;
+  padding-bottom: 0.09rem;
+  border-bottom: 1px solid #dddddd;
+}
+content .allBox .search a.back {
+  display: block;
+  position: absolute;
+  width: 0.08rem;
+  height: 0.08rem;
+  border-top: 0.015rem solid #df4b24;
+  border-left: 0.015rem solid #df4b24;
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  /* IE 9 */
+  -moz-transform: rotate(-45deg);
+  /* Firefox */
+  -webkit-transform: rotate(-45deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-45deg);
+  /* Opera */
+  margin-left: 0.09rem;
+  top: 0.11rem;
+}
+content .allBox .search img {
+  position: absolute;
+  height: 0.1rem;
+  top: 0.13rem;
+  margin-left: 0.47rem;
+}
+content .allBox .search input {
+  background: #f3f3f4;
+  border-radius: 0.09rem;
+  margin-left: 0.35rem;
+  height: 0.18rem;
+  font-size: 0.11rem;
+  text-indent: 0.25rem;
+  width: 2.6rem;
+}
+content .allBox .box {
+  padding-bottom: 0.045rem;
+}
+content .allBox .box .title {
+  line-height: 0.24rem;
+  font-size: 0.11rem;
+  color: #999999;
+  padding-left: 2%;
+}
+content .allBox .box .words {
+  background: #ffffff;
+  border-radius: 0.04rem;
+  width: 96%;
+  margin-left: 2%;
+  border-top: 1px solid #f3f3f4;
+  border-left: 1px solid #f3f3f4;
+}
+content .allBox .box .words a {
+  display: block;
+  width: 33.3%;
+  float: left;
+  text-align: center;
+  border-right: 1px solid #f3f3f4;
+  border-bottom: 1px solid #f3f3f4;
+  box-sizing: border-box;
+  background: #ffffff;
+  font-size: 0.12rem;
+}
+content .allBox .box dl.his {
+  background: #ffffff;
+  border-radius: 0.04rem;
+  margin-bottom: 0.045rem;
+  width: 96%;
+  margin-left: 2%;
+}
+content .allBox .box dl.his dt {
+  border-bottom: 1px solid #f3f3f4;
+  text-indent: 0.5em;
+  background: #ffffff;
+  font-size: 0.12rem;
+  cursor: pointer;
+  position: relative;
+}
+content .allBox .box dl.his dt:after {
+  content: '';
+  position: absolute;
+  width: 0.06rem;
+  height: 0.06rem;
+  border-bottom: 1px solid #aaaaaa;
+  border-right: 1px solid #aaaaaa;
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  /* IE 9 */
+  -moz-transform: rotate(-45deg);
+  /* Firefox */
+  -webkit-transform: rotate(-45deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-45deg);
+  /* Opera */
+  right: 0.09rem;
+  top: 0.11rem;
+}
+content .allBox .box dl.his dt img {
+  height: 0.12rem;
+  position: relative;
+  top: -0.015rem;
+}
+content .allBox .box a.ok {
+  display: block;
+  text-align: center;
+  background: #ffffff;
+  width: 96%;
+  margin-left: 2%;
+  background: #df4b24;
+  border-radius: 0.04rem;
+  color: #ffffff;
+  margin-top: 0.1rem;
 }
 .follow {
   position: fixed;
@@ -78,9 +281,15 @@ textarea {
   font-size: 0.14rem;
 }
 .load {
-  line-height: 0.18rem;
+  line-height: 0.23rem;
   text-align: center;
   font-size: 0.14rem;
+}
+.load img {
+  height: 0.19rem;
+  position: relative;
+  top: -0.02rem;
+  margin-right: 0.02rem;
 }
 .pub-btn {
   text-align: center;

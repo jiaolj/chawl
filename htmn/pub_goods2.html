@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <link rel="stylesheet" href="css/base.css" type="text/css" />
 <link rel="stylesheet" href="css/pub_goods2.css" type="text/css" />
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 </head>
 <body>
 <content>
@@ -27,26 +26,16 @@
 				<a class="choice" k="starting" v="1"><div class="up"><img src="img/pub/from.png" /> <span id="starting">...</span></div></a>
 				<a class="choice" k="destination" v="2"><div class="down"><img src="img/pub/to.png" /> <span id="destination">...</span></div></a>
 			</div>
-			<div class="flt two"><a id="history">历史<br />记录</a></div>
+			<!--<div class="flt two"><a id="history">历史<br />记录</a></div>-->
 			<br class="cb"/>
 		</div>
-		<a class="choice hide" k="times"><div class="box">
+		<a class="choice" k="times"><div class="box">
 			<img src="img/pub/time.png" /> <span id="times">...</span>
 		</div></a>
 		<textarea class="box leavewords block-goods" id="leavewords-goods2" placeholder="请输入或粘贴货源详情，如：杭州到广州有20吨货，需9.6米高栏车13777567756"></textarea>
 		<textarea class="box leavewords block-car" id="leavewords-car2" placeholder="请输入或粘贴车源详情，如：9.6米高栏车在杭州，求广州方向货源13777567756"></textarea>
 		<div class="box phone">
 			<span class="text">联系方式</span> <input id="phone" placeholder="请输入手机号码"/>
-		</div>
-		<div class="pics">
-			<div class="pic">
-			</div>
-			<div class="pic">
-			</div>
-			<div class="pic pic-list">
-				<p class="add j-add">+</p><p>添加图片</p>
-			</div>
-			<br class="cb"/>
 		</div>
 		<div class="pub-btn" id="pubOk">
 			发布
@@ -67,15 +56,16 @@
 		</dl>
 	</div>
 </content>
-<script async="async" src="js/cityData.js"></script>
-<script src="js/base2.js"></script>
-<script src="js/img_post.js"></script>
+<script src="js/cityData.js"></script>
+<script src="js/base2.js?v=4"></script>
+<script src="js/jquery.cookie.js"></script>
 <script>
 var Main = (function(){
 	var _obj = {},
 		_tp = Base.tools.getQueryString('tp'),
 		_backurl = Base.tools.getQueryString('backurl'),
 		_os = $('.oneStep'),
+		_isPub = 0,
 		_ts = $('.twoStep'),
 		_arg = {starting:'从哪里出发',destination:'到哪里去',times:'可装货时间',leavewords:'',phone:''},
 		_get = function(){
@@ -154,9 +144,9 @@ var Main = (function(){
 			})
 			return _obj;
 		},
-		init : function(user_info){
+		init : function(){
 			_obj = this;
-			_arg.phone = user_info.phone;
+			if(_userInfo) _arg.phone = _userInfo.phone;
 			_get();
 			//历史
 			$('#history').attr('href','pub_history.html?t='+_tp);
@@ -166,7 +156,13 @@ var Main = (function(){
 						numList = lv.match(/[0-9]+/ig),
 						arg = {kwd:lv}
 					;
-					if(lv.indexOf('至')!=-1){
+					if(lv.indexOf('到')!=-1){
+						arg.spt = '到';
+					}else if(lv.indexOf('-')!=-1){
+						arg.spt = '-';
+					}else if(lv.indexOf('—')!=-1){
+						arg.spt = '—';
+					}else if(lv.indexOf('至')!=-1){
 						arg.spt = '至';
 					}else if(lv.indexOf('去')!=-1){
 						arg.spt = '去';
@@ -176,31 +172,32 @@ var Main = (function(){
 						arg.spt = '往';
 					}else if(lv.indexOf('求')!=-1){
 						arg.spt = '求';
-					}
-					//log(arg);
+					};
+					log(arg);
 					$.ajax({
 						url : 'http://server.jiaolj.com/getLocation',
 						data : arg,
 						dataType : 'json',
 						success : function(back){
-							//log(back);
-							if(back.from){
+							log(back);
+							if(back.from && back.from.province_name){
 								var fstr = '';
 								if(back.from.province_name==back.from.city_name){
 									fstr += back.from.province_name+' ';
 								}else{
-									if(back.from.province_name) fstr += back.from.province_name+'省 ';
+									if(back.from.province_name) fstr += back.from.province_name+' ';
 									if(back.from.city_name) fstr += back.from.city_name+' ';
 								}
 								if(back.from.area_name) fstr += back.from.area_name;
 								_arg.starting = fstr.trim();
 							};
-							if(back.to){
+							if(back.to && back.to.province_name){
+								log(back.to);
 								var tstr = '';
 								if(back.to.province_name==back.to.city_name){
 									tstr += back.to.province_name+' ';
 								}else{
-									if(back.to.province_name) tstr += back.to.province_name+'省 ';
+									if(back.to.province_name) tstr += back.to.province_name+' ';
 									if(back.to.city_name) tstr += back.to.city_name+' ';
 								}
 								if(back.to.area_name) tstr += back.to.area_name;
@@ -225,59 +222,85 @@ var Main = (function(){
 				}
 			})
 			$('#pubOk').click(function(){
-				if(_arg.starting=='从哪里出发'){
-					alert('请选择出发地');
-					return;
-				}
-				if(_arg.destination=='到哪里去'){
-					alert('请选择目的地');
-					return;
-				}
-				if(_tp=='goods'){
-					var arg = {
-							starting : _arg.starting,
-							destination : _arg.destination,
-							type: '未知',
-							model: '未知',
-							length: '未知',
-							weight:0.01,
-							volume:0.01,
-							phone : $('#phone').val(),
-							remark: $('#leavewords-'+_tp+'2').val(),
-						}
-					;
-				}else if(_tp=='car'){
-					var arg = {
-							starting : _arg.starting,
-							destination : _arg.destination,
-							city: '未知',
-							model: '未知',
-							length: '未知',
-							car_no: '未知',
-							phone : $('#phone').val(),
-							remark: $('#leavewords-'+_tp+'2').val(),
-						}
-					;
-				};
-				if(_arg.times=='可装货时间'){
-					arg.dtime_chn = '1970-01-01';
-				}else{
-					arg.dtime_chn = _arg.times;
-				};
-				arg.dtime = Base.tools.str_to_int(arg.dtime_chn);
-				$.ajax({
-					url: '/'+_tp+'/publish',
-					data : arg,
-					dataType: 'json',
-					success : function(back) {
-						if(_tp=='goods' && back.info=='发布货源成功') location.href = 'find.html';//_backurl;
-						else if(_tp=='car' && back.info=='发布车源成功') location.href = 'find.html'//;_backurl;
-						else alert(back.info);
-					},
-					error : function(jqXHR,textStatus) {
-						alert(' request failed'+textStatus);
+				if(_isPub==0){
+					if(_arg.starting=='从哪里出发'){
+						alert('请选择出发地');
+						return;
 					}
-				});
+					if(_arg.destination=='到哪里去'){
+						alert('请选择目的地');
+						return;
+					}
+					if(_tp=='goods'){
+						var arg = {
+								starting : _arg.starting,
+								destination : _arg.destination,
+								type: '未知',
+								model: '未知',
+								length: '未知',
+								weight:0.01,
+								volume:0.01,
+								phone : $('#phone').val() || -1,
+								remark: $('#leavewords-'+_tp+'2').val(),
+							}
+						;
+					}else if(_tp=='car'){
+						var arg = {
+								starting : _arg.starting,
+								destination : _arg.destination,
+								city: '未知',
+								model: '未知',
+								length: '未知',
+								car_no: '未知',
+								phone : $('#phone').val() || -1,
+								remark: $('#leavewords-'+_tp+'2').val(),
+							}
+						;
+					};
+					if(_arg.times=='可装货时间'){
+						alert('请选择可装货时间');
+						return;
+						//arg.dtime_chn = '1970-01-01';
+					}else{
+						arg.dtime_chn = _arg.times;
+					};
+					arg.dtime = Base.tools.str_to_int(arg.dtime_chn);
+					_isPub = 1;
+					$.ajax({
+						url: '/'+_tp+'/publish',
+						data : arg,
+						timeout : 1000,
+						//type : 'POST',
+						dataType: 'json',
+						success : function(back) {
+							if(_tp=='goods' && back.info=='发布货源成功') {
+								alert('发布货源成功');
+								location.href = 'find.html?tp=2';
+							}
+							else if(_tp=='car' && back.info=='发布车源成功') {
+								alert('发布车源成功');
+								location.href = 'find.html?tp=1';
+							}
+							else alert(str(back));
+						},
+						error : function(XMLHttpRequest, textStatus, errorThrown){
+							_isPub = 1;
+							if(_tp=='goods') {
+								alert('发布货源成功');
+								location.href = 'find.html?tp=2';
+							}
+							else if(_tp=='car') {
+								alert('发布车源成功');
+								location.href = 'find.html?tp=1';
+							}
+							//alert(str(XMLHttpRequest));
+							//alert(str(textStatus));
+							//alert(str(errorThrown));
+						}
+					});
+				}else{
+					//alert('正在发布，等待中..');
+				}
 			})
 			$('.choice').click(function(){
 				var k = $(this).attr('k')
@@ -308,6 +331,7 @@ var Main = (function(){
 					$('.choiceTimes').show().css({top:'100%'}).animate({top:'1%'});
 				}
 			})
+			//城市选择
 			$('.choiceCity .city-menu a').click(function(){
 				var o = $(this),
 					i = o.attr('i');
@@ -380,8 +404,8 @@ var Main = (function(){
 	}
 })();
 window.onload = function(){
-	getUser(function(dd){
-		Main.init(dd).getCity().getTimes();
+	getUser(function(){
+		Main.init().getCity().getTimes();
 	})
 };
 </script>

@@ -1,48 +1,6 @@
 body {
   background: #ffffff;
 }
-.top {
-  line-height: 0.37rem;
-  background: #df4b24;
-  text-align: center;
-}
-.top a {
-  color: #ffffff;
-}
-.top a.flt {
-  margin-left: 0.09rem;
-}
-.top a.flt .cityname {
-  position: relative;
-  top: 0.01rem;
-}
-.top a.frt {
-  margin-right: 0.09rem;
-  position: relative;
-}
-.top a.frt b {
-  display: inline-block;
-  font-weight: 100;
-  position: absolute;
-  right: 0%;
-  top: 0.05rem;
-  background: #ff0000;
-  width: 0.105rem;
-  height: 0.105rem;
-  border-radius: 50%;
-  line-height: 0.105rem;
-  font-size: 0.09rem;
-  display: none;
-}
-.top img.area {
-  width: 0.12rem;
-}
-.top img.logo {
-  width: 0.82rem;
-}
-.top img.msg {
-  width: 0.21rem;
-}
 .head {
   width: 3.2rem;
   height: 1.165rem;
@@ -62,10 +20,11 @@ section > nav {
   margin-top: 0.15rem;
 }
 section > nav > a {
-  display: inline-block;
+  display: block;
   text-align: center;
-  width: 0.77rem;
+  width: 25%;
   margin-top: 0.15rem;
+  float: left;
 }
 section > nav > a .img {
   width: 0.4rem;
@@ -104,6 +63,29 @@ table.menu td span {
   line-height: 0.4rem;
   height: 0.4rem;
   overflow: hidden;
+}
+table.menu td span.choice {
+  color: #df4b24;
+  font-weight: 900;
+}
+table.menu td span.choice b {
+  display: inline-block;
+  position: relative;
+  width: 0.06rem;
+  height: 0.06rem;
+  border-bottom: 1px solid #df4b24;
+  border-left: 1px solid #df4b24;
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  /* IE 9 */
+  -moz-transform: rotate(-45deg);
+  /* Firefox */
+  -webkit-transform: rotate(-45deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-45deg);
+  /* Opera */
+  left: 0.045rem;
+  top: -0.04rem;
 }
 table.menu td.active span {
   border-bottom: 2px solid #cd2525;

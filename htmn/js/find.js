@@ -1,6 +1,7 @@
 getLocation.init(function(){
 	(function(){
-		var _tp = Base.tools.getQueryString('tp');
+		var _tp = Base.tools.getQueryString('tp'),
+			_argArea = 0;
 		if(_tp) _tp = parseInt(_tp);
 		else _tp = 2;
 		window.MVC = {
@@ -8,7 +9,7 @@ getLocation.init(function(){
 				args : function(){
 					var args = json(Base.tools.getQueryString('args'));
 					if(!args){
-						args = {findType : _tp, citys:{'1':$('#cityname').text().replace('市',''),'2':'全国'}};
+						args = {findType : _tp, citys:{'1':'全国','2':'全国'}};//$('#cityname').text().replace('市','')
 					};
 					return  args;
 				}(),
@@ -69,14 +70,14 @@ getLocation.init(function(){
 						}
 					})
 				};
-				d=d.replace('#remark',remark).replace('#rmktitle',j.remark).replace('#car_no',j.car_no).replace('#car_id',j.car_id).replace('#goods_id',j.goods_id).replace('#ii',i).replace('#is_tel',j.is_tel).replace('#user_id',j.user_id).replace('#phone',j.phone).replace('#headimgurl',j.user_info && j.user_info[0].headimgurl).replace('#starting',j.starting).replace('#destination',j.destination).replace('#city',j.city).replace('#volume',_None(j.volume)).replace('#weight',_None(j.weight)).replace('#time1',Base.tools.int_to_str(j.ctime)).replace('#time2',Base.tools.int_to_str(j.ctime,1));
+				d=d.replace('#remark',remark).replace('#rmktitle',j.remark).replace('#car_no',j.car_no).replace('#car_id',j.car_id).replace('#goods_id',j.goods_id).replace('#ii',i).replace('#is_tel',j.is_tel).replace('#user_id',j.user_id).replace('#phone',j.phone).replace('#headimgurl',j.user_info[0].headimgurl).replace('#starting',j.starting).replace('#destination',j.destination).replace('#city',j.city).replace('#volume',_None(j.volume)).replace('#weight',_None(j.weight)).replace('#time1',Base.tools.int_to_str(j.ctime)).replace('#time2',Base.tools.past_time(j.ctime));
 				if(j.length=='不限') d = d.replace('#length','未知');
 				else d=d.replace('#length',parseFloat(j.length) && parseFloat(j.length).toFixed(1)+'米');
 				if(j.model=='车长车型') d=d.replace('#model','未知');
 				else d=d.replace('#model',j.model.replace('所需车辆','未知').replace('不限','未知'));
 				return d;
 			},
-			getHtml : function(data,i){
+			getHtml : function(data){
 				var obj = this,
 					htm = '',
 					tmp = function(){
@@ -84,15 +85,16 @@ getLocation.init(function(){
 						else  return obj.dom.tmp_goods;
 					}()
 				;
-				if(i) obj.dom.list.html(function(){for(var i=0;i<data.length;i++) htm += obj.rdata(i,tmp,data[i]);return htm});
-				else for(var i=0;i<data.length;i++) obj.dom.list.append(obj.rdata(i,tmp,data[i]));
+				for(var i=0;i<data.length;i++) {
+					if(data[i].user_info && data[i].user_info[0]) obj.dom.list.append(obj.rdata(i,tmp,data[i]));
+				}
 			},
-			getList : function(i,argArea,loc){
+			getList : function(){
 				var obj = this,arg = {};
 				obj.dom.list.append(obj.dom.load);
 				obj.querys.is = 1;
 				arg.page = obj.querys.page;
-				if(argArea!=3){
+				if(_argArea!=3){
 					if(obj.querys.args.citys['1']!='出发地') arg.starting = obj.querys.args.citys['1'].split(' ').pop();
 					if(obj.querys.args.citys['2']!='目的地') arg.destination = obj.querys.args.citys['2'].split(' ').pop();
 				}
@@ -104,21 +106,28 @@ getLocation.init(function(){
 					success : function(dd) {
 						log(dd);
 						var lst = dd.list;
-						if(lst.length>0){
+						obj.querys.is = 0;
+						if(lst.length>5){
 							obj.querys.cache = lst;
-							obj.getHtml(lst,i);
-							obj.querys.is = 0;
+							obj.getHtml(lst);
 						}
 						else {
-							obj.querys.end = 1;
-							obj.querys.page = 1;
-							if(obj.querys.args.findType==1) {
-								var txt = '车源';
-							}else if(obj.querys.args.findType==2) {
-								var txt = '货源';
+							if(lst.length>0 && lst.length<=5){
+								obj.getHtml(lst);
 							}
-							obj.dom.list.append('<div class="moreText">以下为平台推荐的'+txt+'</div>');
-							obj.getList(null,3);
+							if(_argArea==3){
+								obj.querys.end = 1;
+							}else{
+								if(obj.querys.args.findType==1) {
+									var txt = '车源';
+								}else if(obj.querys.args.findType==2) {
+									var txt = '货源';
+								}
+								obj.dom.list.append('<div class="moreText">以下为平台推荐的'+txt+'</div>');
+								obj.querys.page = 1;
+								_argArea = 3;
+								obj.getList();
+							}
 						}
 						obj.dom.list.find('.load').remove();
 					},
@@ -129,7 +138,7 @@ getLocation.init(function(){
 			},
 			query : function(){
 				var obj = this;
-				obj.getList(1);
+				obj.getList();
 			},
 			init : function(){
 				var obj = this;
@@ -141,8 +150,8 @@ getLocation.init(function(){
 					obj.querys.ajaxUrl = '/viewgoods';
 					$('#findtype>div').eq(1).addClass('active');
 				}
-				$('.from').text(obj.querys.args.citys['1'].split(' ').pop().replace('出发地','全国'));
-				$('.to').text(obj.querys.args.citys['2'].split(' ').pop().replace('目的地','全国'));
+				$('.from').html(obj.querys.args.citys['1'].split(' ').pop().replace('出发地','全国')+' <b></b>');
+				$('.to').html(obj.querys.args.citys['2'].split(' ').pop().replace('目的地','全国')+' <b></b>');
 				obj.querys.args.citys['1'] = obj.querys.args.citys['1'].replace('全国','出发地');
 				obj.querys.args.citys['2'] = obj.querys.args.citys['2'].replace('全国','目的地');
 				//obj.querys.args.ctype = obj.querys.args.ctype.replace('0','车型');

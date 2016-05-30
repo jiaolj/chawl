@@ -157,11 +157,12 @@ var getLocation = {
 			});
 	},
 	setValue : function(v,suc){
-		$('#cityname').text(v);
+		$('#cityname').text(_simpCity(v));
 		//$('#cityname').attr('py',codefans_net_CC2PY(v.replace('市','')).toLowerCase());
 		suc && suc();
 	},
 	init : function(suc){
+		log(1);
 		var _key = 'cityname1';
 		if($.cookie(_key)){
 			getLocation.setValue($.cookie(_key),suc);

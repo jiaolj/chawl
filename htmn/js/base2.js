@@ -144,11 +144,18 @@ var log = function(){for(var arg in arguments) console && console.log(arguments[
 		return c;
 	},
 	_simpCity = function(r){
-		if(r.length>2){
+		if (r.length>=6){
+			r = r.replace('苏柯尔克孜','');
+			r = r.replace('哈萨克族','');
+		}
+		if (r.length>=5){
+			r = r.replace('保安族 ','');
+			r = r.replace('哈萨克','');
 			r = r.replace('自治区','');
 			r = r.replace('自治州','');
 			r = r.replace('自治县','');
 			r = r.replace('自治旗','');
+			r = r.replace('联合旗','');
 			r = r.replace('斡尔族','');
 			r = r.replace('维吾尔','');
 			r = r.replace('自治州','');
@@ -168,9 +175,19 @@ var log = function(){for(var arg in arguments) console && console.log(arguments[
 			r = r.replace('独龙族','');
 			r = r.replace('普米族','');
 			r = r.replace('裕固族','');
-			r = r.replace('哈萨克族','');
-			r = r.replace('东乡族','');
 			r = r.replace('撒拉族','');
+		}
+		if (r.length>=5){
+			r = r.replace('东乡族','');
+		}
+		if (r.length>=4){
+			r = r.replace('林区','');
+			r = r.replace('前旗','');
+			r = r.replace('沁旗','');
+			r = r.replace('中旗','');
+			r = r.replace('后旗','');
+			r = r.replace('左旗','');
+			r = r.replace('右旗','');
 			r = r.replace('各族','');
 			r = r.replace('畲族','');
 			r = r.replace('满族','');
@@ -193,15 +210,21 @@ var log = function(){for(var arg in arguments) console && console.log(arguments[
 			r = r.replace('土族','');
 			r = r.replace('土族','');
 			r = r.replace('地区','');
-			r = r.replace('市','');
+		}
+		if (r.length>=4){
+			r = r.replace('左翼','');
+			r = r.replace('右翼','');
+			r = r.replace('蒙古','');
+		}
+		if (r.length>=3){
 			r = r.replace('县','');
-			r = r.replace('区','');
 			r = r.replace('省','');
 		}
-		if(r.length>3){
-			r = r.replace('苏柯尔克孜','');
-			r = r.replace('哈萨克','');
-			r = r.replace('蒙古','');
+		if (r.length>=3){
+			r = r.replace('区','');
+		}
+		if (r.length>=3){
+			r = r.replace('市','')
 		}
 		return r;
 	},
@@ -236,7 +259,8 @@ var log = function(){for(var arg in arguments) console && console.log(arguments[
 				else{
 					var hour = parseInt(td/3600);
 					if(hour>1) bk = hour + '小时前';
-					else  bk = parseInt(td/60) + '分钟前';
+					else bk = parseInt(td/60) + '分钟前';
+					if(parseInt(td/60)==0) bk = td + '秒前';
 				}
 				return bk;
 			},
@@ -297,12 +321,22 @@ var log = function(){for(var arg in arguments) console && console.log(arguments[
 			getScrollHeight : function() { //获取文档完整的高度 
 				return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight); 
 			},
+			page : function(suc){
+				var ths = this;
+				window.onscroll = function () { 
+					if (ths.getScrollTop() + ths.getClientHeight() == ths.getScrollHeight()) {
+						suc && suc();
+					} 
+				}
+			},
 			get : function(obj){
 				var ths = this;
 				window.onscroll = function () { 
 					if (ths.getScrollTop() + ths.getClientHeight() == ths.getScrollHeight()) {
-						obj.querys.page ++;
-						if(obj.querys.is==0&&obj.querys.end==0) obj.getList();
+						if(obj.querys.is==0&&obj.querys.end==0) {
+							obj.querys.page ++;
+							obj.getList();
+						}
 					} 
 				}
 			}

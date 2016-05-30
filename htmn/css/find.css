@@ -74,6 +74,29 @@ body {
   height: 0.39rem;
   overflow: hidden;
 }
+.detail table.menu td span.choice {
+  color: #df4b24;
+  font-weight: 900;
+}
+.detail table.menu td span.choice b {
+  display: inline-block;
+  position: relative;
+  width: 0.06rem;
+  height: 0.06rem;
+  border-bottom: 1px solid #df4b24;
+  border-left: 1px solid #df4b24;
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  /* IE 9 */
+  -moz-transform: rotate(-45deg);
+  /* Firefox */
+  -webkit-transform: rotate(-45deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-45deg);
+  /* Opera */
+  left: 0.045rem;
+  top: -0.04rem;
+}
 .detail table.menu td.active span {
   border-bottom: 2px solid #cd2525;
 }

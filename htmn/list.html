@@ -13,7 +13,33 @@
 </head>
 <body>
 <content>
-	<div class="head"><img src="img/index/bg1.png" /></div>
+	<span class="cityname hide" id="cityname"></span>
+	<div class="top">
+		<a class="pleft" href="my.html">
+			<span id="headimgurl"></span>
+		</a>
+		<img src="img/index/logo.png" class="logo" />
+		<a id="to-msg" class="pright"><img class="msg" src="img/index/msg.png" /><b id="num"></b></a>
+	</div>
+	<div class="search-choice">
+		<div class="boxs"><img src="img/search.png" /> <span>搜索</span></div>
+	</div>
+	<div class="allBox hide" id="searchBox">
+		<div class="search"><a class="back"></a><img src="img/search.png"/><input type="text" placeholder="请输入关键词"/></div>
+		<div class="box">
+			<div class="title">热门搜索</div>
+			<div class="words">
+				<a>北京</a><a>天津</a><a>重庆</a>
+				<a>广东</a><a>江苏</a><a>浙江</a>
+				<a>山东</a><a>安徽</a><a>湖南</a>
+				<br class="cb"/>
+			</div>
+			<div class="title">历史搜索</div>
+			<dl class="his"></dl>
+			<a class="ok"><span>搜索</span></a>
+		</div>
+	</div>
+	<!--<div class="head"><img src="img/index/bg1.png" /></div>-->
 	<nav>
 		<table id="where130" cellpadding="0" cellspacing="0" class="menu">
 			<tr><td><span class="choice from" k="from" v="1">出发地</span></td><td><span class="choice" k="change"><img src="img/other/tools.png" /></span></td><td><span class="choice to" k="to" v="2">目的地</span></td></tr>
@@ -40,7 +66,6 @@
 			<br class="cb" />
 		</dl>
 	</footer>
-	<span class="hide" id="cityname"></span>
 </content>
 <script src="js/base2.js"></script>
 <script src="js/jquery.cookie.js"></script>
