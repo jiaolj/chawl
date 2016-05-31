@@ -152,7 +152,7 @@ getUser(function(){
 							tmp = dtailDom;
 						for(var k in msgs) {
 							var m = msgs[k];
-							htm += tmp.replace('#message',m.message).replace('#ctime',Base.tools.int_to_str(m.ctime)).replace('#headimgurl',m.user_info[0].headimgurl).replace('#nickname',m.user_info[0].nickname);
+							htm += tmp.replace('#message',m.message).replace('#ctime',Base.tools.int_to_str(m.ctime)).replace('#headimgurl',m.user_info[0] && m.user_info[0].headimgurl).replace('#nickname',m.user_info[0] && m.user_info[0].nickname);
 						}
 						return htm;
 					});

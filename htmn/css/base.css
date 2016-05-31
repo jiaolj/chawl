@@ -133,6 +133,123 @@ content .search-choice .boxs img {
   position: relative;
   top: -0.01rem;
 }
+content .psfbtn {
+  position: fixed;
+  right: 0.13rem;
+  color: #000000;
+  line-height: 0.4rem;
+  font-size: 0.18rem;
+  z-index: 9;
+}
+content .psfbtn:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+}
+content .psfbtn.refresh {
+  bottom: 1.3rem;
+}
+content .psfbtn.totop {
+  bottom: 0.7rem;
+}
+content .where {
+  margin: 0.15rem;
+}
+content .where div {
+  position: relative;
+  height: 0.35rem;
+  overflow: hidden;
+}
+content .where div:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.23rem;
+  width: 2.7rem;
+  border-bottom: 1px solid #cccccc;
+}
+content .where div:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 0.06rem;
+  height: 0.06rem;
+  border-radius: 50%;
+  top: 0.15rem;
+}
+content .where div.starting:before {
+  border: 1px solid #008000;
+}
+content .where div.destination:before {
+  border: 1px solid #df4b24;
+}
+content .where div input {
+  width: 2.7rem;
+  margin-bottom: 0.045rem;
+  margin-left: 0.23rem;
+  height: 100%;
+  line-height: 0.3rem;
+}
+content .query {
+  line-height: 0.3rem;
+  text-align: center;
+  background: #df4b24;
+  color: #ffffff;
+  margin: 0.1rem;
+  border-radius: 0.04rem;
+  font-size: 0.14rem;
+  cursor: pointer;
+}
+content table.menu {
+  font-size: 0.14rem;
+  width: 100%;
+  text-align: center;
+  color: #666666;
+  border-bottom: 1px solid #eeeeee;
+}
+content table.menu td {
+  cursor: pointer;
+}
+content table.menu td span {
+  width: 1.06rem;
+  display: inline-block;
+  line-height: 0.4rem;
+  height: 0.4rem;
+  overflow: hidden;
+}
+content table.menu td span.choice {
+  color: #df4b24;
+  font-weight: 900;
+}
+content table.menu td span.choice b {
+  display: inline-block;
+  position: relative;
+  width: 0.06rem;
+  height: 0.06rem;
+  border-bottom: 1px solid #df4b24;
+  border-left: 1px solid #df4b24;
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  /* IE 9 */
+  -moz-transform: rotate(-45deg);
+  /* Firefox */
+  -webkit-transform: rotate(-45deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-45deg);
+  /* Opera */
+  left: 0.045rem;
+  top: -0.04rem;
+}
+content table.menu td.active span {
+  border-bottom: 2px solid #cd2525;
+}
+content table.menu img {
+  width: 0.26rem;
+}
 content .allBox {
   position: fixed;
   top: 0%;

@@ -47,52 +47,6 @@ section > nav > a span {
   background: #f0f0f0;
   height: 0.09rem;
 }
-table.menu {
-  font-size: 0.14rem;
-  width: 100%;
-  text-align: center;
-  color: #666666;
-  border-bottom: 1px solid #eeeeee;
-}
-table.menu td {
-  cursor: pointer;
-}
-table.menu td span {
-  width: 1.06rem;
-  display: inline-block;
-  line-height: 0.4rem;
-  height: 0.4rem;
-  overflow: hidden;
-}
-table.menu td span.choice {
-  color: #df4b24;
-  font-weight: 900;
-}
-table.menu td span.choice b {
-  display: inline-block;
-  position: relative;
-  width: 0.06rem;
-  height: 0.06rem;
-  border-bottom: 1px solid #df4b24;
-  border-left: 1px solid #df4b24;
-  transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  /* IE 9 */
-  -moz-transform: rotate(-45deg);
-  /* Firefox */
-  -webkit-transform: rotate(-45deg);
-  /* Safari 和 Chrome */
-  -o-transform: rotate(-45deg);
-  /* Opera */
-  left: 0.045rem;
-  top: -0.04rem;
-}
-table.menu td.active span {
-  border-bottom: 2px solid #cd2525;
-}
-table.menu img {
-  width: 0.26rem;
-}
 dl.list {
   font-size: 0.14rem;
   padding-bottom: 0.55rem;

@@ -14,6 +14,16 @@
 <body>
 <content>
 	<span class="cityname hide" id="cityname"></span>
+	<div class="top">
+		<a class="pleft" href="my.html">
+			<span id="headimgurl"></span>
+		</a>
+		<img src="img/index/logo.png" class="logo" />
+		<a id="to-msg" class="pright"><img class="msg" src="img/index/msg.png" /><b id="num"></b></a>
+	</div>
+	<div class="search-choice">
+		<div class="boxs"><img src="img/search.png" /> <span>搜索</span></div>
+	</div>
 	<div class="allBox hide" id="searchBox">
 		<div class="search"><a class="back"></a><img src="img/search.png"/><input type="text" placeholder="请输入关键词"/></div>
 		<div class="box">
@@ -29,28 +39,8 @@
 			<a class="ok"><span>搜索</span></a>
 		</div>
 	</div>
-	<div class="refresh psfbtn">刷新</div>
-	<div class="totop psfbtn">顶部</div>
-	<div class="top">
-		<a class="pleft" href="my.html">
-			<span id="headimgurl"></span>
-		</a>
-		<img src="img/index/logo.png" class="logo" />
-		<a id="to-msg" class="pright"><img class="msg" src="img/index/msg.png" /><b id="num"></b></a>
-	</div>
-	<!--<div class="search-choice">
-		<div class="boxs"><img src="img/search.png" /> <span>搜索</span></div>
-	</div>-->
-	<div class="where">
-		<div class="starting"><input type="text" placeholder="出发地" /></div>
-		<div class="destination"><input type="text" placeholder="目的地" /></div>
-	</div>
-	<div class="query">查询</div>
-	<table cellpadding="0" cellspacing="0" class="menu" id="change">
-		<tr><td d="0"><span>最新推荐</span></td><td d="1"><span>最新加入</span></td><td d="2"><span>最高票数</span></td></tr>
-	</table>
 	<!--<div class="head"><img src="img/index/bg1.png" /></div>-->
-	<!--<nav>
+	<nav>
 		<table id="where130" cellpadding="0" cellspacing="0" class="menu">
 			<tr><td><span class="choice from" k="from" v="1">出发地</span></td><td><span class="choice" k="change"><img src="img/other/tools.png" /></span></td><td><span class="choice to" k="to" v="2">目的地</span></td></tr>
 		</table>
@@ -63,7 +53,7 @@
 		<table id="where101" cellpadding="0" cellspacing="0" class="menu">
 			<tr><td><span class="choice from" k="from" v="1">城市</span></td><td><span><img src="img/other/tools.png" /></span></td><td><span class="choice" k="ctype" id="ctype">车长</span></td></tr>
 		</table>
-	</nav>-->
+	</nav>
 	<dl id="list" class="list"></dl>
 	<footer>
 		<div class="line"><img src="img/bottom/line.png" /></div>

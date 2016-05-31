@@ -1,17 +1,42 @@
 getLocation.init(function(){
 	(function(){
+		var setGet = function(dom){
+			var jq = $(dom);
+			return {
+				set :function(v){
+					jq.val(v);
+				},
+				get : function(){
+					return jq.val().trim();
+				}
+			}
+		};
 		var _argArea = 1,
 			_kwd = '',
+			_order = {1:'',2:'new',3:'hot'},
+			_cityName = _simpCity($('#cityname').text()),
+			_starting = setGet('.where .starting input'),
+			_destination = setGet('.where .destination input'),
 			_key;
 		window.MVC = {
 			querys : {
 				args : function(){
 					var a = json(Base.tools.getQueryString('args'));
-					if(!a.cartype) a.cartype = '类别';
+					if(!a.findType) a.findType = 1;
+					if(a.starting) _starting.set(a.starting);
+					else {
+						a.starting = _cityName;
+						_starting.set(_cityName);
+					}
+					log(a.destination);
+					if(a.destination) {
+						_destination.set(a.destination);
+					}
+					/*if(!a.cartype) a.cartype = '类别';
 					if(!a.goodstype) a.goodstype = '类别';
 					if(!a.long) a.long = '车长';
 					if(!a.ctype) a.ctype = '';
-					if(!a.citys) a.citys = {'1':$('#cityname').text().replace('市',''),'2':'全国'};
+					if(!a.citys) a.citys = {'1':_cityName,'2':'全国'};*/
 					_key = 'kwd'+a.sort;
 					return a;
 				}(),
@@ -24,13 +49,13 @@ getLocation.init(function(){
 				load : '<div class="load"><img src="img/bottom/find_on.png">努力加载中...</div>',
 				tmp : '\
 					<a href="#href"><dt>\
-						<div class="flt logo1"><img class="logo" src="#logo" /><img class="vip#vip" src="img/list/vip.png"></div>\
+						<div class="flt logo1"><img class="logo" src="#logo" /><img class="vip#vip" src="img/list/vip.png"><img class="vip#member" src="img/list/vip.png"></div>\
 						<div class="flt text1">\
 							<div class="tit">#title</div>\
 							<div class="phone">\
 								<span>#phone</span>\
 								<span class="star">\
-									<span class="viewNum">#stars</span><span class="view">人浏览</span>\
+									<span class="viewNum">#stars</span><span class="view">#people</span>\
 								</span>\
 							</div>\
 							<div class="area">#address</div>\
@@ -40,11 +65,20 @@ getLocation.init(function(){
 				'
 			},
 			rdata : function(d,j){
-				d = d.replace('#href','detail.html?id='+j.id+'&uid='+j.uid).replace('#stars',j.view/*getStar(j.support_num || 0)*/).replace('#title',j.title).replace('#phone',j.phone).replace('#view',j.view).replace('#address',j.address);
-				if(j.is_vip=='1') d = d.replace('#vip','');
-				else d = d.replace('#vip',' hide');
+				var obj = this;
+				d = d.replace('#href','detail.html?id='+j.id+'&uid='+j.uid)/*.replace('#stars',getStar(j.support_num || 0))*/.replace('#title',j.title).replace('#phone',j.phone).replace('#view',j.view).replace('#address',j.address);
+				if(j.is_vip=='1') {
+					d = d.replace('#vip','').replace('#member',' hide');
+				}
+				else {
+					d = d.replace('#vip',' hide');
+					if(j.is_vip==1) d = d.replace('#member','');
+					else d = d.replace('#member',' hide');
+				}
 				if(j.logo) d = d.replace('#logo',j.logo);
 				else d = d.replace('#logo','http://www.chawuliu.com/uploads/page/default9d665cfbf7bbd3834f7accbeaeea423b.jpg');
+				if(obj.querys.args.findType==3) d = d.replace('#people','人推荐').replace('#stars',j.support_num);
+				else d = d.replace('#people','人浏览').replace('#stars',j.view);
 				return d;
 			},
 			getHtml : function(data){
@@ -64,10 +98,13 @@ getLocation.init(function(){
 				arg.page = obj.querys.page;
 				arg.sort = args.sort;
 				if(_argArea!=3){
-					if(args.citys['1']!='出发地') arg.starting = args.citys['1'];
-					if(args.citys['2']!='目的地') arg.destination = args.citys['2'];
+					//if(args.citys['1']!='出发地') arg.starting = args.citys['1'];
+					//if(args.citys['2']!='目的地') arg.destination = args.citys['2'];
+					if(_starting.get()) arg.starting = _starting.get();
+					if(_destination.get()) arg.destination = _destination.get();
 				}
 				if(_kwd.length>0) arg.kwd = _kwd;
+				if(_order[args.findType].length>0) arg.order = _order[args.findType];
 				log(arg);
 				$.ajax({
 					url : '/page/index',
@@ -139,12 +176,12 @@ getLocation.init(function(){
 			},
 			init : function(){
 				var obj = this,
-					args = JSON.parse(JSON.stringify(obj.querys.args))
+					args = json(str(obj.querys.args))
 				;
-				$('.from').html(obj.querys.args.citys['1']+' <b></b>');
+				/*$('.from').html(obj.querys.args.citys['1']+' <b></b>');
 				$('.to').html(obj.querys.args.citys['2']+' <b></b>');
 				obj.querys.args.citys['1'] = obj.querys.args.citys['1'].replace('全国','出发地');
-				obj.querys.args.citys['2'] = obj.querys.args.citys['2'].replace('全国','目的地');
+				obj.querys.args.citys['2'] = obj.querys.args.citys['2'].replace('全国','目的地');*/
 				if(args.title=='精品专线'){
 					$('#where130').show();
 				}else if(args.title=='落地配'){
@@ -159,8 +196,23 @@ getLocation.init(function(){
 				}
 				$('#seoTitle').text(args.title);
 				obj.query();
+				$('.query').click(function(){
+					//obj.query({clear:1});
+					args.starting = _starting.get();
+					args.destination = _destination.get();
+					location.href = '?args=' + str(args);
+				})
+				$('#change td[d="'+(args.findType-1)+'"]').addClass('active');
+				$('#change td').click(function(){
+					var ts = $(this),
+						i = parseInt(ts.attr('d'));
+					args.findType = i + 1;
+					args.starting = _starting.get();
+					args.destination = _destination.get();
+					location.href = '?args=' + str(args);
+				})
 				Base.turn.get(obj);
-				$('.choice').click(function(){
+				/*$('.choice').click(function(){
 					args.url = function(){var l = location.href.split('/').pop(),r = l.split('?')[0];return r}();
 					var k = $(this).attr('k'),
 						v = $(this).attr('v')
@@ -173,8 +225,6 @@ getLocation.init(function(){
 						var cge = args.citys[1];
 						args.citys[1] = args.citys[2].replace('目的地','出发地');
 						args.citys[2] = cge.replace('出发地','目的地');
-						//$('#from').text(obj.querys.args.citys['1']);
-						//$('#to').text(obj.querys.args.citys['2']);
 						location.href = '?args='+str(args);
 					}else if(k=='cartype'){
 						//location.href = 'cartype.html?args='+str(args);
@@ -183,7 +233,7 @@ getLocation.init(function(){
 					}else if(k=='ctype'){
 						//location.href = 'long.html?args='+str(args);
 					}
-				});
+				});*/
 				//历史搜索
 				if(!$.cookie(_key)) {
 					$.cookie(_key,'');

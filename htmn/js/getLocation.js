@@ -158,11 +158,9 @@ var getLocation = {
 	},
 	setValue : function(v,suc){
 		$('#cityname').text(_simpCity(v));
-		//$('#cityname').attr('py',codefans_net_CC2PY(v.replace('市','')).toLowerCase());
 		suc && suc();
 	},
 	init : function(suc){
-		log(1);
 		var _key = 'cityname1';
 		if($.cookie(_key)){
 			getLocation.setValue($.cookie(_key),suc);
@@ -174,7 +172,7 @@ var getLocation = {
 					getLocation.cityname(data.latitude, data.longitude, function (datas) {
 						//datas包含经纬度信息和城市
 						getLocation.setValue(datas.cityname,suc);
-						$.cookie(_key,datas.cityname,3600*2);
+						$.cookie(_key,datas.cityname,3600);
 					});
 				},
 				function () {
@@ -182,7 +180,7 @@ var getLocation = {
 						function (defaultData) {
 							//设置默认城市
 							getLocation.setValue(defaultData.cityname,suc);
-							$.cookie(_key,defaultData.cityname,3600*2);
+							$.cookie(_key,defaultData.cityname,3600);
 						}
 					);
 				}
