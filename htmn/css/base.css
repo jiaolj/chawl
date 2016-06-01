@@ -135,26 +135,34 @@ content .search-choice .boxs img {
 }
 content .psfbtn {
   position: fixed;
-  right: 0.13rem;
-  color: #000000;
-  line-height: 0.4rem;
-  font-size: 0.18rem;
+  right: 0.1rem;
+  width: 0.35rem;
+  height: 0.35rem;
   z-index: 9;
+  display: block;
+  line-height: 0.35rem;
+  text-align: center;
+}
+content .psfbtn span {
+  color: #ffffff;
+  position: relative;
+  font-size: 0.12rem;
 }
 content .psfbtn:before {
   content: '';
   position: absolute;
   top: 0%;
   left: 0;
-  width: 0.4rem;
-  height: 0.4rem;
+  width: 0.35rem;
+  height: 0.35rem;
   border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
 }
 content .psfbtn.refresh {
-  bottom: 1.3rem;
+  bottom: 1.05rem;
 }
 content .psfbtn.totop {
-  bottom: 0.7rem;
+  bottom: 0.6rem;
 }
 content .where {
   margin: 0.15rem;
@@ -163,6 +171,9 @@ content .where div {
   position: relative;
   height: 0.35rem;
   overflow: hidden;
+}
+content .where div span {
+  display: none;
 }
 content .where div:after {
   content: '';

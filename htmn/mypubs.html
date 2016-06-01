@@ -12,7 +12,10 @@
 <content>
 	<div class="detail">
 		<div class="boxs">
-			<div class="title"><a href="index.html"><img class="back" src="img/other/back.png"></a><span class="pubTitle"></span>源详情</div>
+			<div class="title">
+				<a class="back">返回</a>
+				<span class="pubTitle"></span>源详情
+			</div>
 			<div id="mycard" class="mycard">
 				<img class="logo headimgurl" id="headimgurl" />
 				<span id="nickname"></span>
@@ -52,6 +55,13 @@ getUser(function(){
 	$('.click').click(function(){
 		if(_userInfo) location.href = $(this).attr('htm');
 		else _followFunc();
+	})
+	$('a.back').click(function(){
+		var url = Base.tools.getQueryString('back_url');
+		if(url.indexOf('?')==-1) url+='?';
+		else url+='&';
+		url+='back_ScrollTop='+Base.tools.getQueryString('back_ScrollTop');
+		location.href = url;
 	})
 	var _initWX = function(args){
 		$.ajax({
@@ -188,17 +198,6 @@ getUser(function(){
 					})
 					$('#mycard').click(function(){
 						if(args.user_info.page_id) location.href='detail.html?id='+args.user_info.page_id;
-						/*$.ajax({
-							url: '/chat/userinfo',
-							data: {user_id:args.user_id},
-							dataType: 'json',
-							success : function(dd) {
-								log(dd);
-							},
-							error : function(xhr, type) {
-								alert(' request failed'+xhr);
-							}
-						})*/
 					})
 				}
 			})

@@ -124,9 +124,12 @@
 }
 .head img {
   height: 0.2rem;
+}
+.head a.back {
   position: absolute;
   left: 0.16rem;
-  top: 0.1rem;
+  top: 0;
+  color: #666666;
 }
 section {
   border-radius: 0.04rem;

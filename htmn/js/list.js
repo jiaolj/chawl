@@ -12,6 +12,7 @@ getLocation.init(function(){
 			}
 		};
 		var _argArea = 1,
+			_lastPage = {},
 			_kwd = '',
 			_order = {1:'',2:'new',3:'hot'},
 			_cityName = _simpCity($('#cityname').text()),
@@ -28,16 +29,11 @@ getLocation.init(function(){
 						a.starting = _cityName;
 						_starting.set(_cityName);
 					}
-					log(a.destination);
 					if(a.destination) {
 						_destination.set(a.destination);
 					}
-					/*if(!a.cartype) a.cartype = '类别';
-					if(!a.goodstype) a.goodstype = '类别';
-					if(!a.long) a.long = '车长';
-					if(!a.ctype) a.ctype = '';
-					if(!a.citys) a.citys = {'1':_cityName,'2':'全国'};*/
 					_key = 'kwd'+a.sort;
+					$('span[sort="'+a.sort+'"]').show();
 					return a;
 				}(),
 				is : 0,
@@ -48,8 +44,8 @@ getLocation.init(function(){
 				list : $('#list'),
 				load : '<div class="load"><img src="img/bottom/find_on.png">努力加载中...</div>',
 				tmp : '\
-					<a href="#href"><dt>\
-						<div class="flt logo1"><img class="logo" src="#logo" /><img class="vip#vip" src="img/list/vip.png"><img class="vip#member" src="img/list/vip.png"></div>\
+					<a url="#href"><dt>\
+						<div class="flt logo1"><img class="logo" src="#logo" /><img class="vip#vip" src="img/list/vip.png"><img class="vip#member" src="img/list/renzheng.png"></div>\
 						<div class="flt text1">\
 							<div class="tit">#title</div>\
 							<div class="phone">\
@@ -72,7 +68,7 @@ getLocation.init(function(){
 				}
 				else {
 					d = d.replace('#vip',' hide');
-					if(j.is_vip==1) d = d.replace('#member','');
+					if(j.isagree=='1') d = d.replace('#member','');
 					else d = d.replace('#member',' hide');
 				}
 				if(j.logo) d = d.replace('#logo',j.logo);
@@ -81,9 +77,19 @@ getLocation.init(function(){
 				else d = d.replace('#people','人浏览').replace('#stars',j.view);
 				return d;
 			},
-			getHtml : function(data){
-				var obj = this,htm = '',tmp = obj.dom.tmp;
-				for(var i=0;i<data.length;i++) obj.dom.list.append(obj.rdata(tmp,data[i]));
+			getHtml : function(data,ag){
+				var obj = this,
+					ag = ag || {},
+					htm = '',
+					tmp = obj.dom.tmp;
+				$.each(data,function(k,j){
+					obj.dom.list.append(obj.rdata(tmp,j)).find('a:last').click(function(){
+						var url = $(this).attr('url');
+						location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
+					});
+				})
+				var stop = Base.tools.getQueryString('back_ScrollTop');
+				if(stop&&ag.clear==1) $('body,html').scrollTop(stop);
 			},
 			getList : function(ag){
 				var obj = this,
@@ -114,12 +120,12 @@ getLocation.init(function(){
 						log(dd);
 						var lst = dd.page_list;
 						if(lst.length>0){
-							obj.getHtml(lst);
+							obj.getHtml(lst,ag);
 							obj.querys.is = 0;
 						}
 						else {
 							if(lst.length>0 && lst.length<=5){
-								obj.getHtml(lst);
+								obj.getHtml(lst,ag);
 							}
 							if(_argArea==3){
 								obj.querys.end = 1;
@@ -195,7 +201,7 @@ getLocation.init(function(){
 					$('#goodstype').text(args.goodstype);
 				}
 				$('#seoTitle').text(args.title);
-				obj.query();
+				obj.query({clear:1});
 				$('.query').click(function(){
 					//obj.query({clear:1});
 					args.starting = _starting.get();
@@ -211,7 +217,12 @@ getLocation.init(function(){
 					args.destination = _destination.get();
 					location.href = '?args=' + str(args);
 				})
-				Base.turn.get(obj);
+				Base.turn.get(obj,function(st){
+					//_lastPage.list = obj.dom.list.html();
+					//_lastPage.scrollTop = st;
+					//$.cookie('lastScrollTop',st);
+					//log($.cookie('lastScrollTop'));
+				});
 				/*$('.choice').click(function(){
 					args.url = function(){var l = location.href.split('/').pop(),r = l.split('?')[0];return r}();
 					var k = $(this).attr('k'),

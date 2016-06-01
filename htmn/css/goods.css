@@ -77,11 +77,11 @@ content .detail .boxs {
   border-bottom: 1px solid #dddddd;
   font-size: 0.14rem;
 }
-content .detail .boxs img.back {
-  height: 0.2rem;
+content .detail .boxs a.back {
   position: absolute;
-  left: 0.06rem;
-  top: 0.09rem;
+  left: 0.16rem;
+  top: 0;
+  color: #666666;
 }
 content .detail .boxs .mycard {
   text-align: center;

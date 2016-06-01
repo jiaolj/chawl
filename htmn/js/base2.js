@@ -329,9 +329,10 @@ var log = function(){for(var arg in arguments) console && console.log(arguments[
 					} 
 				}
 			},
-			get : function(obj){
+			get : function(obj,suc){
 				var ths = this;
-				window.onscroll = function () { 
+				window.onscroll = function () {
+					suc && suc(ths.getScrollTop());
 					if (ths.getScrollTop() + ths.getClientHeight() == ths.getScrollHeight()) {
 						if(obj.querys.is==0&&obj.querys.end==0) {
 							obj.querys.page ++;

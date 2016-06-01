@@ -146,6 +146,7 @@ getUser(function(){
 					//留言
 					var mc = dd.message_count,
 						msgs = dd.messages;
+					msgs.reverse();
 					$('#viewNum').text(mc);
 					$('#dtail').html(function(){
 						var htm = '',
@@ -224,6 +225,14 @@ getUser(function(){
 				}
 			})
 		}
+	})
+	
+	$('a.back').click(function(){
+		var url = Base.tools.getQueryString('back_url');
+		if(url.indexOf('?')==-1) url+='?';
+		else url+='&';
+		url+='back_ScrollTop='+Base.tools.getQueryString('back_ScrollTop');
+		location.href = url;
 	})
 	
 	$('#address').click(function(){

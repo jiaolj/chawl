@@ -16,7 +16,7 @@ getLocation.init(function(){
 				list : $('#list'),
 				load : '<div class="load"><img src="img/bottom/find_on.png">努力加载中...</div>',
 				tmp : '\
-					<a href="#href"><dt>\
+					<a url="#href"><dt>\
 						<div class="flt logo1"><img class="logo" src="#logo" /><img class="vip#renzheng" src="img/list/renzheng.png"><img class="vip#vip" src="img/list/vip.png"></div>\
 						<div class="flt text1">\
 							<div class="tit">#title</div>\
@@ -86,8 +86,9 @@ getLocation.init(function(){
 					return d.replace('#remark',remark).replace('#rmktitle',j.remark).replace('#car_no',j.car_no).replace('#goods_id',j.goods_id).replace('#car_id',j.car_id).replace('#ii',i).replace('#is_tel',j.is_tel).replace('#user_id',j.user_id).replace('#phone',j.phone).replace('#headimgurl',j.user_info[0] && j.user_info[0].headimgurl).replace('#starting',j.starting).replace('#destination',j.destination).replace('#city',j.city).replace('#model',j.model.replace('不限','未知').replace('所需车辆','未知').replace('车长车型','未知')).replace('#length',parseFloat(j.length) && parseFloat(j.length).toFixed(1)+'米' || j.length.replace('不限','未知')).replace('#volume',_None(j.volume)).replace('#weight',_None(j.weight)).replace('#time1',Base.tools.int_to_str(j.ctime)).replace('#time2',Base.tools.int_to_str(j.ctime,1));
 				}
 			},
-			getHtml : function(data){
+			getHtml : function(data,ag){
 				var obj = this,
+					ag = ag || {},
 					htm = '',
 					tmp = function(){
 						if(obj.querys.args.findType==1) return obj.dom.tmp;
@@ -96,10 +97,21 @@ getLocation.init(function(){
 					}()
 				;
 				if(!tmp) return;
-				for(var i=0;i<data.length;i++) obj.dom.list.append(obj.rdata(i,tmp,data[i]));
+				$.each(data,function(k,j){
+					obj.dom.list.append(obj.rdata(k,tmp,j)).find('a:last').click(function(){
+						var url = $(this).attr('url');
+						location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
+					})
+				})
+				
+				var stop = Base.tools.getQueryString('back_ScrollTop');
+				if(stop&&ag.clear==1) $('body,html').scrollTop(stop);
 			},
-			getList : function(){
-				var obj = this,arg = {};
+			getList : function(ag){
+				var obj = this,
+					ag = ag || {},
+					arg = {};
+				if(ag.clear==1) obj.dom.list.empty();
 				obj.dom.list.append(obj.dom.load);
 				obj.querys.is = 1;
 				arg.page = obj.querys.page;
@@ -110,8 +122,6 @@ getLocation.init(function(){
 					if(obj.querys.args.citys['1']!='出发地') arg.starting = obj.querys.args.citys['1'];
 					if(obj.querys.args.citys['2']!='目的地') arg.destination = obj.querys.args.citys['2'];
 				}
-				//log(arg);
-				//log(obj.querys.ajaxUrl);
 				$.ajax({
 					url: obj.querys.ajaxUrl,
 					data: arg,
@@ -121,12 +131,12 @@ getLocation.init(function(){
 						var lst = dd.list || dd.page_list;
 						if(lst.length>5){
 							obj.querys.cache = lst;
-							obj.getHtml(lst);
+							obj.getHtml(lst,ag);
 							obj.querys.is = 0;
 						}
 						else {
 							if(lst.length>0 && lst.length<=5){
-								obj.getHtml(lst);
+								obj.getHtml(lst,ag);
 							}
 							if(_argArea==3){
 								obj.querys.end = 1;
@@ -148,9 +158,9 @@ getLocation.init(function(){
 					}
 				});
 			},
-			query : function(){
+			query : function(ag){
 				var obj = this;
-				obj.getList();
+				obj.getList(ag);
 			},
 			init : function(){
 				var obj = this;
@@ -173,7 +183,7 @@ getLocation.init(function(){
 				}
 				$('#change td[d="'+(args.findType-1)+'"]').addClass('active');
 				Base.turn.get(obj);
-				obj.query();
+				obj.query({clear:1});
 				$('.choice').click(function(){
 					args.url = getUrl();
 					var k = $(this).attr('k'),
@@ -181,7 +191,7 @@ getLocation.init(function(){
 					;
 					if(k=='from' || k=='to'){
 						args.tp = v;
-						args.page = 'card';//if(args.findType==1) 
+						args.page = 'card';
 						location.href = 'city.html?args='+str(args)+'&v=1';
 					}
 					else if(k=='change'){
@@ -201,11 +211,7 @@ getLocation.init(function(){
 					var ts = $(this),
 						i = parseInt(ts.attr('d'));
 					args.findType = i + 1;
-					//$('#change td.active').toggleClass('active');
-					//ts.toggleClass('active');
-					//obj.dom.list.empty();
-					//obj.init();
-					location.href = '?args=' + str(args)+'&v=2';
+					location.href = '?args=' + str(args);
 				})
 				$('#list').click(function(e){
 					var tar = e.target,
@@ -218,16 +224,8 @@ getLocation.init(function(){
 					if(tar.className=='cimg'){
 						var pi = prrt.attr('i'),
 							ni = cnt.attr('i'),
-							//numList = remark.match(/[0-9]+/ig),
 							phone = ths.attr('phone')
 						;
-						/*if(numList){
-							$.each(numList,function(k,j){
-								if(j.length>5) {
-									phone = j;
-								}
-							})
-						};*/
 						if(phone=='-1'){
 							cnt2.css('color','#ccc');
 							cnt2.attr('href','#');
@@ -244,16 +242,14 @@ getLocation.init(function(){
 						}
 					}
 					if(ths.attr('j')=='1'){
-							var car_id = prrt.parent().attr('car_id'),
-								goods_id = prrt.parent().attr('goods_id'),
-								url = 'mypubs.html'
-							;
-							if(goods_id) url+='?goods_id='+goods_id+'&v=1';
-							else if(car_id) url+='?car_id='+car_id+'&v=1';
-							//alert(url);
-							location.href = url;
-						//$.cookie('last',str(obj.querys.cache[parseInt(prrt.parent().attr('i'))]));
-						//location.href = prrt.parent().attr('t')+'?id='+prrt.parent().attr('d');
+						var car_id = prrt.parent().attr('car_id'),
+							goods_id = prrt.parent().attr('goods_id'),
+							url = 'mypubs.html'
+						;
+						if(goods_id) url+='?goods_id='+goods_id;
+						else if(car_id) url+='?car_id='+car_id;
+						//location.href = url;
+						location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
 					}
 				});
 			}

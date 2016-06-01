@@ -58,21 +58,28 @@ content {
 		}
 	}
 	.psfbtn {
-		.psf;.rr(26rem);.c(#000);.lhr(80rem);.fsr(36rem);.zi(9);
+		@bolw:70rem;
+		.psf;.rr(20rem);.sqar(@bolw);.zi(9);.dsb;.lhr(@bolw);.tct;
+		span {
+			.c(#fff);.psr;.fsr(24rem);
+		}
 		&:before {
-			content:'';.psa;.t;.l;.bolr(80rem);//.bg(rgba(0,0,0,0.9));
+			content:'';.psa;.t;.l;.bolr(@bolw);.bg(rgba(0,0,0,0.6));
 		}
 		&.refresh {
-			.b-r(260rem);
+			.b-r(140rem + @bolw);
 		}
 		&.totop {
-			.b-r(140rem);
+			.b-r(120rem);
 		}
 	}
 	.where {
 		.mg-r(30rem);
 		div {
 			.psr;.hr(70rem);.ofh;
+			span {
+				.dsn;
+			}
 			&:after {
 				content:'';.psa;.b;.lr(46rem);.wr(540rem);.bdb(#ccc);
 			}

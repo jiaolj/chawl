@@ -29,8 +29,8 @@
 			<a class="ok"><span>搜索</span></a>
 		</div>
 	</div>
-	<div class="refresh psfbtn">刷新</div>
-	<div class="totop psfbtn">顶部</div>
+	<a href="javascript:window.location.reload()" class="refresh psfbtn"><span>刷新</span></a>
+	<a href="javascript:scroll(0,0)" class="totop psfbtn"><span>顶部</span></a>
 	<div class="top">
 		<a class="pleft" href="my.html">
 			<span id="headimgurl"></span>
@@ -42,8 +42,18 @@
 		<div class="boxs"><img src="img/search.png" /> <span>搜索</span></div>
 	</div>-->
 	<div class="where">
-		<div class="starting"><input type="text" placeholder="出发地" /></div>
-		<div class="destination"><input type="text" placeholder="目的地" /></div>
+		<div class="starting">
+			<span sort="130"><input type="text" placeholder="输入出发地、区域等" /></span>
+			<span sort="564"><input type="text" placeholder="输入城市、区域等" /></span>
+			<span sort="929"><input type="text" placeholder="输入城市、区域等" /></span>
+			<span sort="926"><input type="text" placeholder="输入城市、区域等" /></span>
+		</div>
+		<div class="destination">
+			<span sort="130"><input type="text" placeholder="输入目的地、公司等" /></span>
+			<span sort="564"><input type="text" placeholder="输入车长、车型等" /></span>
+			<span sort="929"><input type="text" placeholder="输入公司、业务等" /></span>
+			<span sort="926"><input type="text" placeholder="输入公司、内容等" /></span>
+		</div>
 	</div>
 	<div class="query">查询</div>
 	<table cellpadding="0" cellspacing="0" class="menu" id="change">
