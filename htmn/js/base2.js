@@ -329,14 +329,13 @@ var log = function(){for(var arg in arguments) console && console.log(arguments[
 					} 
 				}
 			},
-			get : function(obj,suc){
+			get : function(obj,ag){
 				var ths = this;
 				window.onscroll = function () {
-					suc && suc(ths.getScrollTop());
 					if (ths.getScrollTop() + ths.getClientHeight() == ths.getScrollHeight()) {
 						if(obj.querys.is==0&&obj.querys.end==0) {
 							obj.querys.page ++;
-							obj.getList();
+							obj.getList(ag);
 						}
 					} 
 				}

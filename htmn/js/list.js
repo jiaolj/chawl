@@ -88,8 +88,11 @@ getLocation.init(function(){
 						location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
 					});
 				})
-				var stop = Base.tools.getQueryString('back_ScrollTop');
-				if(stop&&ag.clear==1) $('body,html').scrollTop(stop);
+				if(ag.stop) {
+					log(ag.stop,Base.turn.getScrollTop());
+					if(ag.stop==Base.turn.getScrollTop()) _isLoad = 1;
+					if(_isLoad==0) $('body,html').scrollTop(ag.stop);
+				}
 			},
 			getList : function(ag){
 				var obj = this,
@@ -182,12 +185,9 @@ getLocation.init(function(){
 			},
 			init : function(){
 				var obj = this,
+					ag = {},
 					args = json(str(obj.querys.args))
 				;
-				/*$('.from').html(obj.querys.args.citys['1']+' <b></b>');
-				$('.to').html(obj.querys.args.citys['2']+' <b></b>');
-				obj.querys.args.citys['1'] = obj.querys.args.citys['1'].replace('全国','出发地');
-				obj.querys.args.citys['2'] = obj.querys.args.citys['2'].replace('全国','目的地');*/
 				if(args.title=='精品专线'){
 					$('#where130').show();
 				}else if(args.title=='落地配'){
@@ -203,7 +203,6 @@ getLocation.init(function(){
 				$('#seoTitle').text(args.title);
 				obj.query({clear:1});
 				$('.query').click(function(){
-					//obj.query({clear:1});
 					args.starting = _starting.get();
 					args.destination = _destination.get();
 					location.href = '?args=' + str(args);
@@ -217,34 +216,10 @@ getLocation.init(function(){
 					args.destination = _destination.get();
 					location.href = '?args=' + str(args);
 				})
-				Base.turn.get(obj,function(st){
-					//_lastPage.list = obj.dom.list.html();
-					//_lastPage.scrollTop = st;
-					//$.cookie('lastScrollTop',st);
-					//log($.cookie('lastScrollTop'));
-				});
-				/*$('.choice').click(function(){
-					args.url = function(){var l = location.href.split('/').pop(),r = l.split('?')[0];return r}();
-					var k = $(this).attr('k'),
-						v = $(this).attr('v')
-					;
-					if(k=='from' || k=='to'){
-						args.tp = v;
-						args.page = 'card';
-						location.href = 'city.html?args='+str(args);
-					}else if(k=='change'){
-						var cge = args.citys[1];
-						args.citys[1] = args.citys[2].replace('目的地','出发地');
-						args.citys[2] = cge.replace('出发地','目的地');
-						location.href = '?args='+str(args);
-					}else if(k=='cartype'){
-						//location.href = 'cartype.html?args='+str(args);
-					}else if(k=='goodstype'){
-						location.href = 'goodstype.html?args='+str(args);
-					}else if(k=='ctype'){
-						//location.href = 'long.html?args='+str(args);
-					}
-				});*/
+				var stop = Base.tools.getQueryString('back_ScrollTop');
+				if(stop) ag.stop = parseInt(stop);
+				obj.query(ag);
+				Base.turn.get(obj,ag);
 				//历史搜索
 				if(!$.cookie(_key)) {
 					$.cookie(_key,'');

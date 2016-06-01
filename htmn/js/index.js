@@ -1,6 +1,7 @@
 getLocation.init(function(){
 	(function(){
-		var _argArea = 1;
+		var _argArea = 1,
+			_isLoad = 0;
 		window.MVC = {
 			querys : {
 				args : function(){
@@ -104,8 +105,11 @@ getLocation.init(function(){
 					})
 				})
 				
-				var stop = Base.tools.getQueryString('back_ScrollTop');
-				if(stop&&ag.clear==1) $('body,html').scrollTop(stop);
+				if(ag.stop) {
+					log(ag.stop,Base.turn.getScrollTop());
+					if(ag.stop==Base.turn.getScrollTop()) _isLoad = 1;
+					if(_isLoad==0) $('body,html').scrollTop(ag.stop);
+				}
 			},
 			getList : function(ag){
 				var obj = this,
@@ -163,7 +167,8 @@ getLocation.init(function(){
 				obj.getList(ag);
 			},
 			init : function(){
-				var obj = this;
+				var obj = this,
+					ag = {};
 				if(!obj.querys.args) obj.querys.args = {findType : 1,ctype:'车型',long:'车长',tp:'',citys:{'1':$('#cityname').text(),'2':'全国','3':$('#cityname').text()}};
 				if(obj.querys.args.tp=='3') obj.querys.args.citys['1'] = obj.querys.args.citys['3'];
 				var args = JSON.parse(JSON.stringify(obj.querys.args));
@@ -182,8 +187,12 @@ getLocation.init(function(){
 					obj.querys.ajaxUrl = '/viewcar';
 				}
 				$('#change td[d="'+(args.findType-1)+'"]').addClass('active');
-				Base.turn.get(obj);
-				obj.query({clear:1});
+				
+				var stop = Base.tools.getQueryString('back_ScrollTop');
+				if(stop) ag.stop = parseInt(stop);
+				obj.query(ag);
+				Base.turn.get(obj,ag);
+				
 				$('.choice').click(function(){
 					args.url = getUrl();
 					var k = $(this).attr('k'),

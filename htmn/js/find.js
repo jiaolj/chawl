@@ -78,8 +78,11 @@ getLocation.init(function(){
 				$.each(data,function(k,j){
 					if(j.user_info && j.user_info[0]) obj.dom.list.append(obj.rdata(k,tmp,j));
 				})
-				var stop = Base.tools.getQueryString('back_ScrollTop');
-				if(stop&&ag.clear==1) $('body,html').scrollTop(stop);
+				if(ag.stop) {
+					log(ag.stop,Base.turn.getScrollTop());
+					if(ag.stop==Base.turn.getScrollTop()) _isLoad = 1;
+					if(_isLoad==0) $('body,html').scrollTop(ag.stop);
+				}
 			},
 			getList : function(ag){
 				var obj = this,
@@ -137,7 +140,8 @@ getLocation.init(function(){
 				obj.getList(ag);
 			},
 			init : function(){
-				var obj = this;
+				var obj = this,
+					ag = {};
 				if(obj.querys.args.findType==1) {
 					obj.querys.ajaxUrl = '/viewcar';
 					$('#findtype>div').eq(0).addClass('active');
@@ -153,7 +157,10 @@ getLocation.init(function(){
 				
 				$('#ctype').text(obj.querys.args.ctype);
 				$('#long').text(obj.querys.args.long);
-				obj.query({clear:1});
+				var stop = Base.tools.getQueryString('back_ScrollTop');
+				if(stop) ag.stop = parseInt(stop);
+				obj.query(ag);
+				Base.turn.get(obj,ag);
 				$('#findtype>div').click(function(){
 					var ts = $(this);
 					obj.querys.args.findType = parseInt(ts.attr('i'));
