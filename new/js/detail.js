@@ -32,52 +32,57 @@ getUser(function(){
 				url: encodeURIComponent(location.href.split('#')[0])
 			},
 			success: function(data){
-				var ticket = JSON.parse(data);
-
+				var ticket = JSON.parse(data),
+					wxData = {
+						'imgUrl': dd.page.logo,
+						'link' : '',
+						'desc' : '查物流-让天下货主与物流实现更高效的链接！',
+						'title' : dd.page.title+' -查物流推荐'
+					},
+					weixin = function (title,link,imgurl,desc){
+						wx.ready(function () {
+							wx.onMenuShareTimeline({
+								title: title,
+								link: link,
+								imgUrl: imgurl
+							});
+							wx.onMenuShareAppMessage({
+								title: title,
+								desc: desc,
+								link: link,
+								imgUrl: imgurl
+							});
+							wx.onMenuShareQQ({
+								title: title,
+								desc: desc,
+								link: link,
+								imgUrl: imgurl
+							});
+							wx.onMenuShareWeibo({
+								title: title,
+								desc: desc,
+								link: link,
+								imgUrl: imgurl
+							});
+							obj.sound();
+						});
+					}
+				;
 				wx && wx.config({
 					debug: false,
 					appId: ticket.appId,
 					timestamp: ticket.timestamp,
 					nonceStr: ticket.nonceStr,
 					signature: ticket.signature,
-					jsApiList: [
-						'onMenuShareAppMessage',
-						'onMenuShareTimeline'
-					]
+					jsApiList: ["onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo"]
 				});
-				wx && wx.ready(function(){
-					wx.onMenuShareAppMessage({
-						title: dd.page.title+' -查物流推荐', // 分享标题
-						desc: '', // 分享描述
-						link: '', // 分享链接
-						imgUrl: dd.page.logo, // 分享图标
-						type: '', // 分享类型,music、video或link，不填默认为link
-						dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-						success: function () {
-							// 用户确认分享后执行的回调函数
-						},
-						cancel: function () {
-							// 用户取消分享后执行的回调函数
-						}
-					});
-					wx.onMenuShareTimeline({
-						title: dd.page.title+' -查物流推荐', // 分享标题
-						link: '', // 分享链接
-						imgUrl: dd.page.logo, // 分享图标
-						success: function () {
-							// 用户确认分享后执行的回调函数
-						},
-						cancel: function () {
-							// 用户取消分享后执行的回调函数
-						}
-					});
-				});
-				wx && wx.error(function(res){
-					//alert(str(res));
+				wx.ready(function () {
+					weixin(wxData.title,wxData.link,wxData.imgUrl,wxData.desc);
 				});
 			}
 		})
 	};
+
 	var did = Base.tools.getQueryString('id'),
 		uid = Base.tools.getQueryString('uid'),
 		lboxArea = $('.leavebox textarea'),
