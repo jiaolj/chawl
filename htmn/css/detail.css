@@ -116,20 +116,26 @@
 .head {
   text-align: center;
   box-shadow: 0px 2px 12px #cccccc;
-  background: #ffffff;
+  background: #df4b24;
   font-size: 0.165rem;
   line-height: 0.4rem;
   position: relative;
   font-weight: 500;
+  color: #ffffff;
 }
 .head img {
   height: 0.2rem;
 }
-.head a.back {
+.head a {
   position: absolute;
-  left: 0.16rem;
   top: 0;
-  color: #666666;
+  color: #ffffff;
+}
+.head a.back {
+  left: 0.16rem;
+}
+.head a.index {
+  right: 0.16rem;
 }
 section {
   border-radius: 0.04rem;

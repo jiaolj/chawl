@@ -47,7 +47,7 @@ getUser(function(){
 				});
 				wx && wx.ready(function(){
 					wx.onMenuShareAppMessage({
-						title: dd.page.title, // 分享标题
+						title: dd.page.title+' -查物流推荐', // 分享标题
 						desc: '', // 分享描述
 						link: '', // 分享链接
 						imgUrl: dd.page.logo, // 分享图标
@@ -61,7 +61,7 @@ getUser(function(){
 						}
 					});
 					wx.onMenuShareTimeline({
-						title: dd.page.title, // 分享标题
+						title: dd.page.title+' -查物流推荐', // 分享标题
 						link: '', // 分享链接
 						imgUrl: dd.page.logo, // 分享图标
 						success: function () {
@@ -117,7 +117,10 @@ getUser(function(){
 						$('#title').text(dd.page.title);
 						if(dd.page.is_vip=='1') $('#is_vip').show();
 						else $('#is_vip').hide();
-						$('#phones').text(dd.page.phone.replace('-','-'));
+						$('#phones').html('<b>'+dd.page.phone+'</b>');
+						setTimeout(function(){
+							$('#phones').html('<a href="tel:'+dd.page.phone+'"><b style="color:#df4b24">'+dd.page.phone+'</b></a>');
+						},3050);
 						$('#hot').text(dd.page.hot);
 						$('#view').text(dd.page.view);
 						$('#address').text(dd.page.address);

@@ -150,6 +150,9 @@ dl.list dt .text1 .phone {
   font-size: 0.12rem;
   position: relative;
 }
+dl.list dt .text1 .phone .number {
+  font-size: 0.14rem;
+}
 dl.list dt .text1 .phone span {
   color: #df4b24;
   font-weight: 900;

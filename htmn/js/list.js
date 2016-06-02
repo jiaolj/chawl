@@ -16,13 +16,15 @@ getLocation.init(function(){
 			_kwd = '',
 			_order = {1:'',2:'new',3:'hot'},
 			_cityName = _simpCity($('#cityname').text()),
-			_starting = setGet('.where .starting input'),
-			_destination = setGet('.where .destination input'),
+			_starting,
+			_destination,
 			_key;
 		window.MVC = {
 			querys : {
 				args : function(){
 					var a = json(Base.tools.getQueryString('args'));
+					_starting = setGet('.where .starting span[sort="'+a.sort+'"] input');
+					_destination = setGet('.where .destination span[sort="'+a.sort+'"] input');
 					if(!a.findType) a.findType = 1;
 					if(a.starting) _starting.set(a.starting);
 					else {
@@ -44,25 +46,25 @@ getLocation.init(function(){
 				list : $('#list'),
 				load : '<div class="load"><img src="img/bottom/find_on.png">努力加载中...</div>',
 				tmp : '\
-					<a url="#href"><dt>\
+					<dt url="#href">\
 						<div class="flt logo1"><img class="logo" src="#logo" /><img class="vip#vip" src="img/list/vip.png"><img class="vip#member" src="img/list/renzheng.png"></div>\
 						<div class="flt text1">\
 							<div class="tit">#title</div>\
 							<div class="phone">\
-								<span>#phone</span>\
+								<a href="tel:#phone"><span class="number" style="color:#df4b24">#phone</span></a>\
 								<span class="star">\
-									<span class="viewNum">#stars</span><span class="view">#people</span>\
+									<span class="viewNum" style="color:#df4b24">#stars</span><span class="view">#people</span>\
 								</span>\
 							</div>\
 							<div class="area">#address</div>\
 						</div>\
 						<br class="cb" />\
-					</dt></a>\
+					</dt>\
 				'
 			},
 			rdata : function(d,j){
 				var obj = this;
-				d = d.replace('#href','detail.html?id='+j.id+'&uid='+j.uid)/*.replace('#stars',getStar(j.support_num || 0))*/.replace('#title',j.title).replace('#phone',j.phone).replace('#view',j.view).replace('#address',j.address);
+				d = d.replace('#href','detail.html?id='+j.id+'&uid='+j.uid).replace('#title',j.title).replace('#phone',j.phone).replace('#phone',j.phone).replace('#view',j.view).replace('#address',j.address);
 				if(j.is_vip=='1') {
 					d = d.replace('#vip','').replace('#member',' hide');
 				}
@@ -83,7 +85,7 @@ getLocation.init(function(){
 					htm = '',
 					tmp = obj.dom.tmp;
 				$.each(data,function(k,j){
-					obj.dom.list.append(obj.rdata(tmp,j)).find('a:last').click(function(){
+					obj.dom.list.append(obj.rdata(tmp,j)).find('dt:last').click(function(){
 						var url = $(this).attr('url');
 						location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
 					});
@@ -115,36 +117,38 @@ getLocation.init(function(){
 				if(_kwd.length>0) arg.kwd = _kwd;
 				if(_order[args.findType].length>0) arg.order = _order[args.findType];
 				log(arg);
-				$.ajax({
-					url : '/page/index',
-					data : arg,
-					dataType : 'json',
-					success : function(dd) {
-						log(dd);
-						var lst = dd.page_list;
-						if(lst.length>0){
-							obj.getHtml(lst,ag);
-							obj.querys.is = 0;
-						}
-						else {
-							if(lst.length>0 && lst.length<=5){
+				//setTimeout(function(){
+					$.ajax({
+						url : '/page/index',
+						data : arg,
+						dataType : 'json',
+						success : function(dd) {
+							log(dd);
+							var lst = dd.page_list;
+							if(lst.length>0){
 								obj.getHtml(lst,ag);
+								obj.querys.is = 0;
 							}
-							if(_argArea==3){
-								obj.querys.end = 1;
-							}else{
-								obj.querys.page = 1;
-								obj.dom.list.append('<div class="moreText">以下为平台推荐的名片</div>');
-								_argArea = 3;
-								obj.getList();
+							else {
+								if(lst.length>0 && lst.length<=5){
+									obj.getHtml(lst,ag);
+								}
+								if(_argArea==3){
+									obj.querys.end = 1;
+								}else{
+									obj.querys.page = 1;
+									obj.dom.list.append('<div class="moreText">以下为平台推荐的名片</div>');
+									_argArea = 3;
+									obj.getList();
+								}
 							}
+							obj.dom.list.find('.load').remove();
+						},
+						error:function(jqXHR,textStatus) {
+							log(' request failed'+textStatus);
 						}
-						obj.dom.list.find('.load').remove();
-					},
-					error:function(jqXHR,textStatus) {
-						log(' request failed'+textStatus);
-					}
-				});
+					});
+				//},2000);
 			},
 			query : function(arg){
 				var obj = this;
@@ -185,7 +189,7 @@ getLocation.init(function(){
 			},
 			init : function(){
 				var obj = this,
-					ag = {},
+					ag = {init:1},
 					args = json(str(obj.querys.args))
 				;
 				if(args.title=='精品专线'){
@@ -201,7 +205,10 @@ getLocation.init(function(){
 					$('#goodstype').text(args.goodstype);
 				}
 				$('#seoTitle').text(args.title);
-				obj.query({clear:1});
+				var stop = Base.tools.getQueryString('back_ScrollTop');
+				if(stop) ag.stop = parseInt(stop);
+				obj.query(ag);
+				Base.turn.get(obj,ag);
 				$('.query').click(function(){
 					args.starting = _starting.get();
 					args.destination = _destination.get();
@@ -216,10 +223,6 @@ getLocation.init(function(){
 					args.destination = _destination.get();
 					location.href = '?args=' + str(args);
 				})
-				var stop = Base.tools.getQueryString('back_ScrollTop');
-				if(stop) ag.stop = parseInt(stop);
-				obj.query(ag);
-				Base.turn.get(obj,ag);
 				//历史搜索
 				if(!$.cookie(_key)) {
 					$.cookie(_key,'');

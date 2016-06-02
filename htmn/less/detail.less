@@ -1,6 +1,6 @@
 @import 'pub.less';
 @foth:98rem;
-@red:#DF4B24;
+@red:#df4b24;
 .cover-page {
 	.psf;.w;.h;.bg(#7F7F7F);.zi(9);.dsn;
 }
@@ -64,12 +64,18 @@
 	.brr(8rem);
 }
 .head {
-	.tct;.bs;.bg(#fff);.fsr(33rem);.lhr(80rem);.psr;.fw(500);
+	.tct;.bs;.bg(@red);.fsr(33rem);.lhr(80rem);.psr;.fw(500);.c(#fff);
 	img {
 		.hr(40rem);
 	}
-	a.back {
-		.psa;.lr(32rem);.tr(0);.c(#666);
+	a {
+		.psa;.tr(0);.c(#fff);
+		&.back {
+			.lr(32rem);
+		}
+		&.index {
+			.rr(32rem);
+		}
 	}
 }
 section {
