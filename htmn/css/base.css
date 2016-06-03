@@ -645,8 +645,25 @@ footer .blocks a {
   position: relative;
   display: block;
 }
+footer .blocks a .icon {
+  height: 0.23rem;
+  position: relative;
+  top: 0.02rem;
+}
+footer .blocks a .icon.on {
+  display: none;
+}
+footer .blocks a .icon.off {
+  display: inline;
+}
 footer .blocks a.active .txt {
   color: #df4b24;
+}
+footer .blocks a.active .icon.on {
+  display: inline;
+}
+footer .blocks a.active .icon.off {
+  display: none;
 }
 footer .blocks a div {
   height: 0.2525rem;
@@ -669,11 +686,6 @@ footer .blocks a.send span {
   color: #ffffff;
   font-size: 0.21rem;
   margin-left: 0.13rem;
-}
-footer .blocks a .icon {
-  height: 0.23rem;
-  position: relative;
-  top: 0.02rem;
 }
 footer .blocks a .cut {
   position: absolute;

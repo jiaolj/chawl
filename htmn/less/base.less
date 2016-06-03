@@ -311,9 +311,26 @@ footer {
 		.fsr(20rem);
 		a {
 			.flt;.w(20%);.psr;.dsb;
+			.icon {
+				.hr(46rem);.psr;.tr(4rem);
+				&.on {
+					.dsn;
+				}
+				&.off {
+					.dsi;
+				}
+			}
 			&.active {
 				.txt {
 					.c(@red);
+				}
+				.icon {
+					&.on {
+						.dsi;
+					}
+					&.off {
+						.dsn;
+					}
 				}
 			}
 			div {
@@ -329,9 +346,6 @@ footer {
 				span {
 					.dsb;.bolr(76rem);.bg(@red);.psr;.lhr(76rem);.c(#fff);.fsr(42rem);.mglr(26rem);
 				}
-			}
-			.icon {
-				.hr(46rem);.psr;.tr(4rem);
 			}
 			.cut {
 				.psa;.hr(64rem);.tr(13rem);
