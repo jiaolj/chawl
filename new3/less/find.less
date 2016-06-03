@@ -4,33 +4,6 @@ body {
 	.bg(#fff);
 }
 .head {.wr(640rem);.hr(233rem);.psr;img {.w;.psa;.t;.l;}}
-
-content {
-	.top {
-		&.goods {
-			.bg(#fff);.bdb(#ddd);.fsr(32rem);.fw;
-			.search {
-				.c(#333);.lr(36rem);
-				a {
-					.c(@red);
-				}
-			}
-			.pright {
-				.psa;.rr(18rem);.t;
-				a {
-					.c(#fff);.brr(4rem);.pd-r(9rem,12rem);.mgrr(12rem);.fsr(28rem);
-					&.one {
-						.bg(#FF801A);
-					}
-					&.two {
-						.bg(#009FF0);
-					}
-				}
-			}
-		}
-	}
-}
-
 .detail {
 	.fsr(26rem);
 	.type {
@@ -90,22 +63,24 @@ content {
 			}
 		}
 		dt {
-			.pd-r(12rem,20rem);.bdb(#e5e5e5);.hr(162rem);.csr;
+			.pd-r(12rem,20rem);.bdb(#e5e5e5);.hr(162rem); //.pd-r(38rem,20rem);
 			.logo {
-				.wr(122rem);.mgrr(16rem);.flt;.psr;
+				.wr(122rem);.mgrr(16rem);.flt;
 				img {
 					&.headimg {
 						.bolr(116rem);.mgbr(8rem);
 					}
-					&.vips {
-						.bolr(30rem);.psa;.rr(6rem);.b-r(6rem);
+					&.vip {
+						.w;
 					}
 				}
+				span {.csr}
 			}
 			.text {
 				.wr(442rem);.flt;
 				p {
 					.lhr(38rem);.fsr(20rem);.c(#888);.hr(38rem);.ofh;
+					span {.csr}
 					&.tit {
 						.lhr(34rem);.fsr(28rem);.fw;.c(#000);.lsr(1rem);
 						img {
@@ -130,7 +105,7 @@ content {
 			.contact {
 				.wr(128rem);.tct;.fsr(18rem);.lhr(50rem);.psa;.r;
 				img {
-					.wr(72rem);
+					.wr(72rem);.csr;
 				}
 			}
 		}

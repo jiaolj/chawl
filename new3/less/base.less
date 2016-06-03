@@ -14,7 +14,7 @@ body{
 content {
 	.dsb;
 	.top {
-		.lhr(74rem);.bg(@red);.tct;.psr;.hr(74rem);
+		.lhr(74rem);.bg(@red);.tct;.psr;
 		a {
 			.c(#fff);
 			&.pleft {
@@ -34,48 +34,17 @@ content {
 				b {
 					.dsib;.fw(100);.psa;.r;.tr(10rem);.bg(@red);.bolr(21rem);.lhr(21rem);.fsr(18rem);.dsn;
 				}
-				span img {
-					.bolr(60rem);.psa;.tr(7rem);.r;
-				}
 			}
 		}
 		img {
-			.psr;.tr(-4rem);
 			&.area {
 				.wr(24rem)
 			}
-			&.logol {
-				.hr(53rem);
-			}
 			&.logo {
-				.hr(52rem);
+				.hr(70rem);
 			}
 			&.msg {
 				.wr(42rem)
-			}
-		}
-		.search {
-			.wr(322rem);.lhr(48rem);.hr(48rem);.brr(24rem);.ofh;.psa;.lr(159rem);.tr(13rem);.c(#fff);.fw;.fsr(30rem);
-			img {
-				.psa;.l;.t;.hr(28rem);.tr(12rem);.lr(20rem);
-			}
-			input {
-				.w;.h;.tir(58rem);.fsr(26rem);
-			}
-		}
-	}
-	.tophead {
-		.tct;.bs;.bg(@red);.fsr(33rem);.lhr(80rem);.psr;.fw(500);.c(#fff);
-		img {
-			.hr(40rem);
-		}
-		a {
-			.psa;.tr(0);.c(#fff);
-			&.back {
-				.lr(32rem);
-			}
-			&.index {
-				.rr(32rem);
 			}
 		}
 	}
@@ -218,7 +187,7 @@ input,textarea {
 	}
 }
 .pub-btn {
-	.tct;.bg(@red);.c(#fff);.fsr(28rem);.pd-r(26rem,0);.brr(8rem);.csr;.mgtr(20rem);
+	.tct;.bg(@red);.c(#fff);.fsr(28rem);.pd-r(26rem,0);.brr(8rem);.csr;.mgtr(60rem);
 }
 .consult {
 	.psf;.w;.b;.hr(98rem);.bg(@red);.fsr(28rem);.zi;.tct;.dsn;
@@ -307,32 +276,10 @@ footer {
 			.psa;.t;.l;.w;
 		}
 	}
-	.blocks {
+	dl {
 		.fsr(20rem);
-		a {
-			.flt;.w(20%);.psr;.dsb;
-			.icon {
-				.hr(46rem);.psr;.tr(4rem);
-				&.on {
-					.dsn;
-				}
-				&.off {
-					.dsi;
-				}
-			}
-			&.active {
-				.txt {
-					.c(@red);
-				}
-				.icon {
-					&.on {
-						.dsi;
-					}
-					&.off {
-						.dsn;
-					}
-				}
-			}
+		dt {
+			.flt;.w(20%);.psr;
 			div {
 				.hr(@fh/2);
 				img {
@@ -343,9 +290,21 @@ footer {
 				}
 			}
 			&.send {
-				span {
-					.dsb;.bolr(76rem);.bg(@red);.psr;.lhr(76rem);.c(#fff);.fsr(42rem);.mglr(26rem);
+				&:before{
+					content:'';.psa;.lr(20rem);.sqar(90rem);.br;.bg(#fff);.tr(-9rem);
 				}
+				img {
+					.hr(76rem);.psr;.zi;
+				}
+			}
+			span {
+				clear:left;
+			}
+			.icon {
+				.hr(46rem);.psr;.tr(4rem);
+			}
+			.icon_new {
+				.hr(60rem);
 			}
 			.cut {
 				.psa;.hr(64rem);.tr(13rem);

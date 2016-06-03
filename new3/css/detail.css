@@ -113,6 +113,30 @@
 .send2 p.two a.line {
   border-right: 1px solid #ffffff;
 }
+.head {
+  text-align: center;
+  box-shadow: 0px 2px 12px #cccccc;
+  background: #df4b24;
+  font-size: 0.165rem;
+  line-height: 0.4rem;
+  position: relative;
+  font-weight: 500;
+  color: #ffffff;
+}
+.head img {
+  height: 0.2rem;
+}
+.head a {
+  position: absolute;
+  top: 0;
+  color: #ffffff;
+}
+.head a.back {
+  left: 0.16rem;
+}
+.head a.index {
+  right: 0.16rem;
+}
 section {
   border-radius: 0.04rem;
   background: #ffffff;

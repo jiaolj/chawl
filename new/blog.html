@@ -10,36 +10,37 @@
 </head>
 <body>
 <content>
+	<span class="cityname hide" id="cityname">获取中..</span>
 	<div class="top">
 		<a class="pleft">
-			<img src="img/index/area.png" class="area" /> <span class="cityname" id="cityname">获取中..</span>
-		</a> 
-		<img src="img/index/logo.png" class="logo" />
-		<a id="to-msg" class="pright"><img class="msg" src="img/index/msg.png" /><b id="num"></b></a>
+			<img src="img/logol.png" class="logol" />
+		</a>
+		<div class="search">
+			<img src="img/s.png"/><input type="text" placeholder="请输入关键字" />
+		</div>
+		<a id="to-msg" class="pright">
+			<img class="msg" src="img/index/msg.png" /><b id="num"></b>
+		</a>
 	</div>
+	<dl class="menus">
+		<dt class="active" d="1">分享交流 </dt><dt d="1">信息专栏</dt><br class="cb"/>
+	</dl>
 	<div class="cover-page"></div>
 	<div class="leavebox">
 		<div class="tit">请输入您的留言</div>
 		<textarea></textarea>
 		<div class="admin"><a class="cancel">取消</a><a class="submit">留言</a></div>
 	</div>
-	<div class="send2"><a class="click" htm="/view/sspost"><img src="img/blog/send.png" /></a></div>
 	<dl class="list" id="list"></dl>
-	<footer>
-		<div class="line"><img src="img/bottom/line.png" /></div>
-		<dl>
-			<a href="index.html"><dt class="index"><div><img class="icon_new" src="img/bottom/index_off.png" /></div><div class="txt">首页</div> <img class="cut r" src="img/bottom/cutline.png" /></dt></a>
-			<a href="find.html"><dt class="find"><div><img class="icon" src="img/bottom/find_off.png" /></div><div class="txt">货源车源</div> <img class="cut r" src="img/bottom/cutline.png" /></dt></a>
-			<a class="click" htm="pubtype.html"><dt class="send"><img src="img/bottom/send.png" /></dt></a>
-			<a href="blog.html"><dt class="my"><img class="cut l" src="img/bottom/cutline.png" /> <div><img class="icon_new" src="img/bottom/comt_on.png" /></div><div class="txt">货运圈</div></dt></a>
-			<a class="click" htm="my.html"><dt class="comt"><img class="cut l" src="img/bottom/cutline.png" /> <div><img class="icon" src="img/bottom/my_off.png" /></div><div class="txt">我的</div></dt></a>
-			<br class="cb" />
-		</dl>
-	</footer>
+	<div class="foot">
+		<div class="topage">
+			<a href="index.html" class="one">专线查询</a><a href="/view/sspost" class="two">发布消息</a><br class="cb"/>
+		</div>
+	</div>
 </content>
 <script src="js/base2.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script src="js/getLocation.js"></script>
-<script src="js/blog.js?v=2"></script>
+<script src="js/blog.js"></script>
 </body>
 </html>

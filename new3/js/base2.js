@@ -74,11 +74,8 @@ var log = function(){for(var arg in arguments) console && console.log(arguments[
 			arg = arguments[1];
 			suc = arguments[2];
 		}
-		if(!arg) arg = {};
-		log(arg);
 		$.ajax({
 			url : url,
-			arg : arg,
 			dataType : 'html',
 			success : function(back){
 				back = back.split('</div>');
@@ -236,27 +233,6 @@ var log = function(){for(var arg in arguments) console && console.log(arguments[
 			ajaxUrl : '/index2/',
 		},
 		tools : {
-			getStrTime : function(d){ //获取时间字符串。返回值，例：2000-01-01 00:00:00。接收参数，例：{con:['-','-',' ',':',':',' '],now: new Date()}
-				var toDouble = Base.tools.toDouble,
-					d = d || {},
-					con = d.con || ['-','-',' ',':',':',' '],
-					now = d.now || new Date(),
-					year = now.getFullYear(),
-					month = toDouble(now.getMonth()+1),
-					day = toDouble(now.getDate()),
-					hours = toDouble(now.getHours()),
-					minutes = toDouble(now.getMinutes()),
-					seconds = toDouble(now.getSeconds()),
-					clock = ''
-				;
-				if(con[0]!='') clock += year + con[0];
-				if(con[1]!='') clock += month + con[1];
-				if(con[2]!='') clock += day + con[2];
-				if(con[3]!='') clock += hours + con[3];
-				if(con[4]!='') clock += minutes + con[4];
-				if(con[5]!='') clock += seconds + con[5];
-				return clock;
-			},
 			str_to_int : function(d){
 				return (new Date(Date.parse(d.replace(/-/g, "/"))).getTime()+'').substr(0, 10);
 			},
@@ -374,4 +350,5 @@ window.addEventListener("orientationchange", function() {
 window.addEventListener("resize", function() {
 	_getSize();
 }, false);
-$('body content').append('<a href="javascript:window.location.reload()" style="position:fixed;top:0.4rem;right:0;z-index:99;display:block;width:20px;height:20px"></a>');
+$('body content').append('<a href="javascript:window.location.reload()" style="position:fixed;top:0.4rem;right:0;z-index:99;display:block;width:50px;height:50px"></a>');
+//$('body content').append('<a href="reg.html" style="position:fixed;top:0.4rem;left:0;z-index:99">验证</a>');

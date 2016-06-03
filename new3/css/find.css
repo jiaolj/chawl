@@ -12,37 +12,6 @@ body {
   top: 0%;
   left: 0;
 }
-content .top.goods {
-  background: #ffffff;
-  border-bottom: 1px solid #dddddd;
-  font-size: 0.16rem;
-  font-weight: 900;
-}
-content .top.goods .search {
-  color: #333333;
-  left: 0.18rem;
-}
-content .top.goods .search a {
-  color: #df4b24;
-}
-content .top.goods .pright {
-  position: absolute;
-  right: 0.09rem;
-  top: 0%;
-}
-content .top.goods .pright a {
-  color: #ffffff;
-  border-radius: 0.02rem;
-  padding: 0.045rem 0.06rem;
-  margin-right: 0.06rem;
-  font-size: 0.14rem;
-}
-content .top.goods .pright a.one {
-  background: #ff801a;
-}
-content .top.goods .pright a.two {
-  background: #009ff0;
-}
 .detail {
   font-size: 0.13rem;
 }
@@ -166,13 +135,11 @@ content .top.goods .pright a.two {
   padding: 0.06rem 0.1rem;
   border-bottom: 1px solid #e5e5e5;
   height: 0.81rem;
-  cursor: pointer;
 }
 .detail dl.data dt .logo {
   width: 0.61rem;
   margin-right: 0.08rem;
   float: left;
-  position: relative;
 }
 .detail dl.data dt .logo img.headimg {
   width: 0.58rem;
@@ -180,13 +147,11 @@ content .top.goods .pright a.two {
   border-radius: 50%;
   margin-bottom: 0.04rem;
 }
-.detail dl.data dt .logo img.vips {
-  width: 0.15rem;
-  height: 0.15rem;
-  border-radius: 50%;
-  position: absolute;
-  right: 0.03rem;
-  bottom: 0.03rem;
+.detail dl.data dt .logo img.vip {
+  width: 100%;
+}
+.detail dl.data dt .logo span {
+  cursor: pointer;
 }
 .detail dl.data dt .text {
   width: 2.21rem;
@@ -198,6 +163,9 @@ content .top.goods .pright a.two {
   color: #888888;
   height: 0.19rem;
   overflow: hidden;
+}
+.detail dl.data dt .text p span {
+  cursor: pointer;
 }
 .detail dl.data dt .text p.tit {
   line-height: 0.17rem;
@@ -237,4 +205,5 @@ content .top.goods .pright a.two {
 }
 .detail dl.data dt .contact img {
   width: 0.36rem;
+  cursor: pointer;
 }

@@ -66,7 +66,6 @@ content .top {
   background: #df4b24;
   text-align: center;
   position: relative;
-  height: 0.37rem;
 }
 content .top a {
   color: #ffffff;
@@ -109,80 +108,14 @@ content .top a.pright b {
   font-size: 0.09rem;
   display: none;
 }
-content .top a.pright span img {
-  width: 0.3rem;
-  height: 0.3rem;
-  border-radius: 50%;
-  position: absolute;
-  top: 0.035rem;
-  right: 0%;
-}
-content .top img {
-  position: relative;
-  top: -0.02rem;
-}
 content .top img.area {
   width: 0.12rem;
 }
-content .top img.logol {
-  height: 0.265rem;
-}
 content .top img.logo {
-  height: 0.26rem;
+  height: 0.35rem;
 }
 content .top img.msg {
   width: 0.21rem;
-}
-content .top .search {
-  width: 1.61rem;
-  line-height: 0.24rem;
-  height: 0.24rem;
-  border-radius: 0.12rem;
-  overflow: hidden;
-  position: absolute;
-  left: 0.795rem;
-  top: 0.065rem;
-  color: #ffffff;
-  font-weight: 900;
-  font-size: 0.15rem;
-}
-content .top .search img {
-  position: absolute;
-  left: 0;
-  top: 0%;
-  height: 0.14rem;
-  top: 0.06rem;
-  left: 0.1rem;
-}
-content .top .search input {
-  width: 100%;
-  height: 100%;
-  text-indent: 0.29rem;
-  font-size: 0.13rem;
-}
-content .tophead {
-  text-align: center;
-  box-shadow: 0px 2px 12px #cccccc;
-  background: #df4b24;
-  font-size: 0.165rem;
-  line-height: 0.4rem;
-  position: relative;
-  font-weight: 500;
-  color: #ffffff;
-}
-content .tophead img {
-  height: 0.2rem;
-}
-content .tophead a {
-  position: absolute;
-  top: 0;
-  color: #ffffff;
-}
-content .tophead a.back {
-  left: 0.16rem;
-}
-content .tophead a.index {
-  right: 0.16rem;
 }
 content .search-choice {
   text-align: center;
@@ -494,7 +427,7 @@ textarea {
   padding: 0.13rem 0;
   border-radius: 0.04rem;
   cursor: pointer;
-  margin-top: 0.1rem;
+  margin-top: 0.3rem;
 }
 .consult {
   position: fixed;
@@ -636,66 +569,59 @@ footer .line img {
   left: 0;
   width: 100%;
 }
-footer .blocks {
+footer dl {
   font-size: 0.1rem;
 }
-footer .blocks a {
+footer dl dt {
   float: left;
   width: 20%;
   position: relative;
-  display: block;
 }
-footer .blocks a .icon {
+footer dl dt div {
+  height: 0.2525rem;
+}
+footer dl dt div img {
+  margin-top: 0.04rem;
+}
+footer dl dt div.txt {
+  line-height: 0.21rem;
+  color: #999999;
+}
+footer dl dt.send:before {
+  content: '';
+  position: absolute;
+  left: 0.1rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #ffffff;
+  top: -0.045rem;
+}
+footer dl dt.send img {
+  height: 0.38rem;
+  position: relative;
+  z-index: 1;
+}
+footer dl dt span {
+  clear: left;
+}
+footer dl dt .icon {
   height: 0.23rem;
   position: relative;
   top: 0.02rem;
 }
-footer .blocks a .icon.on {
-  display: none;
+footer dl dt .icon_new {
+  height: 0.3rem;
 }
-footer .blocks a .icon.off {
-  display: inline;
-}
-footer .blocks a.active .txt {
-  color: #df4b24;
-}
-footer .blocks a.active .icon.on {
-  display: inline;
-}
-footer .blocks a.active .icon.off {
-  display: none;
-}
-footer .blocks a div {
-  height: 0.2525rem;
-}
-footer .blocks a div img {
-  margin-top: 0.04rem;
-}
-footer .blocks a div.txt {
-  line-height: 0.21rem;
-  color: #999999;
-}
-footer .blocks a.send span {
-  display: block;
-  width: 0.38rem;
-  height: 0.38rem;
-  border-radius: 50%;
-  background: #df4b24;
-  position: relative;
-  line-height: 0.38rem;
-  color: #ffffff;
-  font-size: 0.21rem;
-  margin-left: 0.13rem;
-}
-footer .blocks a .cut {
+footer dl dt .cut {
   position: absolute;
   height: 0.32rem;
   top: 0.065rem;
 }
-footer .blocks a .cut.l {
+footer dl dt .cut.l {
   left: 0;
 }
-footer .blocks a .cut.r {
+footer dl dt .cut.r {
   right: 0%;
 }
 .foot-tserver {

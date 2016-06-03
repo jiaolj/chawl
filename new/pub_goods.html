@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title id="seoTilte"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pub_goods.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="tophead">
+		<a class="back">返回</a> 发布货源 <a href="index.html" class="index">首页</a>
+	</div>
+	<div class="oneStep detail">
+		<div class="leavebox">
+			<div class="tit block-goods">货源小白板</div>
+			<div class="tit block-car">车源小白板</div>
+			<textarea class="block-goods" id="leavewords-goods" placeholder="请输入或粘贴货源详情，如：杭州到广州有20吨货，需9.6米高栏车13777567756"></textarea>
+			<textarea class="block-car" id="leavewords-car" placeholder="请输入或粘贴车源详情，如：9.6米高栏车在杭州，求广州方向货源13777567756"></textarea>
+			<div class="tit">&nbsp;</div>
+		</div>
+		<div class="tit pub-btn" id="oneStep">下一步</div>
+	</div>
+	<div class="twoStep detail active">
+		<div class="box one">
+			<div class="flt one">
+				<a class="choice" k="starting" v="1"><div class="up"><img src="img/pub/from.png" /> <span id="starting">...</span></div></a>
+				<a class="choice" k="destination" v="2"><div class="down"><img src="img/pub/to.png" /> <span id="destination">...</span></div></a>
+			</div>
+			<!--<div class="flt two"><a id="history">历史<br />记录</a></div>-->
+			<br class="cb"/>
+		</div>
+		<a class="choice" k="times"><div class="box">
+			<img src="img/pub/time.png" /> <span id="times">...</span>
+		</div></a>
+		<textarea class="box leavewords block-goods" id="leavewords-goods2" placeholder="请输入或粘贴货源详情，如：杭州到广州有20吨货，需9.6米高栏车13777567756"></textarea>
+		<textarea class="box leavewords block-car" id="leavewords-car2" placeholder="请输入或粘贴车源详情，如：9.6米高栏车在杭州，求广州方向货源13777567756"></textarea>
+		<div class="box phone">
+			<span class="text">联系方式</span> <input id="phone" placeholder="请输入手机号码"/>
+		</div>
+		<div class="where hide">
+			<a class="auto" state="1">自动重发</a>
+		</div>
+		<div class="pub-btn" id="pubOk">
+			发布
+		</div>
+	</div>
+	<div class="choiceData choiceCity">
+		<div class="city-title"><a i="0"></a><a i="1"></a><a i="2"></a></div>
+		<div class="city-menu">
+			<a i="0">省份</a><a i="1">城市</a><a i="2">区县</a>
+		</div>
+		<dl class="city-data" i="0"></dl>
+		<dl class="city-data" i="1"></dl>
+		<dl class="city-data" i="2"></dl>
+		<div class="city-ok"><a>确定</a><a>取消</a></div>
+	</div>
+	<div class="choiceData choiceTimes">
+		<dl id="timesbox">
+		</dl>
+	</div>
+</content>
+<script src="js/cityData.js"></script>
+<script src="js/base2.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/pubgoods.js"></script>
+</body>
+</html>

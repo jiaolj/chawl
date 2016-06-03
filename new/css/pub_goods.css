@@ -11,7 +11,11 @@ a {
   display: block;
 }
 span.red {
-  color: #cd2525;
+  color: #df4b24;
+}
+.block-goods,
+.block-car {
+  display: none;
 }
 .detail {
   font-size: 0.14rem;
@@ -22,7 +26,50 @@ span.red {
 .detail a {
   color: #666666;
 }
-.detail .box {
+.detail.active {
+  display: none;
+}
+.detail.oneStep .leavebox {
+  margin-right: 0.09rem;
+  margin-top: 0.51rem;
+  width: 2.99rem;
+  font-size: 0.12rem;
+  background: #ffffff;
+  border-radius: 0.04rem;
+  color: #333333;
+  border: 1px solid #e9e9e9;
+}
+.detail.oneStep .leavebox .tit {
+  height: 0.35rem;
+  line-height: 0.39rem;
+  text-indent: 0.06rem;
+  font-size: 0.16rem;
+  font-weight: 900;
+}
+.detail.oneStep .leavebox textarea {
+  background: #eeeeee;
+  width: 2.87rem;
+  height: 0.95rem;
+  line-height: 0.23rem;
+  text-indent: 1em;
+  border: none;
+  padding: 0.05rem;
+}
+.detail.oneStep .leavebox .admin a {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  line-height: 0.39rem;
+  box-sizing: border-box;
+  color: #333333;
+}
+.detail.oneStep .leavebox .admin a.cancel {
+  border-right: 1px solid #eeeeee;
+}
+.detail.oneStep .leavebox .admin a.submit {
+  color: #17a833;
+}
+.detail.twoStep .box {
   border: 1px solid #d1d1d1;
   border-radius: 0.05rem;
   margin-top: 0.2rem;
@@ -32,100 +79,116 @@ span.red {
   background: #f5f5f5;
   position: relative;
 }
-.detail .box img {
+.detail.twoStep .box img {
   position: absolute;
   left: 0.13rem;
   top: 0.16rem;
   height: 0.19rem;
 }
-.detail .box.one {
+.detail.twoStep .box.one {
   color: #444444;
   height: 1rem;
 }
-.detail .box.one .one {
-  width: 2.36rem;
+.detail.twoStep .box.one .one {
+  width: 100%;
 }
-.detail .box.one .one .up {
+.detail.twoStep .box.one .one .up {
   border-bottom: 1px solid #d1d1d1;
   position: relative;
   height: 0.5rem;
   overflow: hidden;
   text-align: left;
 }
-.detail .box.one .one .up span {
+.detail.twoStep .box.one .one .up span {
   display: inline-block;
   margin-left: 0.35rem;
   width: 2.03rem;
 }
-.detail .box.one .one .down {
+.detail.twoStep .box.one .one .down {
   position: relative;
   height: 0.5rem;
   overflow: hidden;
   text-align: left;
 }
-.detail .box.one .one .down span {
+.detail.twoStep .box.one .one .down span {
   display: inline-block;
   margin-left: 0.35rem;
   width: 2.03rem;
 }
-.detail .box.one .two {
+.detail.twoStep .box.one .two {
   height: 1rem;
   width: 0.61rem;
   border-left: 1px solid #d1d1d1;
   display: table;
 }
-.detail .box.one .two a {
+.detail.twoStep .box.one .two a {
   line-height: 0.2rem;
   margin-top: 0.28rem;
-  color: #cd2525;
+  color: #df4b24;
 }
-.detail .box.flt,
-.detail .box.frt {
+.detail.twoStep .box.flt,
+.detail.twoStep .box.frt {
   width: 1.45rem;
 }
-.detail .box.aftercity {
+.detail.twoStep .box.aftercity {
   text-indent: 3em;
   text-align: left;
 }
-.detail .box.iscall {
-  text-align: left;
-  display: none;
-}
-.detail .box.iscall span.text {
-  margin-left: 0.3rem;
-}
-.detail .box.iscall span.iscall {
-  position: absolute;
-  right: 0.2rem;
-}
-.detail .box.iscall span.iscall span {
-  width: 0.28rem;
-  display: inline-block;
+.detail.twoStep .box.leavewords {
+  height: 1rem;
+  width: 100%;
   line-height: 0.23rem;
-  height: 0.23rem;
-  text-align: center;
-  border: 1px solid #dddddd;
-  cursor: pointer;
+  color: #666666;
+  padding-left: 0.15rem;
+  width: 2.8rem;
 }
-.detail .box.iscall span.iscall span.active {
-  background: #0caa0c;
-  color: #ffffff;
-  border: none;
-}
-.detail .box.phone {
+.detail.twoStep .box.phone {
   text-align: left;
 }
-.detail .box.phone span.text {
+.detail.twoStep .box.phone span.text {
   padding: 0 0.21rem;
 }
-.detail .box.phone input {
+.detail.twoStep .box.phone input {
   width: 1.4rem;
   border: none;
   background: #f5f5f5;
-  font-size: 0.14rem;
 }
-.detail .box.button {
-  background: #cd2525;
-  color: #ffffff;
-  margin-top: 0.4rem;
+.detail.twoStep .where {
+  text-align: left;
+}
+.detail.twoStep .where a {
+  position: relative;
+  text-indent: 0.1rem;
+}
+.detail.twoStep .where a:before {
+  content: '';
+  position: absolute;
+  border: 1px solid #df4b24;
+  width: 0.07rem;
+  height: 0.07rem;
+  border-radius: 50%;
+  top: 0.035rem;
+  left: 0;
+}
+.detail.twoStep .where a[state="1"]:before {
+  background: #df4b24;
+}
+.detail.twoStep .pic {
+  text-align: center;
+  color: #888888;
+  background: #eeeeee;
+  width: 0.675rem;
+  height: 0.675rem;
+  cursor: pointer;
+  padding: 0.15rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  float: left;
+}
+.detail.twoStep .pic:nth-child(n + 2) {
+  margin-left: 0.03rem;
+}
+.detail.twoStep .pic .add {
+  font-size: 0.23rem;
+  margin-top: 0.1rem;
 }

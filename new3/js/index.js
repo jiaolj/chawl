@@ -101,7 +101,7 @@ getLocation.init(function(){
 				$.each(data,function(k,j){
 					obj.dom.list.append(obj.rdata(k,tmp,j)).find('a:last').click(function(){
 						var url = $(this).attr('url');
-						location.href = url+'&back_url='+getUrl()+'?args='+encodeURIComponent(str(obj.querys.args))+'&back_ScrollTop='+Base.turn.getScrollTop();
+						location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
 					})
 				})
 				
@@ -201,26 +201,26 @@ getLocation.init(function(){
 					if(k=='from' || k=='to'){
 						args.tp = v;
 						args.page = 'card';
-						location.href = 'city.html?args='+encodeURIComponent(str(args));
+						location.href = 'city.html?args='+str(args)+'&v=1';
 					}
 					else if(k=='change'){
 						var cge = args.citys[1];
 						args.citys[1] = args.citys[2].replace('目的地','出发地');
 						args.citys[2] = cge.replace('出发地','目的地');
-						location.href = '?args='+encodeURIComponent(str(args));
+						location.href = '?args='+str(args);
 					}
 				});
 				$('.cityname').click(function(){
 					args.url = getUrl();
 					args.tp = '3';
 					args.page = 'card';
-					location.href = 'city.html?args='+encodeURIComponent(str(args));
+					location.href = 'city.html?args='+str(args)+'&v=1';
 				});
 				$('#change td').click(function(){
 					var ts = $(this),
 						i = parseInt(ts.attr('d'));
 					args.findType = i + 1;
-					location.href = '?args=' + encodeURIComponent(str(args));
+					location.href = '?args=' + str(args);
 				})
 				$('#list').click(function(e){
 					var tar = e.target,
@@ -257,7 +257,8 @@ getLocation.init(function(){
 						;
 						if(goods_id) url+='?goods_id='+goods_id;
 						else if(car_id) url+='?car_id='+car_id;
-						location.href = url+'&back_url='+getUrl()+'?args='+encodeURIComponent(str(obj.querys.args))+'&back_ScrollTop='+Base.turn.getScrollTop();
+						//location.href = url;
+						location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
 					}
 				});
 			}
@@ -271,7 +272,7 @@ getLocation.init(function(){
 			else _followFunc();
 		})
 		$('#to-msg').click(function(){
-			if(_userInfo) location.href = 'msg.html?args='+encodeURIComponent(str(_msgAll));
+			if(_userInfo) location.href = 'msg.html?args='+str(_msgAll);
 			else _followFunc();
 		})
 		if(_userInfo){

@@ -1,8 +1,4 @@
 @import 'pub.less';
-@red:#df4b24;
-body {
-	.bg(#EFEFEF);
-}
 
 content {
 	.cover-page {
@@ -28,49 +24,31 @@ content {
 			}
 		}
 	}
-	.foot {
-		.psf;.b;.w;.tct;.fsr(28rem);
-		.topage {
-			.lhr(100rem);
-			a {
-				.w(50%);.flt;.dsb;
-				&.one {
-					.bg(#fff);.c(@red);
-				}
-				&.two {
-					.bg(@red);.c(#fff);
-				}
-			}
-		}
-	}
-	dl.menus {
-		.bg(#fff);.lhr(66rem);.mgtr(12rem);
-		dt {
-			.flt;.wr(160rem);.tct;
-			&.active {
-				.bdbr(@red,4rem);
-			}
+	.send2 {
+		.psf;.r;.t;.hr(100rem);
+		img {
+			.h;.psa;.t;.r;
 		}
 	}
 	dl.list {
 		.fsr(28rem);.mgbr(96rem);
 		dt {
 			.pd-r(20rem);.bg(#fff);.mgbr(42rem);
-			.titles {
-				.lhr(60rem);.hr(60rem);
-				.tit {
-					.fw;.fsr(28rem);
-					img{
-						&.logo{
-							.bolr(50rem);.mgrr(12rem);
-						}
-						&.vip {
-							.hr(28rem);
-						}
+			.photo {
+				.wr(86rem);.mgrr(20rem);.psr;
+				img {
+					&.logo{
+						.br;.sqar(86rem);
+					}
+					&.vip{
+						.sqar(32rem);.psa;.b;.r;
 					}
 				}
-				a.card {
-					.dsb;.bd-r(@red,2rem);.c(@red);.brr(6rem);.fsr(22rem);.wr(160rem);.lhr(52rem);.tct;.mgtr(4rem);
+			}
+			.tit {
+				.wr(494rem);.fw;.fsr(32rem);.lhr(46rem);
+				p.time {
+					.fsr(24rem);.c(#ccc);.lhr(38rem);
 				}
 			}
 			.text {

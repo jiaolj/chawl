@@ -22,7 +22,7 @@ getLocation.init(function(){
 			},
 			dom : {
 				list : $('#list'),
-				load : '<div class="load"><img src="img/car_on.png">努力加载中...</div>',
+				load : '<div class="load"><img src="img/bottom/find_on.png">努力加载中...</div>',
 				tmp_car : '<dt i="#ii" car_id="#car_id"> \
 					<div class="logo"><span j="1"><img class="headimg" j="1" src="#headimgurl"><br /><img class="vip" src="img/other/car.png"></span></div> \
 					<div class="text"> \
@@ -36,11 +36,11 @@ getLocation.init(function(){
 					</div><br class="cb" />\
 				</dt>',
 				tmp_goods : '<dt i="#ii" goods_id="#goods_id"> \
-					<div class="logo"><span><img class="headimg" src="#headimgurl"></span><img class="vips#vip" src="img/blog/vip.png"></div> \
+					<div class="logo"><span j="1"><img class="headimg" j="1" src="#headimgurl"><br /><img class="vip" src="img/other/goods.png"></span></div> \
 					<div class="text"> \
-						<p class="tit starting"><span><img src="img/other/in.png"> #starting</span></p> \
-						<p class="tit destination"><span><img src="img/other/out.png"> #destination</span></p> \
-						<p class="remark" title="#rmktitle"><span>#remark</span></p> \
+						<p class="tit starting"><span j="1"><img src="img/other/in.png"> #starting</span></p> \
+						<p class="tit destination"><span j="1"><img src="img/other/out.png"> #destination</span></p> \
+						<p class="remark" title="#rmktitle"><span j="1">#remark</span></p> \
 					</div> \
 					<div class="contact"> \
 						#time2 <br /> \
@@ -65,8 +65,6 @@ getLocation.init(function(){
 				else d=d.replace('#length',parseFloat(j.length) && parseFloat(j.length).toFixed(1)+'米');
 				if(j.model=='车长车型') d=d.replace('#model','未知');
 				else d=d.replace('#model',j.model.replace('所需车辆','未知').replace('不限','未知'));
-				if(j.user_info.pages.length>0) d=d.replace('#vip','');
-				else d=d.replace('#vip',' hide');
 				return d;
 			},
 			getHtml : function(data,ag){
@@ -79,47 +77,10 @@ getLocation.init(function(){
 					}()
 				;
 				$.each(data,function(k,j){
-					if(j.user_info && j.user_info[0]) obj.dom.list.append(obj.rdata(k,tmp,j)).find('dt:last').click(function(e){
-						var o = $(this),
-							tar = e.target,
-							ths = $(tar),
-							prrt = ths.parent().parent()
-						;
-						if(tar.className=='cimg'){
-							var cnt = $('.consult'),
-								cnt1 = $('.consult>a').eq(0),
-								cnt2 = $('.consult>a').eq(1)
-							;
-							var pi = prrt.attr('i'),
-								ni = cnt.attr('i'),
-								phone = ths.attr('phone')
-							;
-							if(phone=='-1'){
-								cnt2.css('color','#ccc');
-								cnt2.attr('href','#');
-							}else{
-								cnt2.css('color','#fff');
-								cnt2.attr('href','tel:'+phone);
-							}
-							cnt1.attr('href','mdetail.html?id='+ths.attr('user_id')+'&ref='+new Date().getTime());
-							if(pi!=ni){
-								cnt.attr('i',pi);cnt.show();
-							}else{
-								if(cnt.css('display')=='none') cnt.show();
-								else cnt.hide();
-							}
-						}else{
-							var car_id = o.attr('car_id'),
-								goods_id = o.attr('goods_id'),
-								url = 'mypubs.html'
-							;
-							if(goods_id) url+='?goods_id='+goods_id;
-							else if(car_id) url+='?car_id='+car_id;
-							location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
-						}
-					});
+					if(j.user_info && j.user_info[0]) obj.dom.list.append(obj.rdata(k,tmp,j));
 				})
 				if(ag.stop) {
+					log(ag.stop,Base.turn.getScrollTop());
 					if(ag.stop==Base.turn.getScrollTop()) _isLoad = 1;
 					if(_isLoad==0) $('body,html').scrollTop(ag.stop);
 				}
@@ -228,7 +189,7 @@ getLocation.init(function(){
 					}
 				});
 				Base.turn.get(obj);
-				/*$('#list').click(function(e){
+				$('#list').click(function(e){
 					var tar = e.target,
 						ths = $(tar),
 						prrt = ths.parent().parent(),
@@ -265,7 +226,7 @@ getLocation.init(function(){
 						else if(car_id) url+='?car_id='+car_id;
 						location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
 					}
-				})*/
+				})
 			}
 		}
 	})();
@@ -275,10 +236,5 @@ getLocation.init(function(){
 			if(_userInfo) location.href = $(this).attr('htm');
 			else _followFunc();
 		})
-		if(_userInfo) {
-			_getUserDetail(_userInfo.user_id,function(back){
-				$('#headimgurl').html('<img src="'+back.headimgurl+'"/>');
-			})
-		}
 	})
 })
