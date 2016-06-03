@@ -56,19 +56,30 @@ content .send2 p.one {
 }
 content .send2 p.two {
   width: 2.7rem;
-  background: #df4b25;
+  background: #ffffff;
   position: absolute;
   right: 0%;
   padding-top: 0.16rem;
 }
 content .send2 p.two a {
-  display: inline-block;
-  color: #ffffff;
+  display: block;
+  float: left;
+  width: 33%;
+  color: #333333;
   line-height: 0.17rem;
-  padding: 0 0.09rem;
+  position: relative;
 }
-content .send2 p.two a.line {
-  border-right: 1px solid #ffffff;
+content .send2 p.two a img {
+  position: relative;
+  top: -0.02rem;
+}
+content .send2 p.two a.line:before {
+  content: '';
+  position: absolute;
+  right: 0.08rem;
+  background: #dddddd;
+  width: 1px;
+  height: 0.16rem;
 }
 content .detail .boxs {
   margin: 0.17rem 0.1rem;
@@ -80,7 +91,13 @@ content .detail .boxs {
 content .detail .boxs a.back {
   position: absolute;
   left: 0.16rem;
-  top: 0;
+  top: 0%;
+  color: #666666;
+}
+content .detail .boxs a.index {
+  position: absolute;
+  right: 0.16rem;
+  top: 0%;
   color: #666666;
 }
 content .detail .boxs .mycard {

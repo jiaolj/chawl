@@ -39,6 +39,7 @@ getLocation.init(function(){
 					}
 					_key = 'kwd'+a.sort;
 					$('span[sort="'+a.sort+'"]').show();
+					$('a[sort="'+a.sort+'"]').addClass('active');
 					return a;
 				}(),
 				is : 0,

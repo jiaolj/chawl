@@ -109,6 +109,14 @@ content .top a.pright b {
   font-size: 0.09rem;
   display: none;
 }
+content .top a.pright span img {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 0.035rem;
+  right: 0%;
+}
 content .top img {
   position: relative;
   top: -0.02rem;
@@ -636,6 +644,9 @@ footer .blocks a {
   width: 20%;
   position: relative;
   display: block;
+}
+footer .blocks a.active .txt {
+  color: #df4b24;
 }
 footer .blocks a div {
   height: 0.2525rem;
