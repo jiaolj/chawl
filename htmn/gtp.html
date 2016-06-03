@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/where.css" type="text/css" />
+</head>
+<body>
+<content>
+<section class="three">
+	<dl id="jump"></dl>
+</section>
+</content>
+<script src="js/base.js"></script>
+<script>
+$('#jump').html(function(){
+	var dd = [
+		{k:'不限',v:'不限'},
+		{k:'五金',v:'五金'},
+		{k:'电料',v:'电料'},
+		{k:'配件',v:'配件'},
+		{k:'建材',v:'建材'},
+		{k:'非金属材料',v:'非金属材料'},
+		{k:'化工杂品',v:'化工杂品'},
+	],htm = '';
+	for(var d in dd) htm += '<a><dt d="'+dd[d].v+'">'+dd[d].k+'</dt></a>';
+	return htm;
+}).find('dt').click(function(){
+	var args = json(Base.tools.getQueryString('args')),
+		url = args.url
+	;
+	args.gtp = $(this).attr('d');
+	delete args.url;
+	location.href = url + '?args=' + str(args);
+})
+</script>
+</body>
+</html>

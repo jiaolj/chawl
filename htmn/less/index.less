@@ -1,0 +1,132 @@
+@import 'pub.less';
+@red:#DF4B24;
+@red2:#FF0000;
+body {
+	.bg(#fff);
+}
+.head {.wr(640rem);.hr(233rem);.psr;img {.w;.psa;.t;.l;}}
+section {
+	.bg(#fff);.fsr(22rem);
+	>nav {
+		.mgtr(30rem);
+		>a {
+			.dsb;.tct;.w(25%);.mgtr(30rem);.flt;
+			.img {
+				.sqar(80rem);.bg(@red);.br;.mglr(38rem);
+				img {
+					.mgtr(14rem);.wr(52rem);
+				}
+			}
+			span {
+				.dsb;.c(#000);.fsr(20rem);.lhr(60rem);
+			}
+		}
+	}
+}
+.title {
+	.bg(#F0F0F0);.hr(18rem);
+}
+
+dl.list {
+	.fsr(28rem);.pdbr(110rem);
+	.moreText {
+		.lhr(56rem);.tct;.psr;.c(#666);
+		.bdb(#e5e5e5);
+		&:before {
+			content: '';
+			.psa;.lr(40rem);.tr(30rem);.wr(130rem);.hr(1rem);.bg(#ddd);
+		}
+		&:after {
+			content: '';
+			.psa;.rr(40rem);.tr(30rem);.wr(130rem);.hr(1rem);.bg(#ddd);
+		}
+	}
+	dt {
+		.hr(196rem);.bdb(#eee,1px);
+		//精品专线
+		.logo1 {
+			.wr(252rem);.psr;
+			img {
+				&.logo {
+					.wr(220rem);.mg-r(18rem);
+				}
+				&.vip {
+					.wr(80rem);.psa;.l;.t;
+				}
+			}
+			.vip {
+				.wr(80rem);.psa;.l;.t;
+			}
+		}
+		.text1 {
+			.wr(388rem);
+			.tit {
+				.fw;.fsr(28rem);.zi(0.5em);.c(#333);.lhr(40rem);.hr(80rem);.ofh;.mgtr(8rem);
+			}
+			.phone {
+				.lhr(40rem);.fsr(24rem);.psr;
+				span{
+					.c(@red);.fw(900);
+					&.star {
+						.psa;.rr(12rem);
+						img {
+							.wr(24rem);.mgrr(6rem);
+						}
+					}
+					&.viewNum {
+						.c(@red);.fw(600);
+					}
+					&.view {
+						.c(#777);.fsr(22rem);.psr;.tr(-2rem);.fw(100);
+					}
+				}
+			}
+			.area {
+				.c(#656565);.lhr(46rem);.hr(46rem);.ofh;.fsr(26rem);
+			}
+		}
+		//车源货源
+		.logo {
+			.wr(122rem);.mglr(20rem);.mgrr(20rem);.mgtr(10rem);
+			img{
+				.w;
+				&.headimg {
+					.bolr(122rem);
+				}
+			}
+			span {.csr}
+		}
+		.text {
+			.wr(442rem);
+			p {
+				.lhr(38rem);.fsr(20rem);.c(#888);.hr(38rem);
+				span {.csr}
+				&.tit {
+					.lhr(34rem);.fsr(26rem);.fw;.c(#000);.lsr(1rem);
+					img {
+						.wr(24rem);.psr;.tr(-4rem);
+					}
+				}
+				&.starting {
+					.mgtr(14rem);
+				}
+				&.destination {
+					.mgtr(4rem);
+					.mgbr(4rem);
+				}
+				&.remark {
+					.wr(390rem);.hr(76rem);.ofh;.fsr(28rem);
+				}
+				img {
+					.wr(30rem);
+				}
+			}
+		}
+		.contact {
+			.wr(128rem);.tct;.fsr(18rem);.lhr(50rem);.psa;.r;
+				img {
+					.wr(72rem);.csr;
+				}
+		}
+	}
+}

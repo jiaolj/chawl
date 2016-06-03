@@ -350,5 +350,4 @@ window.addEventListener("orientationchange", function() {
 window.addEventListener("resize", function() {
 	_getSize();
 }, false);
-$('body content').append('<a href="javascript:window.location.reload()" style="position:fixed;top:0.4rem;right:0;z-index:99;display:block;width:50px;height:50px"></a>');
-//$('body content').append('<a href="reg.html" style="position:fixed;top:0.4rem;left:0;z-index:99">验证</a>');
+$('body content').append('<a href="javascript:window.location.reload()" style="position:fixed;top:0.4rem;right:0;z-index:99;display:block;width:20px;height:20px"></a>');

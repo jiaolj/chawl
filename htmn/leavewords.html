@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/pub_words.css" type="text/css" />
+</head>
+<body>
+<content>
+<div class="detail">
+	<div class="tit">你想给车主捎去什么话呢？</div>
+	<dl id="choice">
+		<dt i="0">便宜点呗，哈哈</dt>
+		<dt i="1">货比较急，能快点装货吗？</dt>
+		<dt i="2" class="active">想要直达车，中途停的就算了</dt>
+		<dt i="3"><input type="text" id="v1" placeholder="其他（请输入要捎去的话）" /></dt>
+	</dl>
+	<div class="ok" id="wordsOk">确定</div>
+</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+var getSize = function(){$('html').css('font-size',document.body.clientWidth*100/320+'px')}(),i = parseInt($('#choice>.active').attr('i'));
+$('#choice>dt').click(function(){
+	var ts =$(this);
+		i = parseInt(ts.attr('i'));
+	ts.parent().find('.active').removeClass('active');
+	if(i<3){
+		ts.addClass('active');
+	}
+})
+$('#wordsOk').click(function(){
+	var args = json(Base.tools.getQueryString('args')),
+		url = args.url
+	;
+	if(i==3) args.leavewords = $('#v1').val();
+	else args.leavewords = $('#choice>.active').text();
+	delete args.url;
+	location.href = url + '?args=' + str(args);
+})
+</script>
+</body>
+</html>

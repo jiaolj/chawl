@@ -1,0 +1,43 @@
+html {
+  font-size: 100px;
+}
+body {
+  background: #ffffff;
+}
+img {
+  vertical-align: middle;
+}
+.detail {
+  text-align: center;
+  font-size: 0.14rem;
+}
+.detail .up img {
+  width: 100%;
+}
+.detail dl.down {
+  border-bottom: 1px solid #dddddd;
+}
+.detail dl.down dt {
+  float: left;
+  padding: 0.14rem 0.38rem;
+  border-top: 1px solid #dddddd;
+  cursor: pointer;
+}
+.detail dl.down dt.line {
+  border-right: 1px solid #dddddd;
+}
+.detail dl.down dt .img {
+  width: 0.835rem;
+  height: 0.835rem;
+  border-radius: 50%;
+  background: #df4b24;
+}
+.detail dl.down dt .img img {
+  width: 0.545rem;
+  margin-top: 0.12rem;
+}
+.detail dl.down dt .text {
+  font-weight: 900;
+  margin-top: 0.13rem;
+  margin-bottom: 0.05rem;
+}

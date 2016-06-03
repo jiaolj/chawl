@@ -1,0 +1,52 @@
+html {
+  font-size: 100px;
+}
+body {
+  background: #ffffff;
+}
+img {
+  vertical-align: middle;
+}
+a {
+  display: block;
+}
+.detail {
+  font-size: 0.13rem;
+  text-align: center;
+}
+.detail .tit {
+  background: #f5f5f5;
+  line-height: 0.5rem;
+  font-weight: 900;
+}
+.detail .ok {
+  margin: 0.45rem 0.1rem 0rem 0.1rem;
+  border-radius: 0.05rem;
+  background: #cd2121;
+  line-height: 0.5rem;
+  color: #ffffff;
+}
+.detail .data {
+  padding: 0.33rem 0.1rem;
+  position: relative;
+  height: 0.5rem;
+  overflow: hidden;
+}
+.detail .data input {
+  width: 100%;
+  border: none;
+  background: #f5f5f5;
+  line-height: 0.5rem;
+  text-indent: 1em;
+}
+.detail .data input::-webkit-input-placeholder {
+  color: #666666;
+}
+.detail .data span {
+  position: absolute;
+  right: 0.25rem;
+  top: 0.5rem;
+}
+.detail .data.bottom {
+  border-bottom: 0.2rem solid #f5f5f5;
+}

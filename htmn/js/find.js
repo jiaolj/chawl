@@ -22,7 +22,7 @@ getLocation.init(function(){
 			},
 			dom : {
 				list : $('#list'),
-				load : '<div class="load"><img src="img/bottom/find_on.png">努力加载中...</div>',
+				load : '<div class="load"><img src="img/car_on.png">努力加载中...</div>',
 				tmp_car : '<dt i="#ii" car_id="#car_id"> \
 					<div class="logo"><span j="1"><img class="headimg" j="1" src="#headimgurl"><br /><img class="vip" src="img/other/car.png"></span></div> \
 					<div class="text"> \
@@ -236,5 +236,10 @@ getLocation.init(function(){
 			if(_userInfo) location.href = $(this).attr('htm');
 			else _followFunc();
 		})
+		if(_userInfo) {
+			_getUserDetail(_userInfo.user_id,function(back){
+				$('#headimgurl').html('<img src="'+back.headimgurl+'"/>');
+			})
+		}
 	})
 })

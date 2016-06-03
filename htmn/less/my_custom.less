@@ -1,0 +1,114 @@
+@import 'pub.less';
+
+body {
+	.bg(#F6F6F6);
+}
+@red:#df4b24;
+.detail {
+	.fsr(28rem);
+	.head {
+		.lhr(80rem);.tct;.psr;.c(@red);.bg(#fff);
+		.mid {
+			.fsr(38rem);
+		}
+		.text {
+			.psa;.rr(30rem);
+		}
+	}
+	.menu {
+		.bg(#F6F6F6);.pd-r(50rem,18rem);
+		.box {
+			.lhr(80rem);.bd-r(@red,2rem);.brr(8rem);.tct;
+			a {
+				.c(@red);.dsib;.h;.w(50%);
+				&.active {
+					.bg(@red);.c(#fff);
+				}
+			}
+		}
+	}
+	.data {
+		.c(#666);.bg(#fff);
+		dl {
+			.bdt(#ddd);.bdb(#ddd);.lhr(80rem);.dsn;
+			&.active {
+				.dsb;
+			}
+			dt {
+				.psr;
+				div {
+					.mglr(22rem);.bdb(#ddd);.hr(80rem);
+					span.text {
+						.dsb;.h;
+						span,b {
+							.dsib;.mxwr(226rem);.h;.ofh;.fw(100);
+						}
+					}
+				}
+				&:nth-last-child(1) div{
+					.bdn;
+				}
+				.switch {
+					.psa;.rr(20rem);.tr(14rem);.brr(24rem);.dsib;.wr(98rem);.hr(50rem);.csr;
+					&:before {
+						content:'';.psa;.dsib;.bolr(46rem);.tr(2rem);.bg(#fff);
+					}
+					&[s="1"]{
+						.bg(@red);
+						&:before {
+							.lr(2rem);
+						}
+					}
+					&[s="0"]{
+						.bg(#E0E0E0);
+						&:before {
+							.rr(2rem);
+						}
+					}
+				}
+				&.active {
+					&:before {
+						content: '';
+						.psa;.trglr(#ccc,8rem,6rem);.tr(32rem);.dsib;.lr(10rem);
+					}
+				}
+			}
+		}
+	}
+	.custom {
+		.tct;
+		img {
+			.wr(320rem);.mgtr(170rem);.csr;
+		}
+	}
+	.addLines {
+		.menus {
+			.fsr(32rem);.tct;.lhr(76rem);.psr;.bg(#fff);
+			a {
+				.fsr(28rem);.c(@red);
+				&.cancel {
+					.c(#999);.lr(20rem);.psa;
+				}
+				&.save {
+					.rr(20rem);.psa;
+				}
+			}
+		}
+		.locations {
+			.bg(#fff);.mgtr(12rem);
+			p {
+				.lhr(70rem);.pd-r(0,20rem);
+				&.starting {
+					.bdb(#ddd);
+				}
+			}
+		}
+		.texts {
+			.pd-r(20rem);
+			.fsr(24rem);.c(#999);.lhr(38rem);
+		}
+		.ok {
+			.bg(@red);.c(#fff);.lhr(80rem);.tct;.brr(8rem);.mg-r(20rem);.csr;
+		}
+	}
+}

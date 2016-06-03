@@ -12,10 +12,11 @@ getLocation.init(function(){
 			}
 		};
 		var _argArea = 1,
-			_isLoad = 0,
 			_lastPage = {},
+			_isLoad = 0,
 			_kwd = '',
 			_order = {1:'',2:'new',3:'hot'},
+			_seoTitle = {130:'精品专线',564:'落地配',929:'本地货车',926:'综合物流'},
 			_cityName = _simpCity($('#cityname').text()),
 			_starting,
 			_destination,
@@ -23,13 +24,14 @@ getLocation.init(function(){
 		window.MVC = {
 			querys : {
 				args : function(){
-					var a = json(Base.tools.getQueryString('args'));
+					var a = json(Base.tools.getQueryString('args')) || {};
+					if(!a.sort) a.sort = 130;
+					$('.seoTitle').text(_seoTitle[a.sort]);
 					_starting = setGet('.where .starting span[sort="'+a.sort+'"] input');
 					_destination = setGet('.where .destination span[sort="'+a.sort+'"] input');
 					if(!a.findType) a.findType = 1;
 					if(a.starting) _starting.set(a.starting);
 					else {
-						a.starting = _cityName;
 						_starting.set(_cityName);
 					}
 					if(a.destination) {
@@ -45,7 +47,7 @@ getLocation.init(function(){
 			},
 			dom : {
 				list : $('#list'),
-				load : '<div class="load"><img src="img/bottom/find_on.png">努力加载中...</div>',
+				load : '<div class="load"><img src="img/car_on.png">努力加载中...</div>',
 				tmp : '\
 					<dt url="#href">\
 						<div class="flt logo1"><img class="logo" src="#logo" /><img class="vip#vip" src="img/list/vip.png"><img class="vip#member" src="img/list/renzheng.png"></div>\
@@ -88,7 +90,7 @@ getLocation.init(function(){
 				$.each(data,function(k,j){
 					obj.dom.list.append(obj.rdata(tmp,j)).find('dt:last').click(function(){
 						var url = $(this).attr('url');
-						location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
+						location.href = url+'&back_url='+getUrl()+'?args='+encodeURIComponent(str(obj.querys.args))+'&back_ScrollTop='+Base.turn.getScrollTop();
 					});
 				})
 				if(ag.stop) {
@@ -205,7 +207,6 @@ getLocation.init(function(){
 					$('#where564').show();
 					$('#goodstype').text(args.goodstype);
 				}
-				$('#seoTitle').text(args.title);
 				var stop = Base.tools.getQueryString('back_ScrollTop');
 				if(stop) ag.stop = parseInt(stop);
 				obj.query(ag);
@@ -213,7 +214,7 @@ getLocation.init(function(){
 				$('.query').click(function(){
 					args.starting = _starting.get();
 					args.destination = _destination.get();
-					location.href = '?args=' + str(args);
+					location.href = '?args=' + encodeURIComponent(str(args));
 				})
 				$('#change td[d="'+(args.findType-1)+'"]').addClass('active');
 				$('#change td').click(function(){
@@ -222,7 +223,7 @@ getLocation.init(function(){
 					args.findType = i + 1;
 					args.starting = _starting.get();
 					args.destination = _destination.get();
-					location.href = '?args=' + str(args);
+					location.href = '?args=' + encodeURIComponent(str(args));
 				})
 				//历史搜索
 				if(!$.cookie(_key)) {
@@ -254,9 +255,7 @@ getLocation.init(function(){
 		})
 		if(_userInfo) {
 			_getUserDetail(_userInfo.user_id,function(back){
-				//log(back);
 				$('#headimgurl').html('<img src="'+back.headimgurl+'"/>');
-				//$('#nickname').text(back.nickname);
 			})
 		}
 	})

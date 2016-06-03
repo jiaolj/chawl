@@ -1,0 +1,207 @@
+content {
+  display: block;
+  padding-bottom: 0.64rem;
+}
+content .send2 {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 3.2rem;
+  font-size: 0.12rem;
+  height: 0.49rem;
+  z-index: 9;
+  background: #ffffff;
+}
+content .send2 .leavebox2 {
+  position: absolute;
+  height: 0.3rem;
+  top: -0.33rem;
+  width: 3.18rem;
+  display: none;
+  border: 1px solid #eb8401;
+}
+content .send2 .leavebox2 input {
+  border: none;
+  position: relative;
+  top: 0.01rem;
+}
+content .send2 .leavebox2 .txt {
+  width: 80%;
+  height: 0.3rem;
+  position: absolute;
+  left: 0;
+  top: 0%;
+}
+content .send2 .leavebox2 .btn {
+  width: 20%;
+  height: 0.32rem;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+}
+content .send2 p {
+  display: inline-block;
+  height: 0.49rem;
+}
+content .send2 p img {
+  width: 0.15rem;
+}
+content .send2 p.one {
+  width: 0.5rem;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  line-height: 0.16rem;
+  top: 0.05rem;
+}
+content .send2 p.two {
+  width: 2.7rem;
+  background: #df4b25;
+  position: absolute;
+  right: 0%;
+  padding-top: 0.16rem;
+}
+content .send2 p.two a {
+  display: inline-block;
+  color: #ffffff;
+  line-height: 0.17rem;
+  padding: 0 0.09rem;
+}
+content .send2 p.two a.line {
+  border-right: 1px solid #ffffff;
+}
+content .detail .boxs {
+  margin: 0.17rem 0.1rem;
+  background: #ffffff;
+  border-radius: 0.04rem;
+  border-bottom: 1px solid #dddddd;
+  font-size: 0.14rem;
+}
+content .detail .boxs a.back {
+  position: absolute;
+  left: 0.16rem;
+  top: 0;
+  color: #666666;
+}
+content .detail .boxs .mycard {
+  text-align: center;
+}
+content .detail .boxs .mycard .logo {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  margin: 0.13rem;
+}
+content .detail .boxs .mycard span {
+  display: block;
+  padding-bottom: 0.11rem;
+}
+content .detail .boxs .title {
+  font-weight: 900;
+  line-height: 0.38rem;
+  font-size: 0.16rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+}
+content .detail .boxs .fromto {
+  font-weight: 500;
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+  margin-top: 0.04rem;
+  margin-bottom: 0.08rem;
+}
+content .detail .boxs .fromto p {
+  text-indent: 0.15rem;
+  line-height: 0.26rem;
+}
+content .detail .boxs .fromto img {
+  height: 0.12rem;
+}
+content .detail .boxs table {
+  margin-left: 0.12rem;
+  width: 2.88rem;
+}
+content .detail .boxs table tr td {
+  line-height: 0.42rem;
+}
+content .detail .boxs table tr td:nth-child(1) {
+  width: 0.67rem;
+  color: #888888;
+}
+content .detail .boxs table tr.last td {
+  border-bottom: none;
+}
+content .detail .boxs .leave {
+  background: #ffffff;
+}
+content .detail .boxs .leave .remark {
+  line-height: 0.23rem;
+  padding: 0.04rem 0.1rem;
+}
+content .detail .boxs .cust {
+  line-height: 0.46rem;
+  font-size: 0.15rem;
+  position: relative;
+  border-bottom: 1px solid #dddddd;
+}
+content .detail .boxs .cust .logo {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  margin: 0 0.125rem;
+}
+content .detail .boxs .cust .cvip {
+  width: 0.65rem;
+  position: absolute;
+  right: 0.09rem;
+  top: 0.1rem;
+}
+content .detail .boxs .cdetail {
+  height: 0.91rem;
+  position: relative;
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 0.24rem;
+}
+content .detail .boxs .cdetail .logo {
+  width: 1.04rem;
+  height: 0.69rem;
+  position: absolute;
+  top: 0.08rem;
+}
+content .detail .boxs .cdetail .right {
+  position: absolute;
+  top: 0.08rem;
+  right: 0%;
+  width: 1.78rem;
+}
+content .detail .boxs .cdetail .right .tit {
+  line-height: 0.19rem;
+  font-weight: 900;
+}
+content .detail .boxs .cdetail .right .phone {
+  line-height: 0.16rem;
+  color: #cd2525;
+  position: relative;
+}
+content .detail .boxs .cdetail .right .phone > span {
+  position: absolute;
+  right: 0.06rem;
+}
+content .detail .boxs .cdetail .right .phone > span > span {
+  color: #666666;
+}
+content .detail .boxs .cdetail .right .area {
+  line-height: 0.23rem;
+  color: #666666;
+}
+content .detail .boxs.last {
+  margin-bottom: 0.14rem;
+}
+content .detail .redOnly {
+  width: 2.9rem;
+  color: #df4b24;
+  margin: 0 auto;
+  font-size: 0.14rem;
+  line-height: 0.23rem;
+}

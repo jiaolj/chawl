@@ -1,0 +1,49 @@
+.detail img.back {
+  height: 0.2rem;
+  position: absolute;
+  left: 0.06rem;
+  top: 0.09rem;
+}
+.detail .title {
+  font-weight: 900;
+  line-height: 0.38rem;
+  font-size: 0.16rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+  background: #ffffff;
+}
+.detail dl.data dt {
+  margin-top: 0.08rem;
+  background: #ffffff;
+  padding: 0.08rem;
+}
+.detail dl.data dt p {
+  line-height: 0.23rem;
+  text-indent: 0.08rem;
+}
+.detail dl.data dt .remark {
+  line-height: 0.3rem;
+  text-indent: 0.08rem;
+}
+.detail dl.data dt img {
+  height: 0.15rem;
+  position: relative;
+  top: -0.025rem;
+}
+.detail dl.data dt .admin {
+  position: relative;
+  height: 0.4rem;
+}
+.detail dl.data dt .admin .rit {
+  position: absolute;
+  right: 0.03rem;
+  line-height: 0.2rem;
+}
+.detail dl.data dt .admin .rit span {
+  background: #df4b24;
+  color: #ffffff;
+  padding: 0.03rem 0.06rem;
+  margin-left: 0.09rem;
+  border-radius: 0.03rem;
+}

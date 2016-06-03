@@ -1,0 +1,28 @@
+body {
+  background: #ffffff;
+}
+.detail {
+  font-size: 0.12rem;
+  color: #000000;
+}
+.detail .title {
+  color: #cf221e;
+  font-weight: 900;
+  font-size: 0.23rem;
+  line-height: 0.6rem;
+  text-align: center;
+}
+.detail dl dt .tit {
+  font-size: 0.16rem;
+  line-height: 0.31rem;
+  font-weight: 900;
+  text-indent: 0.15rem;
+  cursor: pointer;
+}
+.detail dl dt .data {
+  line-height: 0.19rem;
+  font-weight: 400;
+  padding: 0.05rem 0.3rem;
+  background: #f7f7f7;
+  display: none;
+}

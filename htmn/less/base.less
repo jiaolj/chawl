@@ -1,0 +1,338 @@
+@import 'pub.less';
+html{.fs(100px)}
+body,dl,p,table{margin:0}a{.tdn;.c(#000);.csr}.cb{.cb}.csr{.csr}.flt{.flt}.frt{.frt}input{.otl}.br{.br}.hide{.dsn}.right{.r;.psa;.t}
+.w20{.w(20%)};.w25{.w(25%)};.w33{.w(33%)};.w50{.w(50%)};
+@fh:101rem;
+@red:#df4b24;
+@color:#df4b24;
+input {
+	.bdn;
+}
+body{
+	.psr;.bg(#F0F0F0);.fsr(26rem);
+}
+content {
+	.dsb;
+	.top {
+		.lhr(74rem);.bg(@red);.tct;.psr;.hr(74rem);
+		a {
+			.c(#fff);
+			&.pleft {
+				.psa;.lr(18rem);.t;
+				.cityname {
+					.psr;.tr(2rem);
+				}
+				img.back {
+					.hr(70rem);
+				}
+				span img {
+					.bolr(60rem);.psa;.tr(7rem);
+				}
+			}
+			&.pright {
+				.psa;.rr(18rem);.t;
+				b {
+					.dsib;.fw(100);.psa;.r;.tr(10rem);.bg(@red);.bolr(21rem);.lhr(21rem);.fsr(18rem);.dsn;
+				}
+			}
+		}
+		img {
+			.psr;.tr(-4rem);
+			&.area {
+				.wr(24rem)
+			}
+			&.logol {
+				.hr(53rem);
+			}
+			&.logo {
+				.hr(52rem);
+			}
+			&.msg {
+				.wr(42rem)
+			}
+		}
+		.search {
+			.wr(322rem);.lhr(48rem);.hr(48rem);.brr(24rem);.ofh;.psa;.lr(159rem);.tr(13rem);.c(#fff);.fw;.fsr(30rem);
+			img {
+				.psa;.l;.t;.hr(28rem);.tr(12rem);.lr(20rem);
+			}
+			input {
+				.w;.h;.tir(58rem);.fsr(26rem);
+			}
+		}
+	}
+	.tophead {
+		.tct;.bs;.bg(@red);.fsr(33rem);.lhr(80rem);.psr;.fw(500);.c(#fff);
+		img {
+			.hr(40rem);
+		}
+		a {
+			.psa;.tr(0);.c(#fff);
+			&.back {
+				.lr(32rem);
+			}
+			&.index {
+				.rr(32rem);
+			}
+		}
+	}
+	.search-choice {
+		.tct;.csr;.bg(#e9e9e9);.lhr(60rem);.pd-r(9rem,12rem);
+		.boxs {
+			.bg(#fff);.brr(12rem);
+			img {
+				.hr(26rem);.psr;.tr(-2rem);
+			}
+		}
+	}
+	.psfbtn {
+		@bolw:70rem;
+		.psf;.rr(20rem);.sqar(@bolw);.zi(9);.dsb;.lhr(@bolw);.tct;
+		span {
+			.c(#fff);.psr;.fsr(24rem);
+		}
+		&:before {
+			content:'';.psa;.t;.l;.bolr(@bolw);.bg(rgba(0,0,0,0.6));
+		}
+		&.refresh {
+			.b-r(140rem + @bolw);
+		}
+		&.totop {
+			.b-r(120rem);
+		}
+	}
+	.where {
+		.mg-r(30rem);
+		div {
+			.psr;.hr(70rem);.ofh;
+			span {
+				.dsn;
+			}
+			&:after {
+				content:'';.psa;.b;.lr(46rem);.wr(540rem);.bdb(#ccc);
+			}
+			&:before {
+				content:'';.psa;.l;.bolr(12rem);.tr(30rem);
+			}
+			&.starting:before {
+				.bd(green);
+			}
+			&.destination:before {
+				.bd(@red);
+			}
+			input {
+				.wr(540rem);.mgbr(9rem);.mglr(46rem);.h;.lhr(60rem);
+			}
+		}
+	}
+	.query {
+		.lhr(60rem);.tct;.bg(@red);.c(#fff);.mg-r(20rem);.brr(8rem);.fsr(28rem);.csr;
+	}
+	table.menu {
+		.fsr(28rem);.w;.tct;.c(#666);.bdb(#eee,1px);
+		td {
+			.csr;
+			span {
+				.wr(212rem);.dsib;.lhr(80rem);.hr(80rem);.ofh;
+				&.choice {
+					.c(@red);.fw;
+					b {
+						.dsib;.psr;.sqar(12rem);.bdb(@red);.bdl(@red);.tsf(-45deg);.lr(9rem);.tr(-8rem);
+					}
+				}
+			}
+			&.active span {
+				.bdb(#CD2525,2px);
+			}
+		}
+		img {
+			.wr(52rem);
+		}
+	}
+	.allBox {
+		@boxc:#F3F3F4;
+		.psf;.t;.w;;.c(#333);.lhr(52rem);.zi(9);.bg(@boxc);.h;
+		.search {
+			.bg(#fff);.pdtr(9rem);.pdbr(18rem);.bdb(#ddd);
+			a.back {
+				.dsb;.psa;.sqar(16rem);.bdtr(@color,3rem);.bdlr(@color,3rem);.tsf(-45deg);.mglr(18rem);.tr(22rem);
+			}
+			img {
+				.psa;.hr(20rem);.tr(26rem);.mglr(94rem);
+			}
+			input {
+				.bg(@boxc);.brr(18rem);.mglr(70rem);.hr(36rem);.fsr(22rem);.tir(50rem);.wr(520rem);
+			}
+		}
+		.box {
+			.pdbr(9rem);
+			.title {
+				.lhr(48rem);.fsr(22rem);.c(#999);.pdl(2%);
+			}
+			.words {
+				.bg(#fff);.brr(8rem);.w(96%);.mgl(2%);.bdt(@boxc);.bdl(@boxc);
+				a {
+					.dsb;.w(33.3%);.flt;.tct;.bdr(@boxc);.bdb(@boxc);.bsz;.bg(#fff);.fsr(24rem);
+				}
+			}
+			dl.his {
+				.bg(#fff);.brr(8rem);.mgbr(9rem);.w(96%);.mgl(2%);
+				dt {
+					.bdb(@boxc);.ti(0.5em);.bg(#fff);.fsr(24rem);.csr;.psr;
+					&:after {
+						content:'';.psa;.sqar(12rem);.bdb(#aaa);.bdr(#aaa);.tsf(-45deg);.rr(18rem);.tr(22rem);
+					}
+					img {
+						.hr(24rem);.psr;.tr(-3rem);
+					}
+				}
+			}
+			a.ok {
+				.dsb;.tct;.bg(#fff);.w(96%);.mgl(2%);.bg(@color);.brr(8rem);.c(#fff);.mgtr(20rem);
+				span {
+					//.pd-r(4rem,8rem);.bg(#E8E8E8);.bd(#ddd);.c(#000);.brr(4rem);
+				}
+			}
+		}
+	}
+}
+.follow {
+	.psf;.tr(100rem);.wr(200rem);.lr(200rem);.bg(@red);
+	img {
+		.w(90%);.mgl(5%);
+	}
+}
+img {
+	.val;.bdn
+}
+input,textarea {
+	.fsr(28rem);
+}
+.load {
+	.lhr(46rem);.tct;.fsr(28rem);
+	img {
+		.hr(38rem);.psr;.tr(-4rem);.mgrr(4rem);
+	}
+}
+.pub-btn {
+	.tct;.bg(@red);.c(#fff);.fsr(28rem);.pd-r(26rem,0);.brr(8rem);.csr;.mgtr(60rem);
+}
+.consult {
+	.psf;.w;.b;.hr(98rem);.bg(@red);.fsr(28rem);.zi;.tct;.dsn;
+	a {
+		.c(#fff);.dsb;.w(50%);.bsz;.lhr(48rem);.mgtr(26rem);.flt;
+		&:nth-child(1){.bdr(#ccc)};
+		img {
+			.hr(40rem);.psr;.tr(-4rem);
+		}
+	}
+}
+.choiceData {
+	.psf;.zi(9);.bg(#fff);.lr(10rem);.wr(600rem);.bd(#ddd);.bs;.lhr(46rem);.pd-r(8rem);.dsn;
+	&.choiceTimes {
+		.h(98%);.ofa;.t(1%);
+		dl {
+			.mg-r(20rem,20rem);.h;.tct;
+			dt {
+				.bg(#f5f5f5);.lhr(80rem);.brr(10rem);.mgbr(20rem);
+			}
+		}
+	}
+	&.choiceCity {
+		.t(50rem);
+		a {
+			.dsib;
+		}
+		.city-title {
+			a {
+				.pd-r(0,6rem);.mg-r(0,2rem);
+				&:hover {
+					.bg(#F1F8FF);
+				}
+			}
+		}
+		.city-ok {
+			.mg-r(16rem,6rem);
+			a {
+				.pd-r(0,12rem);.mg-r(0,6rem);.bg(#E8E8E8);.bd(#ddd);.c(#000);
+			}
+		}
+		.city-menu {
+			.bg(#F0F0F0);.bdt(#ddd);
+			a {
+				.pd-r(0,20rem);
+				&.active {
+					.bg(#fff);
+				}
+			}
+		}
+		dl.city-data {
+			.dsn;.pd-r(16rem,0);
+			&.active {
+				.dsb;
+			}
+			dt {
+				.mgbr(16rem);.psr;
+				p {
+					.dsib;
+					&.number {
+						.wr(80rem);
+						span {
+							.psa;.t;
+						}
+					}
+					&.citys {
+						.wr(520rem);
+						a {
+							.pd-r(0,20rem);
+							&.active {
+								.bg(#46A4FF);.c(#fff);.brr(4rem);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+footer {
+	@cth:32rem;
+	.psf;.w;.lhr(@fh/2);.b;.tct;.bg(#fff);.hr(@fh);
+	.line {
+		.psr;.hr(11rem);
+		img {
+			.psa;.t;.l;.w;
+		}
+	}
+	.blocks {
+		.fsr(20rem);
+		a {
+			.flt;.w(20%);.psr;.dsb;
+			div {
+				.hr(@fh/2);
+				img {
+					.mgtr(8rem);
+				}
+				&.txt {
+					.lhr(42rem);.c(#999);
+				}
+			}
+			&.send {
+				span {
+					.dsb;.bolr(76rem);.bg(@red);.psr;.lhr(76rem);.c(#fff);.fsr(42rem);.mglr(26rem);
+				}
+			}
+			.icon {
+				.hr(46rem);.psr;.tr(4rem);
+			}
+			.cut {
+				.psa;.hr(64rem);.tr(13rem);
+				&.l {.l}
+				&.r {.r}
+			}
+		}
+	}
+}
+.foot-tserver {
+	.tct;.fsr(21rem);.lhr(30rem);.c(#888);
+}

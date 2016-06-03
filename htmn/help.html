@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>帮助中心 - 查物流</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/help.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="detail">
+		<div class="title">欢迎进入帮助中心</div>
+		<dl id="list">
+			<dt>
+				<div class="tit">1.什么是查物流？</div>
+				<div class="data">查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司。</div>
+			</dt>
+			<dt>
+				<div class="tit">1.什么是查物流？</div>
+				<div class="data">查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司。</div>
+			</dt>
+			<dt>
+				<div class="tit">1.什么是查物流？</div>
+				<div class="data">查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司查物流是一家物流分类公司。</div>
+			</dt>
+		</dl>
+	</div>
+</content>
+<script src="js/base.js"></script>
+<script>
+$('#list .tit').click(function(){
+	var dd = $(this).parent().find('.data');
+	if(dd.css('display')=='none') dd.show();
+	else dd.hide();
+})
+</script>
+</body>
+</html>

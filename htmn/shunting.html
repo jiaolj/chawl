@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>专业调车</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/list.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="head"><img src="img/index/bg1.png" /></div>
+	<section>
+		<img class="logo flt" src="img/list/logo.png" />
+		<span class="search">
+			<img id="sicon" class="icon" src="img/list/search.png" />
+			<input type="text" placeholder="请输入需要查询的关键字"/>
+		</span>
+		<span class="location frt"><img src="img/list/location.png" /><b>杭州</b></span>
+		<br class="cb"/>
+	</section>
+	<nav id="where">
+		<p class="w50"><a href="city.html">所在城市 <b></b> <span>|</span></a></p>
+		<p class="w50"><a class="show" d="0">默认排序 <b></b></a></p>
+		<br class="cb"/>
+		<dl class="wer sort w50"><dt><a href="?order=hot">人气排序</a></dt><dt><a href="?order=new">更新排序</a></dt></dl>
+	</nav>
+	<dl id="list" class="list"></dl>
+</content>
+<script src="js/base.js"></script>
+<script src="js/list.js"></script>
+</body>
+</html>

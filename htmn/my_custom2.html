@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>我的定制路线</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/my_custom.css" type="text/css" />
+</head>
+<body>
+<content>
+	<div class="detail">
+		<div class="line"></div>
+		<div class="data">
+			<div class="tit">定制车源路线<span>(货主选项)</span></div>
+			<div class="from dd">
+				<img class="one" src="img/my/from.png">
+				<b class="city1">
+				</b>
+				<a><img d="1" class="add" src="img/my/add.png"></a>
+			</div>
+			<div class="to dd">
+				<img class="one" src="img/my/to.png">
+				<b class="city2"></b>
+				<a><img d="2" class="add" src="img/my/add.png"></a>
+			</div>
+		</div>
+		<div class="line"></div>
+		<div class="data">
+			<div class="tit">定制货源路线<span>(货主选项)</span></div>
+			<div class="from dd">
+				<img class="one" src="img/my/from.png">
+				<b class="city3">
+				</b>
+				<a><img d="3" class="add" src="img/my/add.png"></a>
+			</div>
+			<div class="to dd">
+				<img class="one" src="img/my/to.png">
+				<b class="city4"></b>
+				<a><img d="4" class="add" src="img/my/add.png"></a>
+			</div>
+		</div>
+		<div class="line"></div>
+		<a id="ok"><div class="ok">确认定制</div></a>
+	</div>
+</content>
+<script src="js/base2.js"></script>
+<script>
+(function(){
+	window.MVP = {
+		config : {
+			args : json(Base.tools.getQueryString('args')) || {page:'custom', tp:'1', citys:{'1':[],'2':[],'3':[],'4':[]}}
+		},
+		init : function(){
+			var obj = this,
+				args = obj.config.args;
+			if(args.citys['1'].length==0 && args.citys['2'].length==0){
+				$.ajax({
+					url: '/user/route/car',
+					dataType: 'json',
+					async : false,
+					success : function(dd) {
+						args.citys['1'] = dd.starting.split(',');
+						args.citys['2'] = dd.destination.split(',');
+					},
+					error : function(jqXHR,textStatus) {
+						alert(' request failed'+textStatus);
+					}
+				})
+			}
+			if(args.citys['3'].length==0 && args.citys['4'].length==0){
+				$.ajax({
+					url: '/user/route/goods',
+					dataType: 'json',
+					async : false,
+					success : function(dd) {
+						citys['3'] = dd.starting.split(',');
+						citys['4'] = dd.destination.split(',');
+						//alert(str(dd));
+					},
+					error : function(jqXHR,textStatus) {
+						alert(' request failed'+textStatus);
+					}
+				})
+			}
+			var	citys = obj.config.args.citys;
+			for(var ct in citys){
+				var htm = '',act = citys[ct];
+				for(var cts in act){
+					htm += '<span>'+act[cts]+'<a><img class="del" d="'+ct+'" src="img/my/del.png"></a></span>'
+				}
+				$('.city'+ct).html(htm);
+			}
+			$('.detail').click(function(e){
+				var tar = e.target,
+					ths = $(tar),
+					opp = ths.parent().parent()
+				;
+				if(tar.className=='del'){
+					var txt = opp.text(),
+						ctys = obj.config.args.citys[ths.attr('d')]
+					;
+					obj.config.args.citys[ths.attr('d')] = Base.tools.arrayRemove(ctys,txt);
+					opp.remove();
+				}else if(tar.className=='add'){
+					obj.config.args.tp = ths.attr('d');
+					obj.config.args.url = getUrl();
+					location.href = 'city.html?args=' + str(obj.config.args);
+				}
+			})
+			$('#ok').click(function(e){
+				var cts = obj.config.args.citys,
+					c1 = cts['1'].join(','),
+					c2 = cts['2'].join(','),
+					c3 = cts['3'].join(','),
+					c4 = cts['4'].join(',')
+				;
+				$.ajax({
+					url: '/user/doRoute/car',
+					data : {starting: c1,destination: c2},
+					dataType: 'json',
+					success : function(dd) {
+						alert(dd.info);
+					},
+					error : function(jqXHR,textStatus) {
+						alert(' request failed'+textStatus);
+					}
+				})
+				$.ajax({
+					url: '/user/doRoute/goods',
+					data : {starting: c3,destination: c4},
+					dataType: 'json',
+					success : function(dd) {
+						alert(dd.info);
+					},
+					error : function(jqXHR,textStatus) {
+						alert(' request failed'+textStatus);
+					}
+				})
+			})
+		}
+	}
+})();
+MVP.init();
+</script>
+</body>
+</html>
