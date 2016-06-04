@@ -133,9 +133,13 @@ getLocation.init(function(){
 				obj.dom.list.append(obj.dom.load);
 				obj.querys.is = 1;
 				arg.page = obj.querys.page;
-				if(_argArea!=3){
-					if(obj.querys.args.citys['1']!='出发地') arg.starting = obj.querys.args.citys['1'].split(' ').pop();
-					if(obj.querys.args.citys['2']!='目的地') arg.destination = obj.querys.args.citys['2'].split(' ').pop();
+				if(_argArea!=4){
+					if(_argArea!=3){
+						if(obj.querys.args.citys['1']!='出发地') arg.starting = obj.querys.args.citys['1'].split(' ').pop();
+					}
+					if(_argArea!=2){
+						if(obj.querys.args.citys['2']!='目的地') arg.destination = obj.querys.args.citys['2'].split(' ').pop();
+					}
 				}
 				log(arg);
 				$.ajax({
@@ -154,9 +158,20 @@ getLocation.init(function(){
 							if(lst.length>0 && lst.length<=5){
 								obj.getHtml(lst,ag);
 							}
-							if(_argArea==3){
+							if(_argArea==4){
 								obj.querys.end = 1;
-							}else{
+							}
+							else if(_argArea==3){
+								obj.querys.page = 1;
+								_argArea = 4;
+								obj.getList();
+							}
+							else if(_argArea==2){
+								obj.querys.page = 1;
+								_argArea = 3;
+								obj.getList();
+							}
+							else{
 								if(obj.querys.args.findType==1) {
 									var txt = '车源';
 								}else if(obj.querys.args.findType==2) {
@@ -164,7 +179,7 @@ getLocation.init(function(){
 								}
 								obj.dom.list.append('<div class="moreText">以下为平台推荐的'+txt+'</div>');
 								obj.querys.page = 1;
-								_argArea = 3;
+								_argArea = 2;
 								obj.getList();
 							}
 						}

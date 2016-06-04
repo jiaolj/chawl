@@ -112,11 +112,13 @@ getLocation.init(function(){
 				obj.querys.is = 1;
 				arg.page = obj.querys.page;
 				arg.sort = args.sort;
-				if(_argArea!=3){
-					//if(args.citys['1']!='出发地') arg.starting = args.citys['1'];
-					//if(args.citys['2']!='目的地') arg.destination = args.citys['2'];
-					if(_starting.get()) arg.starting = _starting.get();
-					if(_destination.get()) arg.destination = _destination.get();
+				if(_argArea!=4){
+					if(_argArea!=3){
+						if(_starting.get()) arg.starting = _starting.get();
+					}
+					if(_argArea!=2){
+						if(_destination.get()) arg.destination = _destination.get();
+					}
 				}
 				if(_kwd.length>0) arg.kwd = _kwd;
 				if(_order[args.findType].length>0) arg.order = _order[args.findType];
@@ -137,12 +139,23 @@ getLocation.init(function(){
 								if(lst.length>0 && lst.length<=5){
 									obj.getHtml(lst,ag);
 								}
-								if(_argArea==3){
+								if(_argArea==4){
 									obj.querys.end = 1;
-								}else{
+								}
+								else if(_argArea==3){
+									obj.querys.page = 1;
+									_argArea = 4;
+									obj.getList();
+								}
+								else if(_argArea==2){
+									obj.querys.page = 1;
+									_argArea = 3;
+									obj.getList();
+								}
+								else{
 									obj.querys.page = 1;
 									obj.dom.list.append('<div class="moreText">以下为平台推荐的名片</div>');
-									_argArea = 3;
+									_argArea = 2;
 									obj.getList();
 								}
 							}
