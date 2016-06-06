@@ -32,7 +32,7 @@ var conn = new Easemob.im.Connection(),
 	},
 	_dom = '\
 		<a href="mdetail.html?id=#id"><dt>\
-			<div class="flt logo"><img src="#headimgurl"/>#num</div>\
+			<div class="flt logo"><img src="#headimgurl"/><span>#num</span><img class="vip" src="img/blog/vip.png"/></div>\
 			<div class="flt text">\
 				<p>#nickname <span class="frt">#getTime</span></p>\
 				<p><span>#dd</span></p>\
@@ -56,7 +56,7 @@ var conn = new Easemob.im.Connection(),
 	getList = function(msgAll){
 		var tp = '\
 					<a href="mdetail.html?data=#data&id=#id"><dt>\
-						<div class="flt logo"><img src="#headimgurl"/><div>#num</div></div>\
+						<div class="flt logo"><img src="#headimgurl"/><span>#num</span></div>\
 						<div class="flt text">\
 							<p>#nickname <span class="frt">#getTime</span></p>\
 							<p><span>#dd</span></p>\
@@ -110,6 +110,7 @@ getUser(function(){
 		success : function(back) {
 			//alert(str(back));
 			back.sort(function(a,b){return a.ctime-b.ctime});
+			back.reverse()
 			var htm = '';
 			$.each(back,function(k,j){
 				htm += _dom.replace('#headimgurl',j.user_info.headimgurl).replace('#num','').replace('#nickname',j.user_info.nickname).replace('#dd',j.msg).replace('#id',j.from_user).replace('#getTime',Base.tools.int_to_str(j.ctime));;

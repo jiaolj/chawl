@@ -27,9 +27,17 @@ body {
   height: 100%;
   border-radius: 50%;
 }
-.detail dl.data dt .logo div {
-  width: 0.15rem;
-  height: 0.15rem;
+.detail dl.data dt .logo img.vip {
+  position: absolute;
+  left: 0.45rem;
+  top: 0.45rem;
+  width: 0.14rem;
+  height: 0.14rem;
+  border-radius: 50%;
+}
+.detail dl.data dt .logo span {
+  width: 0.13rem;
+  height: 0.13rem;
   border-radius: 50%;
   background: #f43531;
   color: #ffffff;
@@ -37,8 +45,9 @@ body {
   line-height: 0.15rem;
   font-size: 0.08rem;
   position: absolute;
-  top: 0.045rem;
-  right: 0.045rem;
+  top: 0.07rem;
+  right: 0.07rem;
+  display: none;
 }
 .detail dl.data dt .text {
   width: 2.34rem;

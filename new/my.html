@@ -52,13 +52,16 @@ getUser(function(){
 		if(_userInfo) location.href = $(this).attr('htm');
 		else _followFunc();
 	})
+	//alert(str(_userInfo));
 	if(_userInfo){
-		//alert(str(_userInfo));
 		_getUserDetail(_userInfo.user_id,function(back){
-			$('#headimgurl').html('<img src="'+back.headimgurl+'"/>');
+			$('#headimgurl').append('<img src="'+back.headimgurl+'"/>');
 			$('#nickname').text(back.nickname);
 		})
-		if(_userInfo.pages[0]) $('#mycard').attr('url','detail.html?id='+_userInfo.pages[0].id+'&uid='+_userInfo.user_id);
+		if(_userInfo.pages[0]) {
+			$('#mycard').attr('url','detail.html?id='+_userInfo.pages[0].id+'&uid='+_userInfo.user_id);
+		}
+		$('#headimgurl').append('<img class="vip" src="img/blog/vip.png"/>');
 	}
 	if(!$('#mycard').attr('href')) $('#mycard').attr('url','http://weixin.chawuliu.com/app/index.php?c=entry&id=10&m=wwx_fxxt&do=detail&i=21');
 })
