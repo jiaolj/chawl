@@ -80,15 +80,31 @@ content .top a.pleft .cityname {
   position: relative;
   top: 0.01rem;
 }
-content .top a.pleft img.back {
-  height: 0.35rem;
+content .top a.pleft span {
+  position: relative;
+  display: block;
+  width: 0.3rem;
+  height: 0.3rem;
+  top: 0.035rem;
+}
+content .top a.pleft span:after {
+  content: '';
+  width: 0.055rem;
+  height: 0.055rem;
+  border-radius: 50%;
+  background: #df4b24;
+  border: 1px solid #ffffff;
+  right: 0.01rem;
+  top: 0.01rem;
+  position: absolute;
 }
 content .top a.pleft span img {
   width: 0.3rem;
   height: 0.3rem;
   border-radius: 50%;
-  position: absolute;
-  top: 0.035rem;
+}
+content .top a.pleft img.back {
+  height: 0.35rem;
 }
 content .top a.pright {
   position: absolute;
@@ -109,12 +125,28 @@ content .top a.pright b {
   font-size: 0.09rem;
   display: none;
 }
+content .top a.pright span {
+  position: relative;
+  display: block;
+  width: 0.3rem;
+  height: 0.3rem;
+  top: 0.035rem;
+}
+content .top a.pright span:after {
+  content: '';
+  width: 0.055rem;
+  height: 0.055rem;
+  border-radius: 50%;
+  background: #df4b24;
+  border: 1px solid #ffffff;
+  right: 0.01rem;
+  top: 0.01rem;
+  position: absolute;
+}
 content .top a.pright span img {
   width: 0.3rem;
   height: 0.3rem;
   border-radius: 50%;
-  position: absolute;
-  top: 0.035rem;
   right: 0%;
 }
 content .top img {

@@ -19,10 +19,10 @@
 		<dl class="data">
 			<a href="msg.html"><dt><img src="img/my/msg.png"/><div>我的消息</div></dt></a>
 			<a id="mycard"><dt><img src="img/my/card.png"/><div>我的名片</div></dt></a>
-			<a href="my_goods.html?tp=car"><dt><img src="img/my/struck.png"/><div>我的车源</div></dt></a>
+			<a><dt><img src="img/my/struck.png"/><div>我的车源</div></dt></a>
 			<a href="my_goods.html?tp=goods"><dt><img src="img/my/goods.png"/><div>我的货源</div></dt></a>
 			<a href="my_custom.html"><dt><img src="img/my/line.png"/><div>我的订阅</div></dt></a>
-			<a><dt><img src="img/my/tuijian.png"/><div>我的推广</div></dt></a>
+			<a href="http://weixin.chawuliu.com/app/index.php?i=21&j=21&c=entry&do=fansindex&m=wwx_fxxt&wxref=mp.weixin.qq.com&wxref=mp.weixin.qq.com#wechat_redirect"><dt><img src="img/my/tuijian.png"/><div>我的推广</div></dt></a>
 			<br class="cb"/>
 		</dl>
 		<div class="contact">
@@ -44,6 +44,9 @@
 <script src="js/base2.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script>
+$('#mycard').click(function(){
+	location.href= $(this).attr('url');
+})
 getUser(function(){
 	$('.click').click(function(){
 		if(_userInfo) location.href = $(this).attr('htm');
@@ -55,8 +58,9 @@ getUser(function(){
 			$('#headimgurl').html('<img src="'+back.headimgurl+'"/>');
 			$('#nickname').text(back.nickname);
 		})
-		if(_userInfo.pages[0].id) $('#mycard').attr('href','detail.html?id='+_userInfo.pages[0].id+'&uid='+_userInfo.user_id);
+		if(_userInfo.pages[0]) $('#mycard').attr('url','detail.html?id='+_userInfo.pages[0].id+'&uid='+_userInfo.user_id);
 	}
+	if(!$('#mycard').attr('href')) $('#mycard').attr('url','http://weixin.chawuliu.com/app/index.php?c=entry&id=10&m=wwx_fxxt&do=detail&i=21');
 })
 </script>
 </body>

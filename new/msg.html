@@ -107,10 +107,11 @@ getUser(function(){
 		url: '/user/chat/history',
 		data: {to_user:_userInfo.user_id},
 		dataType: 'json',
-		success : function(dd) {
-			//alert(str(dd));
+		success : function(back) {
+			//alert(str(back));
+			back.sort(function(a,b){return a.ctime-b.ctime});
 			var htm = '';
-			$.each(dd,function(k,j){
+			$.each(back,function(k,j){
 				htm += _dom.replace('#headimgurl',j.user_info.headimgurl).replace('#num','').replace('#nickname',j.user_info.nickname).replace('#dd',j.msg).replace('#id',j.from_user).replace('#getTime',Base.tools.int_to_str(j.ctime));;
 			})
 			$('#data').html(htm);
