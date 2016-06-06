@@ -115,7 +115,7 @@ getLocation.init(function(){
 							;
 							if(goods_id) url+='?goods_id='+goods_id;
 							else if(car_id) url+='?car_id='+car_id;
-							location.href = url+'&back_url='+getUrl()+'?args='+str(obj.querys.args)+'&back_ScrollTop='+Base.turn.getScrollTop();
+							location.href = url+'&back_url='+getUrl()+'?args='+encodeURIComponent(str(obj.querys.args))+'&back_ScrollTop='+Base.turn.getScrollTop();
 						}
 					});
 				})
@@ -219,7 +219,7 @@ getLocation.init(function(){
 				$('#findtype>div').click(function(){
 					var ts = $(this);
 					obj.querys.args.findType = parseInt(ts.attr('i'));
-					location.href = '?args=' + str(obj.querys.args);
+					location.href = '?args=' + encodeURIComponent(str(obj.querys.args));
 				})
 				$('.choice').click(function(){
 					obj.querys.args.url = function(){var l = location.href.split('/').pop(),r = l.split('?')[0];return r}();
@@ -228,18 +228,13 @@ getLocation.init(function(){
 					;
 					if(k=='from' || k=='to'){
 						obj.querys.args.tp = v;
-						location.href = 'city.html?args='+str(obj.querys.args);
-					}else if(k=='ctype'){
-						location.href = 'ctype.html?args='+str(obj.querys.args);
-					}else if(k=='long'){
-						obj.querys.args.back=1;
-						location.href = 'long.html?args='+str(obj.querys.args);
+						location.href = 'city.html?args='+encodeURIComponent(str(obj.querys.args));
 					}
 					else if(k=='change'){
 						var cge = obj.querys.args.citys[1];
 						obj.querys.args.citys[1] = obj.querys.args.citys[2].replace('目的地','出发地');
 						obj.querys.args.citys[2] = cge.replace('出发地','目的地');
-						location.href = '?args='+str(obj.querys.args);
+						location.href = '?args='+encodeURIComponent(str(obj.querys.args));
 					}
 				});
 				Base.turn.get(obj);

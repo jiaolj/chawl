@@ -5,6 +5,7 @@
   font-size: 0.13rem;
   font-weight: 900;
   position: relative;
+  overflow: hidden;
 }
 .head img.bg {
   width: 100%;
@@ -32,9 +33,6 @@
   font-size: 0.12rem;
   text-align: center;
 }
-.detail dl.data {
-  padding-bottom: 0.6rem;
-}
 .detail dl.data dt {
   width: 1.055rem;
   height: 1.1rem;
@@ -49,6 +47,16 @@
 }
 .detail dl.data dt div {
   line-height: 0.3rem;
+}
+.detail .contact {
+  color: #cd2525;
+  font-weight: 900;
+  font-size: 0.16rem;
+  line-height: 0.3rem;
+  padding-bottom: 0.6rem;
+}
+.detail .contact a {
+  color: #cd2525;
 }
 .detailn {
   font-size: 0.14rem;

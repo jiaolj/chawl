@@ -105,13 +105,22 @@
   padding-top: 0.16rem;
 }
 .send2 p.two a {
-  display: inline-block;
+  display: block;
   color: #ffffff;
   line-height: 0.17rem;
-  padding: 0 0.09rem;
+  width: 33.3%;
+  float: left;
+  position: relative;
+  text-align: center;
 }
-.send2 p.two a.line {
-  border-right: 1px solid #ffffff;
+.send2 p.two a.line:before {
+  content: '';
+  background: #ffffff;
+  height: 0.18rem;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 0.01rem;
 }
 section {
   border-radius: 0.04rem;

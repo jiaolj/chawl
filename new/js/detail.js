@@ -118,6 +118,7 @@ getUser(function(){
 				dataType: 'json',
 				success : function(dd) {
 					log(dd);
+					$('.jsLoad').removeClass('hide');
 					if(!get){
 						$('#title').text(dd.page.title);
 						if(dd.page.is_vip=='1') $('#is_vip').show();
@@ -167,7 +168,7 @@ getUser(function(){
 					});
 					$('#dtail>dt:gt(0)').hide();
 					$('#stars').html(getStar(mc));
-					$('.jsLoad').removeClass('hide');
+					
 				},
 				error:function(jqXHR,textStatus) {
 					log(' request failed'+textStatus);

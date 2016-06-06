@@ -44,7 +44,7 @@ var level = 0,
 			citys = city;
 		}
 		args.citys[args.tp] = citys;
-		location.href = url + '?args=' + str(args);
+		location.href = url + '?args=' + encodeURIComponent(str(args));
 	}
 ;
 window.onload = function(){
@@ -62,7 +62,7 @@ $('#jump').click(function(e){
 			level-=1;
 			if(level==-1){
 				delete args.url;
-				location.href = url + '?args=' + str(args);
+				location.href = url + '?args=' + encodeURIComponent(str(args));
 			}
 			else if(level==0) {
 				_get();
@@ -73,7 +73,7 @@ $('#jump').click(function(e){
 		else if(city=='全国') {
 			args.citys[args.tp] = '全国';
 			delete args.url;
-			location.href = url + '?args=' + str(args);
+			location.href = url + '?args=' + encodeURIComponent(str(args));
 		}
 		else {
 			cityCode[level] = code;
