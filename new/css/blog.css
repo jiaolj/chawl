@@ -63,6 +63,12 @@ content .foot .topage a {
   width: 50%;
   float: left;
   display: block;
+  font-size: 0.16rem;
+}
+content .foot .topage a img {
+  height: 0.2rem;
+  position: relative;
+  top: -0.01rem;
 }
 content .foot .topage a.one {
   background: #ffffff;
@@ -176,22 +182,16 @@ content dl.list dt .action {
   padding-top: 0.1rem;
   line-height: 0.3rem;
 }
-content dl.list dt .action > img,
-content dl.list dt .action a > img {
-  width: 0.14rem;
-  margin-right: 0.05rem;
+content dl.list dt .action span.from {
+  font-size: 0.13rem;
 }
-content dl.list dt .action > span,
-content dl.list dt .action a > span {
-  color: #999999;
-  font-size: 0.1rem;
-  margin-right: 0.1rem;
-  position: relative;
-  top: 0.02rem;
-}
-content dl.list dt .action .frt {
-  width: 0.83rem;
+content dl.list dt .action span.talk a {
+  background: #df4b24;
+  color: #ffffff;
+  padding: 0.07rem 0.18rem;
+  border-radius: 0.14rem;
+  font-size: 0.13rem;
 }
 content dl.list dt .action .frt img {
-  width: 100%;
+  width: 0.83rem;
 }

@@ -68,16 +68,17 @@ content .detail .photo {
   position: relative;
 }
 content .detail .photo img.logo {
-  border-radius: 50%;
   width: 0.43rem;
   height: 0.43rem;
+  border-radius: 50%;
 }
 content .detail .photo img.vip {
   width: 0.16rem;
   height: 0.16rem;
+  border-radius: 50%;
   position: absolute;
-  bottom: 0;
-  right: 0%;
+  bottom: -0.045rem;
+  right: -0.045rem;
 }
 content .detail .tit {
   width: 2.47rem;
@@ -89,6 +90,11 @@ content .detail .tit p.time {
   font-size: 0.12rem;
   color: #cccccc;
   line-height: 0.19rem;
+}
+content .detail .tit .vip {
+  height: 0.14rem;
+  position: relative;
+  top: -0.02rem;
 }
 content .detail .text {
   border-radius: 0.1rem;
@@ -147,12 +153,21 @@ content .detail dl.message dt {
   margin-top: 0.1rem;
 }
 content .detail dl.message dt .head {
-  width: 0.35rem;
   margin-right: 0.07rem;
+  position: relative;
 }
-content .detail dl.message dt .head img {
-  width: 100%;
+content .detail dl.message dt .head img.imgurl {
+  width: 0.35rem;
+  height: 0.35rem;
   border-radius: 50%;
+}
+content .detail dl.message dt .head img.vip {
+  position: absolute;
+  width: 0.12rem;
+  height: 0.12rem;
+  border-radius: 50%;
+  right: -0.03rem;
+  bottom: -0.03rem;
 }
 content .detail dl.message dt .txt {
   width: 2.58rem;
@@ -161,6 +176,11 @@ content .detail dl.message dt .txt {
 }
 content .detail dl.message dt .txt .up {
   color: #777777;
+}
+content .detail dl.message dt .txt .up .vip {
+  height: 0.13rem;
+  position: relative;
+  top: -0.02rem;
 }
 content .detail dl.message dt .txt .down {
   color: #555555;

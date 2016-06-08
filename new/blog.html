@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html id="html">
 <head>
-<title>货运圈</title>
+<title>交流社区</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Cache-control" content="no-cache">
 <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -10,21 +10,39 @@
 </head>
 <body>
 <content>
-	<span class="cityname hide" id="cityname">获取中..</span>
-	<div class="top">
-		<a class="pleft">
-			<img src="img/logol.png" class="logol" />
-		</a>
-		<div class="search">
-			<img src="img/s.png"/><input type="text" placeholder="请输入关键字" />
+	<span class="cityname hide" id="cityname"></span>
+	<div class="allBox hide" id="searchBox">
+		<div class="search"><a class="back"></a><img src="img/search.png"/><input type="text" placeholder="请输入关键词"/></div>
+		<div class="box">
+			<!--<div class="title">热门搜索</div>
+			<div class="words">
+				<a>北京</a><a>天津</a><a>重庆</a>
+				<a>广东</a><a>江苏</a><a>浙江</a>
+				<a>山东</a><a>安徽</a><a>湖南</a>
+				<br class="cb"/>
+			</div>-->
+			<div class="title">历史搜索</div>
+			<dl class="his"></dl>
+			<a class="ok"><span>搜索</span></a>
 		</div>
-		<a id="to-msg" class="pright">
-			<img class="msg" src="img/index/msg.png" /><b id="num"></b>
+	</div>
+	<a href="javascript:window.location.reload()" class="refresh psfbtn"><span>刷新</span></a>
+	<a href="javascript:scroll(0,0)" class="totop psfbtn"><span>顶部</span></a>
+	<div class="top">
+		<a class="pleft" href='index.html?args={"sort":130}'>
+			<img src="img/logo.png" class="logo" />
+		</a>
+		<div class="text seoTitle">交流社区</div>
+		<a href="my.html" class="pright">
+			<span id="headimgurl"></span>
 		</a>
 	</div>
-	<dl class="menus">
+	<div class="searchs sbtn">
+		<img src="img/s.png" /><span>搜索</span>
+	</div>
+	<!--<dl class="menus">
 		<dt class="active" d="1">分享交流 </dt><dt d="1">信息专栏</dt><br class="cb"/>
-	</dl>
+	</dl>-->
 	<div class="cover-page"></div>
 	<div class="leavebox">
 		<div class="tit">请输入您的留言</div>
@@ -34,7 +52,7 @@
 	<dl class="list" id="list"></dl>
 	<div class="foot">
 		<div class="topage">
-			<a href="index.html" class="one">专线查询</a><a href="/view/sspost" class="two">发布消息</a><br class="cb"/>
+			<a href="index.html" class="one"><img src="img/blog/search.png" />专线查询</a><a href="/view/sspost" class="two"><img src="img/blog/pub.png" /> 发布信息</a><br class="cb"/>
 		</div>
 	</div>
 </content>

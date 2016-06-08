@@ -4,9 +4,9 @@
 			id : Base.tools.getQueryString('id'),
 			ldom : '\
 					<dt>\
-						<div class="flt head"><img src="#headimgurl" /></div>\
+						<div class="flt head"><img class="imgurl" src="#headimgurl" /></div>\
 						<div class="flt txt">\
-							<div class="up"><b>#nickname</b><span class="frt">#ctime</span></div>\
+							<div class="up"><b>#nickname</b> <img class="vip" src="img/blog/v.png"/><span class="frt">#ctime</span></div>\
 							<div class="down">#content<a href="mdetail.html?id=#user_id"><img src="img/blog/intalk.png" class="frt" /></a></div>\
 						</div>\
 						<br class="cb"/>\
@@ -82,6 +82,13 @@
 					}
 				}
 				else _followFunc();
+			})
+			$('a.back').click(function(){
+				var url = Base.tools.getQueryString('back_url');
+				if(url.indexOf('?')==-1) url+='?';
+				else url+='&';
+				url+='back_ScrollTop='+Base.tools.getQueryString('back_ScrollTop');
+				location.href = url;
 			})
 			$('#leavebtn').click(function(){
 				var val = $('#leaveval').val();

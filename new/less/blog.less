@@ -33,7 +33,10 @@ content {
 		.topage {
 			.lhr(100rem);
 			a {
-				.w(50%);.flt;.dsb;
+				.w(50%);.flt;.dsb;.fsr(32rem);
+				img {
+					.hr(40rem);.psr;.tr(-2rem);
+				}
 				&.one {
 					.bg(#fff);.c(@red);
 				}
@@ -108,16 +111,16 @@ content {
 			}
 			.action {
 				.pdtr(20rem);.lhr(60rem);
-				>img,a>img {
-					.wr(28rem);.mgrr(10rem);
+				span.from {
+					.fsr(26rem);
 				}
-				>span,a>span {
-					.c(#999);.fsr(20rem);.mgrr(20rem);.psr;.tr(4rem);
+				span.talk a {
+					.bg(@red);.c(#fff);.pd-r(14rem,36rem);.brr(28rem);.fsr(26rem);
 				}
 				.frt {
-					.wr(166rem);
+					
 					img{
-						.w;
+						.wr(166rem);
 					}
 				}
 			}

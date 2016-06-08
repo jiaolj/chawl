@@ -165,32 +165,27 @@ content .top img.logo {
 content .top img.msg {
   width: 0.21rem;
 }
-content .top .search {
-  width: 1.61rem;
-  line-height: 0.24rem;
-  height: 0.24rem;
-  border-radius: 0.12rem;
-  overflow: hidden;
-  position: absolute;
-  left: 0.795rem;
-  top: 0.065rem;
+content .top .text {
   color: #ffffff;
   font-weight: 900;
   font-size: 0.15rem;
 }
-content .top .search img {
-  position: absolute;
-  left: 0;
-  top: 0%;
-  height: 0.14rem;
-  top: 0.06rem;
-  left: 0.1rem;
+content .searchs {
+  line-height: 0.24rem;
+  height: 0.24rem;
+  border-radius: 0.05rem;
+  overflow: hidden;
+  margin: 0.06rem 0.1rem;
+  background: #ffffff;
+  font-size: 0.12rem;
+  text-align: center;
+  cursor: pointer;
+  color: #888888;
 }
-content .top .search input {
-  width: 100%;
-  height: 100%;
-  text-indent: 0.29rem;
-  font-size: 0.13rem;
+content .searchs img {
+  height: 0.14rem;
+  position: relative;
+  top: -0.02rem;
 }
 content .tophead {
   text-align: center;
@@ -415,7 +410,7 @@ content .allBox .box {
 }
 content .allBox .box .title {
   line-height: 0.24rem;
-  font-size: 0.11rem;
+  font-size: 0.13rem;
   color: #999999;
   padding-left: 2%;
 }
@@ -449,9 +444,10 @@ content .allBox .box dl.his dt {
   border-bottom: 1px solid #f3f3f4;
   text-indent: 0.5em;
   background: #ffffff;
-  font-size: 0.12rem;
+  font-size: 0.13rem;
   cursor: pointer;
   position: relative;
+  line-height: 0.28rem;
 }
 content .allBox .box dl.his dt:after {
   content: '';
@@ -487,6 +483,8 @@ content .allBox .box a.ok {
   border-radius: 0.04rem;
   color: #ffffff;
   margin-top: 0.1rem;
+  line-height: 0.34rem;
+  font-size: 0.15rem;
 }
 .follow {
   position: fixed;

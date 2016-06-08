@@ -11,11 +11,13 @@
 <body>
 <content>
 	<div class="top">
-		<a class="pleft" href="index.html">
-			<img class="back" src="img/other/back.png" />
+		<a class="back pleft">
+			返回
 		</a>
-		<img src="img/index/logo.png" class="logo" />
-		<a id="to-msg" class="pright"><img class="msg" src="img/index/msg.png" /><b id="num"></b></a>
+		<div class="text seoTitle">信息详情</div>
+		<a href='index.html?args={"sort":130}' class="pright">
+			首页
+		</a>
 	</div>
 	<div class="send2">
 		<div class="leavebox"><input type="text" placeholder="请输入留言" id="leaveval" class="txt" /><input type="button" id="leavebtn" class="btn" value="确定" /></div>
@@ -24,9 +26,9 @@
 		<p class="two" id="talk" d="">聊一聊</p>
 	</div>
 	<div class="detail">
-		<div class="photo flt"><img id="headimgurl" class="logo" src="" /><img class="vip" src="img/blog/vip.png" /></div>
+		<div class="photo flt"><img id="headimgurl" class="logo" src="" /></div>
 		<div class="tit flt">
-			<p id="nickname">...</p>
+			<p><span id="nickname">...</span> <img class="vip" src="img/blog/v.png" /></p>
 			<p class="time" id="btime">...</p>
 		</div>
 		<br class="cb"/>
