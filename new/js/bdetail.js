@@ -117,5 +117,11 @@ getUser(function(){
 		if(_userInfo) location.href = $(this).attr('htm');
 		else _followFunc();
 	})
+	if(_userInfo){
+		_getUserDetail(_userInfo.user_id,function(back){
+			_userInfo.headimgurl = back.headimgurl;
+			_userInfo.nickname = back.nickname;
+		})
+	}
 	MVC.init();
 });

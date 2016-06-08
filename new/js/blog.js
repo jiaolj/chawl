@@ -4,6 +4,7 @@
 		lboxArea = $('.leavebox textarea'),
 		cover = $('.cover-page'),
 		_isLoad = 0,
+		_kwd = '',
 		_args = {},
 		lboxShow = function(){
 			lbox.show();
@@ -134,13 +135,16 @@
 		},
 		getList : function(arg){
 			var obj = this,
+				args = {page:obj.querys.page},
 				arg = arg || {};
 			if(arg.clear==1) obj.dom.list.empty();
 			obj.dom.list.append(obj.dom.load);
 			obj.querys.is = 1;
+			if(_kwd.length>0) args.kwd = _kwd;
+			log(args);
 			$.ajax({
 				url: '/shuoshuo',
-				data: {page:obj.querys.page},
+				data: args,
 				dataType: 'json',
 				success : function(dd) {
 					log(dd);

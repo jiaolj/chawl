@@ -1,0 +1,74 @@
+@import 'pub.less';
+@red:#df4b24;
+body{
+	background: #FFF;
+	font-size: 0.14rem;
+}
+ul,li{
+	padding: 0;
+	list-style-type: none;
+}
+.add{
+	text-align: center;
+}
+.pic-list{
+	overflow: hidden;
+	.item{
+		position: relative;
+		float: left;
+		width: 33.33%;
+		padding-bottom: 33.33%;
+	}
+	.item .wrapper{
+		position: absolute;
+		box-sizing: border-box;
+		padding: 5px;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+	}
+	.item a{
+		display: block;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	.add a{
+		background-image: url(../img/shuoshuo_post/add-icon.jpg);
+	}
+}
+.main{
+	.pd-r(20rem);
+	.lhr(40rem);
+	.psr;
+	.title {
+		.flt;.wr(60rem);.fsr(28rem);
+	}
+	textarea {
+		.flt;.hr(120rem);.wr(500rem);.bdb(#f0f0f0);resize: none;.fsr(28rem);
+	}
+	.area {
+		.w;.lhr(70rem);.bdt(#f0f0f0);.c(#444);.psr;
+		.cityname {
+			.psa;.rr(20rem);.c(#666);.t;
+			&:after {
+				content:'';.dsib;.psr;.sqar(16rem);.bdb(#333);.bdr(#333);.tsf(-45deg);.mglr(18rem);.tr(-2rem);
+			}
+		}
+	}
+	
+}
+.footer{
+	padding: 40px 10px 0;
+}
+.footer .btn{
+	display: block;
+	padding: 10px 0;
+	color: #FFF;
+	font-size: 0.18rem;
+	background: @red;
+	border-radius: 5px;
+	text-align: center;
+}

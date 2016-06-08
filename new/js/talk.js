@@ -1,6 +1,6 @@
 var _id = Base.tools.getQueryString('id');
 _getUserDetail(_id,function(detail){
-	$('.seoTitle').text(Base.tools.getQueryString('nickname'));
+	$('.seoTitle').text(detail.nickname);
 	var conn = new Easemob.im.Connection(),
 		_nickname = detail.nickname,
 		_headimgurl = detail.headimgurl,

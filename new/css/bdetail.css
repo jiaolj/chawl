@@ -57,6 +57,42 @@ content .send2 p.two {
   color: #ffffff;
   line-height: 0.5rem;
 }
+content .send-box {
+  border-top: 1px solid #c2c2c2;
+  height: 0.4rem;
+  background: #f4f4f6;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 0.085rem 0.1rem 0 0.1rem;
+}
+content .send-box .txt {
+  width: 2.39rem;
+  padding-left: 0.1rem;
+  line-height: 0.35rem;
+  height: 0.34rem;
+  border: 1px solid #c2c2c2;
+  border-radius: 8px;
+  background: white;
+  font-size: 0.14rem;
+  overflow: hidden;
+}
+content .send-box .txt input {
+  width: 95%;
+  height: 100%;
+}
+content .send-box .bt {
+  background: #df4b24;
+  cursor: pointer;
+  width: 0.44rem;
+  height: 0.35rem;
+  line-height: 0.35rem;
+  text-align: center;
+  font-size: 0.14rem;
+  color: white;
+  border-radius: 8px;
+  margin-left: 0.075rem;
+}
 content .detail {
   font-size: 0.14rem;
   padding: 0.1rem;

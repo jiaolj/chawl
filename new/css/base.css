@@ -24,9 +24,6 @@ a {
 .frt {
   float: right;
 }
-input {
-  outline: none;
-}
 .br {
   border-radius: 50%;
 }
@@ -50,8 +47,10 @@ input {
 .w50 {
   width: 50%;
 }
-input {
+input,
+textarea {
   border: none;
+  outline: none;
 }
 body {
   position: relative;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<title>发布信息</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="css/base.css" type="text/css" />
+<link rel="stylesheet" href="css/bpost.css" type="text/css" />
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<style>
+</style>
+</head>
+<body>
+<content>
+	<div class="tophead">
+		<a class="back" href="blog.html">返回</a> 发布信息 <a href='index.html?args={"sort":130}' class="index">首页</a>
+	</div>
+	<div class="content">
+		<div class="main">
+			<div class="title">内容</div>
+			<textarea class="desc" placeholder="你想说点什么？"></textarea>
+			<br class="cb"/>
+			<ul class="pic-list">
+				<li class="j-add add item">
+					<div class="wrapper">
+						<a href="javascript:;"></a>
+					</div>
+				</li>
+			</ul>
+			<div class="area">所在城市 <div class="cityname" id="cityname"></div></div>
+		</div>
+		<div class="footer">
+			<a class="j-publish btn">发布</a>
+		</div>
+	</div>
+</content>
+<script src="js/base2.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/getLocation.js"></script>
+<script src="js/bpost.js"></script>
+</body>
+</html>
