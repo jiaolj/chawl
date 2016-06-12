@@ -35,7 +35,7 @@
 				<dt did="#id"> \
 					<div class="titles"> \
 						<div class="tit flt"> \
-							<img class="logo" src="#headimgurl" />#nickname <img class="vip" src="img/blog/v.png" /> \
+							<img class="logo" src="#headimgurl" />#nickname <img class="vip#vip" src="img/blog/v.png" /> \
 						</div> \
 						<a class="card frt">查看名片</a> \
 						<br class="cb"/> \
@@ -49,7 +49,7 @@
 					</div> \
 					<div class="action"> \
 						<span class="hide"><a class="click" tp="like"><img class="left" src="img/blog/like.png" /><span>#like_num</span></a> <img class="left" src="img/blog/talk.png" /><span>#comment_num</span> <img class="left" src="img/blog/share.png" /></span> \
-						<span class="from">来自：浙江杭州 </span>\
+						<span class="from">来自：#city_id</span>\
 						<span class="frt talk"><a class="click" tp="talk" htm="mdetail.html?id=#user_id">聊一聊</a></span> \
 						<br class="cb"/> \
 					</div> \
@@ -84,7 +84,10 @@
 		},
 		rdata : function(d,j){
 			var obj = this;
-			return d.replace('#user_id',j.user_id).replace('#ii',j.id).replace('#id',j.id).replace('#id',j.id).replace('#headimgurl',j.user_info[0] && j.user_info[0].headimgurl).replace('#nickname',j.user_info[0] && j.user_info[0].nickname.substring(0,10)).replace('#content',Base.tools.sub(j.content,200)).replace('#pictures',obj.getImages(j.pictures,j.id)).replace('#view_num',j.view_num).replace('#viewers',obj.getViewers(j.viewers)).replace('#like_num',j.like_num).replace('#comment_num',j.comment_num);
+			d = d.replace('#user_id',j.user_id).replace('#ii',j.id).replace('#city_id',j.city_id || '').replace('#id',j.id).replace('#id',j.id).replace('#headimgurl',j.user_info[0] && j.user_info[0].headimgurl).replace('#nickname',j.user_info[0] && j.user_info[0].nickname.substring(0,10)).replace('#content',Base.tools.sub(j.content,200)).replace('#pictures',obj.getImages(j.pictures,j.id)).replace('#view_num',j.view_num).replace('#viewers',obj.getViewers(j.viewers)).replace('#like_num',j.like_num).replace('#comment_num',j.comment_num);
+			if(j.pages.length>0) d = d.replace('#vip','');
+			else d = d.replace('#vip',' hide');
+			return d;
 		},
 		getHtml : function(data,ag){
 			var obj = this,
