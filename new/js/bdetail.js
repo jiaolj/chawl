@@ -36,6 +36,7 @@
 				post = j.post
 				replys = j.replys,
 				ui = j.user_info[0];
+			log(j);
 			$('#headimgurl').attr('src',ui.headimgurl);
 			$('#nickname').text(ui.nickname);
 			$('#viewers').html(obj.getViewers(post.viewers));

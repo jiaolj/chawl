@@ -37,7 +37,7 @@
 						<div class="tit flt"> \
 							<img class="logo" src="#headimgurl" />#nickname <img class="vip#vip" src="img/blog/v.png" /> \
 						</div> \
-						<a class="card frt">查看名片</a> \
+						<a class="card click frt#card" tp="card" page_id="#page_id">查看名片</a> \
 						<br class="cb"/> \
 					</div> \
 					<div class="text"><a url="bdetail.html?id=#id"> \
@@ -85,8 +85,8 @@
 		rdata : function(d,j){
 			var obj = this;
 			d = d.replace('#user_id',j.user_id).replace('#ii',j.id).replace('#city_id',j.city_id || '').replace('#id',j.id).replace('#id',j.id).replace('#headimgurl',j.user_info[0] && j.user_info[0].headimgurl).replace('#nickname',j.user_info[0] && j.user_info[0].nickname.substring(0,10)).replace('#content',Base.tools.sub(j.content,200)).replace('#pictures',obj.getImages(j.pictures,j.id)).replace('#view_num',j.view_num).replace('#viewers',obj.getViewers(j.viewers)).replace('#like_num',j.like_num).replace('#comment_num',j.comment_num);
-			if(j.pages.length>0) d = d.replace('#vip','');
-			else d = d.replace('#vip',' hide');
+			if(j.pages.length>0) d = d.replace('#vip','').replace('#card','').replace('#page_id',j.pages[0].id);
+			else d = d.replace('#vip',' hide').replace('#card',' hide');
 			return d;
 		},
 		getHtml : function(data,ag){
@@ -103,31 +103,35 @@
 					location.href = url+'&back_url='+getUrl()+'?args='+encodeURIComponent(str(obj.querys.args))+'&back_ScrollTop='+Base.turn.getScrollTop();
 				})
 				os.find('a.click').click(function(){
-					if(_userInfo){
-						var o = $(this),
-							tp = o.attr('tp'),
-							dt = o.parent().parent()
-						;
-						if(tp=='like'){
-							var numo = o.find('span'),
-								num = parseInt(numo.text())
-							;
-							$.ajax({
-								url: '/shuoshuo/like/' + dt.attr('did'),
-								data:{},
-								dataType: 'json',
-								success : function(dd) {
-									num ++;
-									if(dd.info=='点赞成功') numo.text(num);
-									alert(dd.info);
-								}
-							})
+					var o = $(this),
+						tp = o.attr('tp'),
+						dt = o.parent().parent()
+					;
+					if(tp='card'){
+						location.href = 'detail.html?id='+$(this).attr('page_id');
+					}else{
+						if(_userInfo){
+							if(tp=='like'){
+								var numo = o.find('span'),
+									num = parseInt(numo.text())
+								;
+								$.ajax({
+									url: '/shuoshuo/like/' + dt.attr('did'),
+									data:{},
+									dataType: 'json',
+									success : function(dd) {
+										num ++;
+										if(dd.info=='点赞成功') numo.text(num);
+										alert(dd.info);
+									}
+								})
+							}
+							else if(tp='talk'){
+								location.href = $(this).attr('htm');
+							}
 						}
-						else if(tp='talk'){
-							location.href = $(this).attr('htm');
-						}
+						else _followFunc();
 					}
-					else _followFunc();
 				})
 			})
 			if(ag.stop) {
