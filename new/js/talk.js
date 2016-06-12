@@ -4,6 +4,10 @@ _getUserDetail(_id,function(detail){
 	var conn = new Easemob.im.Connection(),
 		_nickname = detail.nickname,
 		_headimgurl = detail.headimgurl,
+		_vip = function(){
+			if(detail.pages.length>0) return '';
+			return 'display:none';
+		}(),
 		_user_id = null,
 		_dom = {
 			time : '<div class="time">#time</div>',
@@ -11,7 +15,7 @@ _getUserDetail(_id,function(detail){
 			list : '<div class="list">#list</div>',
 			other : '\
 				<div class="list-item clearfix other">\
-					<div class="user-image fl" style="background: url(#headimgurl) 50% 50% no-repeat;position:relative"><img style="position:absolute;right:-0.06rem;bottom:-0.06rem;width:0.16rem" src="img/blog/vip.png"/></div>\
+					<div class="user-image fl" style="background: url(#headimgurl) 50% 50% no-repeat;position:relative"><img style="position:absolute;right:-0.06rem;bottom:-0.06rem;width:0.16rem;'+_vip+'" src="img/blog/vip.png"/></div>\
 					<div class="user-message fl">\
 						<p>#msg</p>\
 						<p class="sanjiao"></p>\
@@ -19,7 +23,7 @@ _getUserDetail(_id,function(detail){
 			',
 			my : '\
 				<div class="list-item clearfix self">\
-					<div class="user-image fr" style="background: url(#headimgurl) 50% 50% no-repeat;position:relative"><img style="position:absolute;right:-0.06rem;bottom:-0.06rem;width:0.16rem" src="img/blog/vip.png"/></div>\
+					<div class="user-image fr" style="background: url(#headimgurl) 50% 50% no-repeat;position:relative"><img style="position:absolute;right:-0.06rem;bottom:-0.06rem;width:0.16rem;#vip" src="img/blog/vip.png"/></div>\
 					<div class="user-message fr">\
 						<p>#msg</p>\
 						<p class="sanjiao"></p>\
@@ -130,6 +134,10 @@ _getUserDetail(_id,function(detail){
 	}
 
 	getUser(function(){
+		var myvip = function(){
+			if(_userInfo.pages.length>0) return '';
+			return 'display:none';
+		}();
 		//_user_id = _userInfo.user_id;
 		conn.open({
 			user : _userInfo.user_id,
@@ -141,7 +149,7 @@ _getUserDetail(_id,function(detail){
 				var o = getNowTime(parseInt(j.ctime) * 1000),
 					n = $('#data').find('.time:last').text();
 				if(o!=n) $('#data').append(_dom.time.replace('#time',o));
-				$('#data').append(_dom.list.replace('#list',_dom[j.t].replace('#headimgurl',j.headimgurl).replace('#msg',j.msg)));
+				$('#data').append(_dom.list.replace('#list',_dom[j.t].replace('#headimgurl',j.headimgurl).replace('#msg',j.msg).replace('#vip',myvip)));
 			})
 			window.scroll(0,window.document.body.scrollHeight);
 		});
@@ -164,7 +172,7 @@ _getUserDetail(_id,function(detail){
 				n = $('#data').find('.time:last>span').text()
 			;
 			if(o!=n) $('#data').append(_dom.time.replace('#time',o));
-			$('#data').append(_dom.list.replace('#list',_dom.my.replace('#headimgurl',_userInfo.headimgurl).replace('#msg',msgs)));
+			$('#data').append(_dom.list.replace('#list',_dom.my.replace('#headimgurl',_userInfo.headimgurl).replace('#msg',msgs).replace('#vip',myvip)));
 			window.scroll(0,window.document.body.scrollHeight);
 			
 			$.ajax({
