@@ -69,14 +69,20 @@ getLocation.init(function(){
 			rdata : function(d,j){
 				var obj = this;
 				d = d.replace('#href','detail.html?id='+j.id+'&uid='+j.uid).replace('#title',j.title).replace('#phone',j.phone).replace('#phone',j.phone).replace('#view',j.view).replace('#address',j.address);
-				if(j.is_vip=='1') {
+				
+				if(j.isagree=='1' && j.is_refresh=='1'){
+					if(j.is_vip=='1') d = d.replace('#vip','').replace('#member',' hide');
+					else d = d.replace('#vip',' hide').replace('#member','');
+				}
+				else d = d.replace('#vip',' hide').replace('#member',' hide');
+				/*if(j.is_vip=='1') {
 					d = d.replace('#vip','').replace('#member',' hide');
 				}
 				else {
 					d = d.replace('#vip',' hide');
 					if(j.isagree=='1') d = d.replace('#member','');
 					else d = d.replace('#member',' hide');
-				}
+				}*/
 				if(j.logo) d = d.replace('#logo',j.logo);
 				else d = d.replace('#logo','http://www.chawuliu.com/uploads/page/default9d665cfbf7bbd3834f7accbeaeea423b.jpg');
 				if(obj.querys.args.findType==3) d = d.replace('#people','人推荐').replace('#stars',j.support_num);

@@ -161,7 +161,7 @@ var getLocation = {
 		suc && suc();
 	},
 	init : function(suc){
-		var _key = 'cityname1';
+		var _key = 'cityname';
 		if($.cookie(_key)){
 			getLocation.setValue($.cookie(_key),suc);
 		}

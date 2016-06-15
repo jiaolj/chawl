@@ -50,7 +50,7 @@
 					<div class="action"> \
 						<span class="hide"><a class="click" tp="like"><img class="left" src="img/blog/like.png" /><span>#like_num</span></a> <img class="left" src="img/blog/talk.png" /><span>#comment_num</span> <img class="left" src="img/blog/share.png" /></span> \
 						<span class="from">来自：#city_id</span>\
-						<span class="frt talk"><a class="click" tp="talk" htm="mdetail.html?id=#user_id">聊一聊</a></span> \
+						<span class="frt talk"><a class="click" tp="talk" htm="mdetail.html?id=#user_id">报价</a></span> \
 						<br class="cb"/> \
 					</div> \
 				</dt>\
@@ -102,7 +102,7 @@
 					var url = $(this).attr('url');
 					location.href = url+'&back_url='+getUrl()+'?args='+encodeURIComponent(str(obj.querys.args))+'&back_ScrollTop='+Base.turn.getScrollTop();
 				})
-				os.find('a.click').click(function(){
+				/*os.find('a.click').click(function(){
 					var o = $(this),
 						tp = o.attr('tp'),
 						dt = o.parent().parent()
@@ -132,6 +132,10 @@
 						}
 						else _followFunc();
 					}
+				})*/
+				os.find('a[tp="talk"]').click(function(){
+					if(_userInfo) location.href = $(this).attr('htm');
+					else _followFunc();
 				})
 			})
 			if(ag.stop) {
