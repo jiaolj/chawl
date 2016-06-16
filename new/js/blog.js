@@ -137,6 +137,9 @@
 					if(_userInfo) location.href = $(this).attr('htm');
 					else _followFunc();
 				})
+				os.find('a[tp="card"]').click(function(){
+					location.href = 'detail.html?id='+$(this).attr('page_id');
+				})
 			})
 			if(ag.stop) {
 				log(ag.stop,Base.turn.getScrollTop());
