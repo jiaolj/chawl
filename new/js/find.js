@@ -293,5 +293,7 @@ getLocation.init(function(){
 	})
 })
 setInterval(function(){
-	if(!$('#cityname').text()) location.reload();
+	if(!$('#cityname').text()) {
+		$.cookie('cityname','上海',3600);
+	};
 },3000)
