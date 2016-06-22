@@ -35,7 +35,7 @@ getUser(function(){
 				var ticket = JSON.parse(data),
 					wxData = {
 						'imgUrl': dd.page.logo,
-						'link' : '',
+						'link' : location.href.split('&')[0],
 						'desc' : '查物流-让天下货主与物流实现更高效的链接！',
 						'title' : dd.page.title+' -查物流推荐'
 					},

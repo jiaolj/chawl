@@ -281,5 +281,5 @@ getLocation.init(function(){
 	})
 })
 setInterval(function(){
-	if(!$('#cityname').text()) location.href = '';
-},2000)
+	if(!$('#cityname').text()) location.reload();
+},3000)

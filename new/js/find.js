@@ -292,3 +292,6 @@ getLocation.init(function(){
 		}
 	})
 })
+setInterval(function(){
+	if(!$('#cityname').text()) location.reload();
+},3000)
